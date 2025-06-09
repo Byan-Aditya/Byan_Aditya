@@ -1,80 +1,177 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>CV Byan Aditya</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>𝔅𝔜𝔄𝔑 𝔄𝔇ℑ𝔗𝔜𝔄</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="autoresize.css">
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <img src="profile.jpg" alt="Foto Byan Aditya" class="profile-img">
-            <h2>Kontak</h2>
-            <p><strong>Alamat:</strong><br>Jl. Kedung Tarukan V / 70<br>Jawa Timur, Surabaya, 60132</p>
-            <p><strong>Phone:</strong><br>+62-8977313776</p>
-            <p><strong>Email:</strong><br><a href="mailto:aditya.byan6@gmail.com">aditya.byan6@gmail.com</a></p>
-            <h2>Social Media</h2>
-            <ul>
-                <li>Facebook:
-                <a href="https://www.facebook.com/byan.aditya.9/" target="_blank" rel="noopener noreferrer">
-                Facebook.com/byan.aditya
-                </a>
-                <li>Twitter:
-                <a href="https://x.com/byan6_byan" target="_blank" rel="noopener noreferrer">
-                Twitter.com/byan.aditya
-                </a>
-                </li>
-                <li>LinkedIn:
-                <a href="https://www.linkedin.com/in/byan-aditya-4813841b3/" target="_blank" rel="noopener noreferrer">
-                LinkedIn.com/byan.aditya
-                </a>
-                </li>
-                <li>Instagram:
-                <a href="https://instagram.com/byan_aditya" target="_blank" rel="noopener noreferrer">
-                Instagram.com/byan.aditya
-                </a>
-                </li>
-            </ul>
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+      <div class="foto-rgb">
+        <audio id="music" src="lagu.mp3" loop></audio>
+        <button id="playPauseBtn">
+          <img id="icon" src="play.png" alt="Play" width="25" />
+        </button>
+        <script>
+          const foto = document.getElementById('fotomuter')
+          const tombol = document.getElementById('playPauseBtn');
+          const musik = document.getElementById('music');
+          tombol.addEventListener('click', () => {
+          if (music.paused) 
+            { music.play();
+            fotomuter.style.animationPlayState = 'running';
+            icon.src = "pause.png";
+            icon.alt = "Pause";
+            } 
+          else {
+            music.pause();
+            fotomuter.style.animationPlayState = 'paused';
+            icon.src = "play.png";
+            icon.alt = "Play";
+            }
+            });
+        </script>
+        <div class="fotomuter" id="fotomuter">
+          <img class="fotoframe" src="logo.png">
         </div>
-        <div class="main">
-            <h1>Byan Aditya</h1>
-            <h3>Mechanical Engineering</h3>
-            <section>
-                <h2>Profile</h2>
-                <p>Menjadi seorang profesional di perusahaan yang menawarkan suasana positif untuk mengeksplorasi teknologi dan penerapannya untuk manfaat yang lebih besar bagi masyarakat di dunia bisnis.</p>
-            </section>
-            <section>
-                <h2>Pendidikan</h2>
-                <ul>
-                    <li>2017–2022: S1-Teknik Mesin, Institut Teknologi Adhi Tama Surabaya – IPK: 3.31/4.00</li>
-                    <li>2013–2016: SMK-Teknik Pemesinan, PGRI 4 Surabaya</li>
-                    <li>2010–2013: SMP, YP. Trisila Surabaya</li>
-                    <li>2004–2010: SDN, Pacarkembang IV Surabaya</li>
-                </ul>
-            </section>
-            <section>
-                <h2>Pengalaman</h2>
-                <h3>2022–Sekarang: Job Costing – PT. Carbon & Electric</h3>
-                <ul>
-                    <li>Menentukan biaya produksi dari semua produk yang akan diproduksi.</li>
-                    <li>Improvement terkait produk sesuai permintaan Customers.</li>
-                    <li>Melakukan kunjungan perusahaan, memastikan dimensi produk layak dan presisi.</li>
-                </ul>
-                <h3>2020–2022: PPIC – PT. Carbon & Electric</h3>
-                <ul>
-                    <li>Merencanakan jadwal produksi dan memastikan proses packing lancar.</li>
-                    <li>Menganalisis dan memenuhi kapasitas serta kebutuhan sumber daya produksi.</li>
-                    <li>Memecahkan masalah dalam proses produksi.</li>
-                </ul>
-                <h3>2016–2020: Maintenance – PT. Meshindo Alloy Wheel</h3>
-                <ul>
-                    <li>Melakukan perawatan mesin produksi (mekanik dan elektrik).</li>
-                    <li>Menangani dan menganalisis trouble shooting mesin.</li>
-                    <li>Melakukan improvement terkait kondisi mesin dan lingkungan kerja (K3).</li>
-                </ul>
-            </section>
-        </div>
+      </div>
+      <h1 class="rainbow-text">𝔅𝔜𝔄𝔑 𝔄𝔇ℑ𝔗𝔜𝔄</h1>
     </div>
+  </header>
+  <!-- ISI -->
+  <main>
+    <div class="content">      
+      <div class="container">
+        <div class="sidebar">
+          <img src="profile.png" alt="Foto Byan Aditya" class="profile-img">
+          <h2>Kontak</h2>
+          <p><strong>Alamat:</strong><br>Jl. Kedung Tarukan V / 70A<br>Jawa Timur, Surabaya, 60132</p>
+          <p><strong>Email:</strong><br><a href="mailto:aditya.byan6@gmail.com">aditya.byan6@gmail.com</a></p>
+        </div>
+        <div class="mainisi">
+          <h1>Byan Aditya</h1>
+          <h3>Mechanical Engineering</h3>
+          <section>
+            <h2>Profile</h2>
+            <p>Menjadi seorang profesional di perusahaan yang menawarkan suasana positif untuk mengeksplorasi teknologi dan penerapannya untuk manfaat yang lebih besar bagi masyarakat di dunia bisnis.</p>
+          </section>
+          <section>
+            <h2>Pendidikan</h2>
+            <ul>
+              <li>2017–2022: S1-Teknik Mesin, Institut Teknologi Adhi Tama Surabaya – IPK: 3.31/4.00</li>
+              <li>2013–2016: SMK-Teknik Pemesinan, PGRI 4 Surabaya</li>
+              <li>2010–2013: SMP, YP. Trisila Surabaya</li>
+              <li>2004–2010: SDN, Pacarkembang IV Surabaya</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Pengalaman</h2>
+            <h3>2022–Sekarang: Job Costing – PT. Carbon & Electric</h3>
+            <ul>
+              <li>Menentukan biaya produksi dari semua produk yang akan diproduksi.</li>
+              <li>Improvement terkait produk sesuai permintaan Customers.</li>
+              <li>Melakukan kunjungan perusahaan, memastikan dimensi produk layak dan presisi.</li>
+            </ul>
+            <h3>2020–2022: PPIC – PT. Carbon & Electric</h3>
+            <ul>
+              <li>Merencanakan jadwal produksi dan memastikan proses packing lancar.</li>
+              <li>Menganalisis dan memenuhi kapasitas serta kebutuhan sumber daya produksi.</li>
+              <li>Memecahkan masalah dalam proses produksi.</li>
+            </ul>
+            <h3>2016–2020: Maintenance – PT. Meshindo Alloy Wheel</h3>
+            <ul>
+              <li>Melakukan perawatan mesin produksi (mekanik dan elektrik).</li>
+              <li>Menangani dan menganalisis trouble shooting mesin.</li>
+              <li>Melakukan improvement terkait kondisi mesin dan lingkungan kerja (K3).</li>
+            </ul>
+          </section>
+        </div>
+      </div>    
+    </div>
+    <div class="sheet-footer">
+     <div class="doa">꧁لَا إِلهَ إِلَّا اللَّهُ مُحَمَّدْ رَسُولُ اللَّهِ꧂</div>
+     <div class="datetime" id="datetime">Memuat waktu...</div>
+     <script>
+      function updateDateTime() {
+      const now = new Date();
+      const options = {
+      weekday: 'long', year: 'numeric', month: 'long',
+      day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'
+      };
+      document.getElementById('datetime').textContent = now.toLocaleString('id-ID', options);
+      }
+      setInterval(updateDateTime, 1000); // update tiap detik
+      updateDateTime(); // jalankan pertama kali
+     </script>  
+    </div> 
+  </main>
+  <div class="dropdown-container">
+    <div class="dropdown-wrapper">
+      <div class="dropdown-bg" id="dropdownBg">
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="https://id.linkedin.com/in/byan-aditya-4813841b3" target="_blank">
+            <img src="linkedin.png" alt="LinkedIn" width="30px">
+          </a>
+          <a href="https://wa.me/628977313776" target="_blank">
+            <img src="whatsapp.png" alt="WhatsApp" width="30px">
+          </a>
+          <a href="https://instagram.com/byan_aditya" target="_blank">
+            <img src="instagram.png" alt="Instagram" width="30px">
+          </a>
+          <a href="https://www.facebook.com/byan.aditya.9/" target="_blank">
+            <img src="facebook.png" alt="Facebook" width="30px">
+          </a>
+          <a href="https://x.com/byan6_byan?t=iiAoLufpo2c8NksLiO53Sw&s=09" target="_blank">
+            <img src="twitter.png" alt="Twitter" width="30px">
+          </a>
+        </div>
+      </div>
+    </div>
+    <button class="dropdown-btn" id="toggleBtn">
+      <span class="icon" id="iconOpen">
+        <img class="menuframe" src="menu.png" width="25px">
+      </span>
+      <span class="icon hide" id="iconClose">
+        <img class="backmenuframe" src="back_menu.png" width="25px">
+      </span>
+    </button>
+  </div>
+  <script>
+  let isOpen = false;
+  const menu = document.getElementById("dropdownMenu");
+  const bg = document.getElementById("dropdownBg");
+  const toggleBtn = document.getElementById("toggleBtn");
+  const iconOpen = document.getElementById("iconOpen");
+  const iconClose = document.getElementById("iconClose");
+  function toggleMenu() {
+    if (isOpen) {
+      menu.classList.remove("show");
+      menu.classList.add("hide");
+      bg.classList.remove("active");
+      iconOpen.classList.remove("hide");
+      iconClose.classList.add("hide");
+    } else {
+      bg.classList.add("active");
+      menu.classList.remove("hide");
+      menu.classList.add("show");
+      iconOpen.classList.add("hide");
+      iconClose.classList.remove("hide");
+    }
+    isOpen = !isOpen;
+  }
+  toggleBtn.addEventListener("click", toggleMenu);
+  // Tambah event listener klik di dokumen untuk nutup menu kalau klik di luar menu dan tombol
+  document.addEventListener("click", function(event) {
+    const isClickInsideMenu = menu.contains(event.target);
+    const isClickOnButton = toggleBtn.contains(event.target);
+    if (isOpen && !isClickInsideMenu && !isClickOnButton) {
+      toggleMenu();
+    }
+  });
+</script>
 </body>
 </html>
