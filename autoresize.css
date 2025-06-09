@@ -6,11 +6,12 @@
 
     .container {
       display: flex;
-      max-width: 1000px;
+      max-width: 2000px;
       margin: auto;
       background-color: white;
       border-radius: 15px;
       overflow: hidden;
+      box-shadow: 0 6px 9px rgba(0, 0, 0, 0.3);
     }
 
     .sidebar {
@@ -19,6 +20,8 @@
       font-family: "Times New Roman", Times, serif;
       padding: 20px;
       width: 30%;
+      border-radius: 15px;
+      box-shadow: 0 6px 9px rgba(0, 0, 0, 0.3);
     }
 
     .profile-img {
