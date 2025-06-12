@@ -409,3 +409,66 @@
       top: 2px;
       right: 2px;
     }
+    
+    .skill {
+      padding-bottom: 0px;
+      margin-top: 10px;
+    }
+
+    .skill-title {
+      margin-bottom: 2px;
+      font-weight: none;
+    }
+
+    .progress-container {
+      background: #5c5c5c;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 8px;
+      position: relative;
+    }
+
+    .progress-bar {
+      height: 100%;
+      text-align: right;
+      padding-right: 0.5rem;
+      color: #fff;
+      font-size: 0.8rem;
+      line-height: 10px;
+      border-radius: 10px;
+      width: 0;
+      transition: width 2s ease-in-out;
+      position: relative;
+    }
+
+    .progress-bar[data-skill="autocad"] { background: #ffff; }
+    .progress-bar[data-skill="inventor"]   { background: #ffff; }
+    .progress-bar[data-skill="fusion-360"]   { background: #ffff; }
+    .progress-bar[data-skill="UG-NX7"]   { background: #ffff; }
+    .progress-bar[data-skill="word"]   { background: #ffff; }
+    .progress-bar[data-skill="exel"]   { background: #ffff; }
+    .progress-bar[data-skill="ppt"]   { background: #ffff; }
+    .progress-bar[data-skill="indonesia"]   { background: #ffff; }
+    .progress-bar[data-skill="inggris"]   { background: #ffff; }
+    .progress-bar[data-skill="leadership"]   { background: #ffff; }
+    .progress-bar[data-skill="team-work"]   { background: #ffff; }
+    .progress-bar[data-skill="mechanical"]   { background: #ffff; }
+    .progress-bar[data-skill="electrical"]   { background: #ffff; }
+
+    /* Firework Particle */
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: yellow;
+      opacity: 1;
+      animation: explode 0.6s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes explode {
+      to {
+        transform: translate(var(--x), var(--y)) scale(1.5);
+        opacity: 0;
+      }
