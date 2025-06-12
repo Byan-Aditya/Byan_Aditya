@@ -96,6 +96,8 @@
     .datetime {
       margin-top: 4px;
       color: #FFFFFF;
+      font-family: "Times New Roman", Times, serif;
+      font-weight: bold;
     }
     
     body {
