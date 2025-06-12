@@ -50,7 +50,6 @@
           <img src="images/profile.png" alt="Foto Byan Aditya" class="profile-img">
           <h2>Kontak</h2>
           <p><strong>Alamat:</strong><br>Jl. Kedung Tarukan V / 70A<br>Jawa Timur, Surabaya, 60132</p>
-          <p><strong>Email:</strong><br><a href="mailto:aditya.byan6@gmail.com">aditya.byan6@gmail.com</a></p>
           <h2>Keahlian Software</h2>
           <div class="skill">
             <div class="skill-title">Auto CAD - 80%</div>
@@ -127,9 +126,9 @@
             </div>
           </div>
           <div class="skill">
-            <div class="skill-title">Electrical - 85%</div>
+            <div class="skill-title">Electrical - 95%</div>
             <div class="progress-container">
-              <div class="progress-bar" data-skill="electrical" data-percent="85"></div>
+              <div class="progress-bar" data-skill="electrical" data-percent="95"></div>
             </div>
           </div>
           <div class="skill">
@@ -142,37 +141,30 @@
             window.addEventListener("load", () => {
               document.querySelectorAll('.progress-bar').forEach(bar => {
                 const percent = bar.getAttribute('data-percent');
-        
                 setTimeout(() => {
                   bar.style.width = percent + "%";
-        
                   // Trigger efek setelah width selesai
                   setTimeout(() => {
                     createFirework(bar);
                   }, 2000);
                 }, 500);
               });
-        
               function createFirework(container) {
                 const colors = ['#ff0', '#f00', '#0ff', '#fff', '#f0f'];
                 for (let i = 0; i < 10; i++) {
                   const particle = document.createElement('div');
                   particle.classList.add('particle');
                   particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        
                   // Random arah ledakan
                   const x = (Math.random() - 0.5) * 60 + 'px';
                   const y = (Math.random() - 0.5) * 60 + 'px';
                   particle.style.setProperty('--x', x);
                   particle.style.setProperty('--y', y);
-        
                   // Posisi di ujung bar
                   particle.style.left = '100%';
                   particle.style.top = '50%';
                   particle.style.transform = 'translate(-50%, -50%)';
-        
                   container.appendChild(particle);
-        
                   // Bersihin partikel setelah animasi
                   setTimeout(() => {
                     particle.remove();
@@ -181,8 +173,6 @@
               }
             });
           </script>
-          
-          
         </div>
         <div class="mainisi">
           <h1>Byan Aditya</h1>
@@ -247,6 +237,9 @@
         <div class="dropdown-menu" id="dropdownMenu">
           <a href="https://id.linkedin.com/in/byan-aditya-4813841b3" target="_blank">
             <img src="images/linkedin.png" alt="LinkedIn" width="30px">
+          </a>
+          <a href="mailto:aditya.byan6@gmail.com" target="_blank">
+            <img src="images/gmail.png" alt="Gmail" width="30px">
           </a>
           <a href="https://wa.me/628977313776" target="_blank">
             <img src="images/whatsapp.png" alt="WhatsApp" width="30px">
