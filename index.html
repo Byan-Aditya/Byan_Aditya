@@ -51,6 +51,138 @@
           <h2>Kontak</h2>
           <p><strong>Alamat:</strong><br>Jl. Kedung Tarukan V / 70A<br>Jawa Timur, Surabaya, 60132</p>
           <p><strong>Email:</strong><br><a href="mailto:aditya.byan6@gmail.com">aditya.byan6@gmail.com</a></p>
+          <h2>Keahlian Software</h2>
+          <div class="skill">
+            <div class="skill-title">Auto CAD - 80%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="autocad" data-percent="80"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-title">Inventor - 70%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="inventor" data-percent="70"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-title">Fusion 360 - 85%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="fusion-360" data-percent="85"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-title">UG NX7 - 80%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="UG-NX7" data-percent="80"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-title">MS Word - 90%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="word" data-percent="90"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-title">MS Exel - 95%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="exel" data-percent="95"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-title">MS Power Point - 96%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="ppt" data-percent="96"></div>
+            </div>
+          </div>
+          <h2>Keahlian Bahasa</h2>
+          <div class="skill">
+            <div class="skill-title">Indonesia - 100%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="indonesia" data-percent="100"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-title">Inggris - 75%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="inggris" data-percent="75"></div>
+            </div>
+          </div>
+          <h2>Keahlian Lainnya</h2>
+          <div class="skill">
+            <div class="skill-title">Leadership - 98%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="leadership" data-percent="98"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-title">Team Work - 100%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="team-work" data-percent="100"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-title">Mechanical - 100%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="mechanical" data-percent="100"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-title">Electrical - 85%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="electrical" data-percent="85"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-title">Coding (XML, HTML & CSS) - 70%</div>
+            <div class="progress-container">
+              <div class="progress-bar" data-skill="electrical" data-percent="70"></div>
+            </div>
+          </div>
+          <script>
+            window.addEventListener("load", () => {
+              document.querySelectorAll('.progress-bar').forEach(bar => {
+                const percent = bar.getAttribute('data-percent');
+        
+                setTimeout(() => {
+                  bar.style.width = percent + "%";
+        
+                  // Trigger efek setelah width selesai
+                  setTimeout(() => {
+                    createFirework(bar);
+                  }, 2000);
+                }, 500);
+              });
+        
+              function createFirework(container) {
+                const colors = ['#ff0', '#f00', '#0ff', '#fff', '#f0f'];
+                for (let i = 0; i < 10; i++) {
+                  const particle = document.createElement('div');
+                  particle.classList.add('particle');
+                  particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        
+                  // Random arah ledakan
+                  const x = (Math.random() - 0.5) * 60 + 'px';
+                  const y = (Math.random() - 0.5) * 60 + 'px';
+                  particle.style.setProperty('--x', x);
+                  particle.style.setProperty('--y', y);
+        
+                  // Posisi di ujung bar
+                  particle.style.left = '100%';
+                  particle.style.top = '50%';
+                  particle.style.transform = 'translate(-50%, -50%)';
+        
+                  container.appendChild(particle);
+        
+                  // Bersihin partikel setelah animasi
+                  setTimeout(() => {
+                    particle.remove();
+                  }, 800);
+                }
+              }
+            });
+          </script>
+          
+          
         </div>
         <div class="mainisi">
           <h1>Byan Aditya</h1>
