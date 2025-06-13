@@ -1,0 +1,60 @@
+    .dropdown-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  z-index: 1;
+}
+
+.dropdown-menu a {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  background-color: #eeeeee;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #333;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateX(30px) rotate(0deg);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Icon inside menu ikut ukuran font tombol */
+.dropdown-menu a i,
+.dropdown-menu a svg {
+  font-size: inherit;
+  width: 1em;
+  height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive HP */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    gap: 6px;
+  }
+
+  .dropdown-menu a {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    font-size: 16px;
+  }
+
+  .dropdown-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
