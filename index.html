@@ -49,8 +49,8 @@
       <div class="container">
         <div class="sidebar">
           <img src="images/profile.png" alt="Foto Byan Aditya" class="profile-img">
-          <h2>Kontak</h2>
-          <p><strong>Alamat:</strong><br>Jl. Kedung Tarukan V / 70A<br>Jawa Timur, Surabaya, 60132</p>
+          <h2>Alamat</h2>
+          <p><br>Jl. Kedung Tarukan V / 70A<br>Jawa Timur, Surabaya, 60132</p>
           <h2>Keahlian Software</h2>
           <div class="skill">
             <div class="skill-title">Auto CAD - 80%</div>
@@ -258,12 +258,12 @@
       </div>
     </div>
     <button class="dropdown-btn" id="toggleBtn">
-    <span class="icon" id="iconOpen">
-      <img class="menuframe" src="images/menu.png" alt="Menu">
-    </span>
-    <span class="icon hide" id="iconClose">
-      <img class="backmenuframe" src="images/back_menu.png" alt="Close Menu">
-    </span>
+      <span class="icon" id="iconOpen">
+        <img class="menuframe" src="images/menu.png" alt="Menu">
+      </span>
+      <span class="icon hide" id="iconClose">
+        <img class="backmenuframe" src="images/back_menu.png" alt="Close Menu">
+      </span>
     </button>
   </div>
   <script>
@@ -288,16 +288,16 @@
       iconClose.classList.remove("hide");
     }
     isOpen = !isOpen;
-  }
-  toggleBtn.addEventListener("click", toggleMenu);
-  // Tambah event listener klik di dokumen untuk nutup menu kalau klik di luar menu dan tombol
-  document.addEventListener("click", function(event) {
+    }
+    toggleBtn.addEventListener("click", toggleMenu);
+    // Tambah event listener klik di dokumen untuk nutup menu kalau klik di luar menu dan tombol
+    document.addEventListener("click", function(event) {
     const isClickInsideMenu = menu.contains(event.target);
     const isClickOnButton = toggleBtn.contains(event.target);
     if (isOpen && !isClickInsideMenu && !isClickOnButton) {
       toggleMenu();
     }
-  });
-</script>
+   });
+  </script>
 </body>
 </html>
