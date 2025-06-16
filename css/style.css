@@ -204,8 +204,8 @@
     }
 
     #icon {
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
     }
 
     .dropdown-container {
@@ -409,7 +409,7 @@
       justify-content: center;
       align-items: center;
       top: 2px;
-      right: 2px;
+      right: 0iconpx;
     }
     
     .skill {
