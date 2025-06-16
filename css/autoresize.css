@@ -169,7 +169,7 @@
       width: 35px;
       height: 35px;
       margin-top: 20px;
-      background-color: white;
+      background-color: #5c5c5c;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -178,8 +178,8 @@
     }
     
     .circle-img {
-      width: 25px;
-      height: 25px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       object-fit: cover;
     }
