@@ -19,7 +19,7 @@
       color: white;
       font-family: "Times New Roman", Times, serif;
       padding: 20px;
-      width: 50%;
+      width: 30%;
       border-radius: 15px;
       box-shadow: 0 6px 9px rgba(0, 0, 0, 0.3);
     }
@@ -27,7 +27,6 @@
     .profile-img {
       width: 100%;
       border-radius: 50%;
-      margin-bottom: 20px;
       border: 5px solid #bfbfbfbf;
       box-shadow:
         0 0 2px red,
@@ -89,6 +88,100 @@
 
     li {
       margin-bottom: 8px;
+    }
+    
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center; /* opsional, kalau mau vertikal tengah juga */
+      margin-top: 20px;     /* kasih jarak dari atas */
+    }
+
+    .background-jurusan {
+      display: inline-flex;
+      position: relative;
+      text-align: center;
+      background: #adadadad;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 20px;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      border: none;
+      animation: colorChange 3s infinite alternate;
+    }
+      
+    @keyframes colorChange {
+      from {
+        color: black;
+      }
+      to {
+        color: whitesmoke;
+      }
+     }
+
+    .triangle {
+      position: absolute;
+      bottom: -10px; /* posisi ngisor */
+      left: 50%;      /* tengah horizontal */
+      transform: translateX(-50%); /* geser supaya bener-bener tengah */
+      width: 0;
+      height: 0;
+      border: none;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #adadadad; /* kudu sama karo background .bubble */
+    }
+
+    .background-nama {
+      width: 100%;
+      padding: 2px;
+      margin-top: -10px;
+      border-radius: 25px;
+      background: none;
+    }
+
+    .nama {
+      margin-bottom: 0px;
+      color: white;
+      text-align: center;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+      .background-alamat {
+      position: relative;
+      width: 100%;
+      padding: 2px;
+      margin-top: -10px;
+      border-radius: 25px;
+      background: none;
+    }
+
+    .judul-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .circle-wrapper {
+      width: 35px;
+      height: 35px;
+      margin-top: 20px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.2); /* efek glow tipis */
+    }
+    
+    .circle-img {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      object-fit: cover;
     }
 
     /* RESPONSIF UNTUK LAYAR KECIL */
