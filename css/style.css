@@ -475,3 +475,32 @@
         opacity: 0;
       }
       }
+      .timeline {
+        position: relative;
+        margin-left: 20px;   /* ruang di kiri teks */
+        padding-left: 20px;  /* ruang supaya teks ora kena garis */
+        border-left: 2px solid gray;
+        list-style: none;    /* mateni bullet bawaan <ul> */
+      }
+      .timeline > li {       /* hanya blok pengalaman */
+        position: relative;
+        margin-bottom: 24px; /* jarak antar pengalaman */
+      }
+      .timeline > li::before {
+        content:'';
+        position:absolute;
+        left:-31.2px;          /* sejajar garis (28px – 20px) */
+        top:0px;            /* sejajar baris pertama */
+        width:15px;height:15px;
+        background:gray;
+        border-radius:50%;
+        border:3px solid #fff;
+      }
+    
+      /* LIST PENJELASAN DENGAN ANGKA */
+      .inner{
+        list-style:decimal;       /* 1. 2. 3. */
+        padding-left:20px;        /* jarak angka–teks */
+        margin-top:6px;
+      }
+      .inner li{margin-bottom:6px;}
