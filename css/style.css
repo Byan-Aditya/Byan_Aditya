@@ -490,7 +490,7 @@
         content:'';
         position:absolute;
         left:-31.3px;          /* sejajar garis (28px – 20px) */
-        top:-0.5px;            /* sejajar baris pertama */
+        top:-0.7px;            /* sejajar baris pertama */
         width:15px;height:15px;
         background:gray;
         border-radius:50%;
