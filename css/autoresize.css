@@ -223,7 +223,7 @@
       }
     }
       @media print {
-     header-container, nav, .sheet-footer, .menu-toggle, .dropdown-container, button {
+     header-container, nav, .sheet-footer, .menu-toggle, .dropdown, button {
        display: none !important;
        visibility: hidden !important;
      }
