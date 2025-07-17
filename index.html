@@ -13,32 +13,45 @@
   <header>
     <div class="header-container">
       <div class="foto-rgb">
-        <audio id="music" src="music/lagu.mp3" loop></audio>
+        <audio id="music"></audio>
         <button id="playPauseBtn">
           <img id="icon" src="images/play.png" alt="Play" width="25"/>
         </button>
-        <script>
-          const foto = document.getElementById('fotomuter')
-          const tombol = document.getElementById('playPauseBtn');
-          const musik = document.getElementById('music');
-          tombol.addEventListener('click', () => {
-          if (music.paused) 
-            { music.play();
-            fotomuter.style.animationPlayState = 'running';
-            icon.src = "images/pause.png";
-            icon.alt = "images/Pause";
-            } 
-          else {
-            music.pause();
-            fotomuter.style.animationPlayState = 'paused';
-            icon.src = "images/play.png";
-            icon.alt = "images/Play";
-            }
-            });
-        </script>
         <div class="fotomuter" id="fotomuter">
           <img class="fotoframe" src="images/logo.png">
         </div>
+        <script>
+          const foto = document.getElementById('fotomuter');
+          const tombol = document.getElementById('playPauseBtn');
+          const musik = document.getElementById('music');
+          const icon = document.getElementById('icon');  
+          const playlist = [
+            "music/lagu1.mp3",
+            "music/lagu2.mp3",
+            "music/lagu3.mp3"
+          ];
+          let current = 0;
+          musik.src = playlist[current]; // mulai lagu pertama
+          tombol.addEventListener('click', () => {
+            if (musik.paused) {
+              musik.play();
+              foto.style.animationPlayState = 'running';
+              icon.src = "images/pause.png";
+              icon.alt = "Pause";
+            } else {
+              musik.pause();
+              foto.style.animationPlayState = 'paused';
+              icon.src = "images/play.png";
+              icon.alt = "Play";
+            }
+          });
+          // Saat lagu selesai, ganti ke lagu berikutnya
+          musik.addEventListener('ended', () => {
+            current = (current + 1) % playlist.length; // looping balik ke awal
+            musik.src = playlist[current];
+            musik.play();
+          });
+        </script>
       </div>
       <h1 class="rainbow-text">𝔅𝔜𝔄𝔑 𝔄𝔇ℑ𝔗𝔜𝔄</h1>
     </div>
