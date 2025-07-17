@@ -8,7 +8,7 @@
       display: flex;
       max-width: 100%;
       margin: auto;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.6); /* putih transparan */
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 6px 9px rgba(0, 0, 0, 0.3);
@@ -223,18 +223,19 @@
       }
     }
       @media print {
-     .header, nav, .sheet-footer, .menu-toggle, .dropdown, button {
-       display: none !important;
-       visibility: hidden !important;
+       .header, nav, .sheet-footer, .menu-toggle, .dropdown, button {
+         display: none !important;
+         visibility: hidden !important;
+       }
+     
+       body {
+         background: white !important;
+       }
+     
+       main {
+         margin: 0 !important;
+         padding: 0 !important;
+       }
      }
-   
-     body {
-       background: white !important;
-     }
-   
-     main {
-       margin: 0 !important;
-       padding: 0 !important;
-     }
-   }
-
+  
+  
