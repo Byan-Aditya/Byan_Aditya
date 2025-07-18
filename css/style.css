@@ -28,7 +28,10 @@
     }
 
     main {
-      padding: 15px 15px;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 15px;
+      padding-bottom: 0px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -57,7 +60,7 @@
       bottom: 0;
       width: 100%;
       background-color: #1e1e1e;
-      padding: 7px;
+      padding: 10px;
       text-align: center;
       box-shadow: 0 -6px 9px rgba(0,0,0,0.3);
       font-size: 14px;
@@ -508,7 +511,7 @@
      .gear-wrapper-kiri {
       position: fixed;
       left: -100px; /* Setengah dari ukuran gear */
-      bottom: -37.5px;
+      bottom: -34px;
       width: 200px;
       height: 200px;
       z-index: -1;
@@ -530,7 +533,7 @@
     .gear-wrapper-kanan{
       position: fixed;
       right: -150px; /* Setengah dari ukuran gear */
-      bottom: -85px;
+      bottom: -84px;
       width: 300px;
       height: 300px;
       z-index: -1;
