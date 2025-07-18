@@ -306,10 +306,11 @@
         </div>
       </div>    
     </div>
-    <div class="sheet-footer">
-     <div class="doa">꧁لَا إِلهَ إِلَّا اللَّهُ مُحَمَّدْ رَسُولُ اللَّهِ꧂</div>
-     <div class="datetime" id="datetime">Memuat waktu...</div>
-     <script>
+  </main>
+  <footer class="sheet-footer">
+    <div class="doa">꧁لَا إِلهَ إِلَّا اللَّهُ مُحَمَّدْ رَسُولُ اللَّهِ꧂</div>
+    <div class="datetime" id="datetime">Memuat waktu...</div>
+    <script>
       function updateDateTime() {
       const now = new Date();
       const options = {
@@ -320,21 +321,38 @@
       }
       setInterval(updateDateTime, 1000); // update tiap detik
       updateDateTime(); // jalankan pertama kali
-     </script>  
-    </div> 
-  </main>
-  <footer style="text-align: center; padding: 10px; margin-top: 0px; argin-bottom: 5px; font-size: 12px; color: grey; background-color: transparent;">
-    <div>Website made by Byan</div>
-    <div>
-      <span style="color: black;">&copy;</span>
-      <span style="color: black;" id="tahun"></span> 
-      <span style="color: black;">Byan Aditya.</span>
-      <span style="color: grey;">All rights reserved.</span>
+    </script>  
+  </footer> 
+  <div style="text-align: center; padding: 5px; margin-top: 0px; margin-bottom: 0px; font-size: 14px; color: grey; background-color: transparent;  z-index: 500;">
+    <div style="display: inline-block; background-color: rgba(255, 255, 255, 0.8);; padding: 5px 10px; border-radius: 20px;">
+      <div class="fade-paragraph">Website made by Byan</div>
+      <div class="fade-paragraph">
+       <span style="color: black;">&copy;</span>
+       <span style="color: black;" id="tahun"></span> 
+       <span style="color: black;">Byan Aditya.</span>
+       <span style="color: grey;">All rights reserved.</span>
+      </div>
+      <script>
+        // Nampilkan tahun otomatis
+        document.getElementById('tahun').textContent = new Date().getFullYear();
+        // Observer kanggo animasi pas scroll
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('fade-in');
+            } else {
+              entry.target.classList.remove('fade-in'); // Reset animasi nek metu layar
+            }
+          });
+        }, {
+          threshold: 0.2
+        });
+        document.querySelectorAll('.fade-paragraph').forEach(p => {
+          observer.observe(p);
+        });
+      </script>
     </div>
-    <script>
-      document.getElementById('tahun').textContent = new Date().getFullYear();
-    </script>
-  </footer>
+  </div>
   <div class="dropdown-container">
     <div class="dropdown-wrapper">
       <div class="dropdown-bg" id="dropdownBg">
