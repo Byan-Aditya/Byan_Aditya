@@ -71,7 +71,7 @@
     }
 
     section {
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     section h2 {
@@ -88,75 +88,6 @@
 
     li {
       margin-bottom: 8px;
-    }
-    
-    .wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center; /* opsional, kalau mau vertikal tengah juga */
-      margin-top: 20px;     /* kasih jarak dari atas */
-    }
-
-    .background-jurusan {
-      display: inline-flex;
-      position: relative;
-      text-align: center;
-      background: #adadadad;
-      padding: 10px;
-      border-radius: 10px;
-      margin: 20px;
-      color: black;
-      font-size: 15px;
-      font-weight: bold;
-      border: none;
-      animation: colorChange 3s infinite alternate;
-    }
-      
-    @keyframes colorChange {
-      from {
-        color: black;
-      }
-      to {
-        color: whitesmoke;
-      }
-     }
-
-    .triangle {
-      position: absolute;
-      bottom: -10px; /* posisi ngisor */
-      left: 50%;      /* tengah horizontal */
-      transform: translateX(-50%); /* geser supaya bener-bener tengah */
-      width: 0;
-      height: 0;
-      border: none;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-top: 10px solid #adadadad; /* kudu sama karo background .bubble */
-    }
-
-    .background-nama {
-      width: 100%;
-      padding: 2px;
-      margin-top: -10px;
-      border-radius: 25px;
-      background: none;
-    }
-
-    .nama {
-      margin-bottom: 0px;
-      color: white;
-      text-align: center;
-      font-size: 25px;
-      font-weight: bold;
-    }
-
-      .background-alamat {
-      position: relative;
-      width: 100%;
-      padding: 2px;
-      margin-top: -10px;
-      border-radius: 25px;
-      background: none;
     }
 
     .judul-container {
@@ -202,9 +133,12 @@
       }
 
       .profile-img {
-        width: 150px;
-        height: 150px;
-        margin: auto;
+        width: 200px;
+        height: 200px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
         display: block;
       }
 
@@ -222,6 +156,7 @@
         text-align: left;
       }
     }
+
       @media print {
        .header, nav, .sheet-footer, .menu-toggle, .dropdown, button {
          display: none !important;
