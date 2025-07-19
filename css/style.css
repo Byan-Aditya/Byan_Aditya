@@ -563,4 +563,65 @@
       .fade-in {
         opacity: 1;
         transform: translateY(0);
+      }
+
+    .slider-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+      .slider-bg {
+        position: relative;
+        background-color: #111;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+        border-radius: 60px;
+        padding: 20px 30px;
+        width: fit-content;
+        overflow: hidden;
+        color: white;
+        isolation: isolate;
+      }
+  
+      .judul, .deskripsi {
+        text-align: center;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+        font-weight: bold;
+      }
+  
+      .judul {
+        font-family: 'Anton', sans-serif;
+        font-size: 30px;
+        color: #fff;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+  
+      .deskripsi {
+        color: #fff;
+        font-size: 15px;
+        font-weight: normal;
+        padding-top: 5px;
+      }
+  
+      .inverse-circle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        background: white;
+        mix-blend-mode: difference;
+        animation: slideX 6s ease-in-out infinite alternate;
+        z-index: 3;
+        pointer-events: none;
+      }
+  
+      @keyframes slideX {
+        0% { left: 0%; }
+        100% { left: calc(100% - 108px); }
         }
