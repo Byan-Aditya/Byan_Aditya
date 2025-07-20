@@ -116,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("toggleBtn");
   const iconOpen = document.getElementById("iconOpen");
   const iconClose = document.getElementById("iconClose");
+  const labelClick = document.getElementById("labelTrigger");
 
   function toggleMenu() {
     if (isOpen) {
@@ -135,12 +136,32 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   toggleBtn.addEventListener("click", toggleMenu);
+  labelClick.addEventListener("click", toggleMenu); // penting iki
 
   document.addEventListener("click", function (event) {
     const isClickInsideMenu = menu.contains(event.target);
     const isClickOnButton = toggleBtn.contains(event.target);
-    if (isOpen && !isClickInsideMenu && !isClickOnButton) {
+    const isClickOnLabel = labelClick.contains(event.target);
+    if (isOpen && !isClickInsideMenu && !isClickOnButton && !isClickOnLabel) {
       toggleMenu();
     }
   });
 });
+
+// === DROPDOWN MENU TOMBOL ANIMASI===
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("labelTrigger");
+
+  button.addEventListener("click", function (e) {
+    const ripple = document.createElement("span");
+    ripple.classList.add("ripple");
+    const rect = this.getBoundingClientRect();
+    ripple.style.left = `${e.clientX - rect.left}px`;
+    ripple.style.top = `${e.clientY - rect.top}px`;
+    this.appendChild(ripple);
+
+    setTimeout(() => ripple.remove(), 600); // hapus setelah animasi
+  });
+});
+
+                                     
