@@ -577,7 +577,7 @@
         background-color: #111;
         box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
         border-radius: 60px;
-        padding: 20px 30px;
+        padding: 20px 25px;
         width: fit-content;
         overflow: hidden;
         color: white;
@@ -594,15 +594,15 @@
   
       .judul {
         font-family: 'Anton', sans-serif;
-        font-size: 30px;
+        font-size: 24px;
         color: #fff;
-        letter-spacing: 3px;
+        letter-spacing: 2px;
         text-transform: uppercase;
       }
   
       .deskripsi {
         color: #fff;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: normal;
         padding-top: 5px;
       }
@@ -616,12 +616,12 @@
         border-radius: 50%;
         background: white;
         mix-blend-mode: difference;
-        animation: slideX 6s ease-in-out infinite alternate;
+        animation: slideX 7s ease-in-out infinite alternate;
         z-index: 3;
         pointer-events: none;
       }
   
       @keyframes slideX {
         0% { left: 0%; }
-        100% { left: calc(100% - 108px); }
+        100% { left: calc(100% - 98px); }
         }
