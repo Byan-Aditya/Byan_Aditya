@@ -1,0 +1,41 @@
+      /* Hilangkan Cursor Bawaan */
+      body, button, a, input, textarea, select, label {
+        cursor: none !important;
+      }
+
+      /* Elemen kustom cursor */
+      .custom-cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: white;
+        border:2px solid grey;
+        mix-blend-mode: difference;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.05s ease-out;
+      }
+
+        /* Default: tampilin kursor kustom */
+      .custom-cursor {
+        display: block;
+      }
+      * {
+        cursor: none;
+      }
+      
+      /* Khusus layar sentuh (tanpa hover) → sembunyikan kursor kustom & munculin default cursor */
+      @media (hover: none) and (pointer: coarse) {
+        .custom-cursor {
+          display: none;
+        }
+        * {
+          cursor: auto;
+        }
+      }
+  
+
