@@ -12,7 +12,7 @@
         height: 35px;
         border-radius: 50%;
         background-color: white;
-        border:3px solid grey:
+        border:3px solid grey;
         mix-blend-mode: difference;
         pointer-events: none;
         z-index: 9999;
