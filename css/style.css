@@ -359,7 +359,7 @@
       animation: rgbGlow 4s infinite linear;
       }
   
-      @keyframes rgbGlow {
+    @keyframes rgbGlow {
        0%   { box-shadow: 0 0 2px cyan, 0 0 5px green, 0 0 8px blue; }
        25%  { box-shadow: 0 0 4px green, 0 0 7px blue, 0 0 10px red; }
        50%  { box-shadow: 0 0 6px cyan, 0 0 9px red, 0 0 12px green; }
@@ -378,7 +378,7 @@
       animation: rgbGlow 4s infinite linear;
       }
   
-      @keyframes rgbGlow {
+    @keyframes rgbGlow {
        0%   { box-shadow: 0 0 2px cyan, 0 0 5px green, 0 0 8px blue; }
        25%  { box-shadow: 0 0 4px green, 0 0 7px blue, 0 0 10px red; }
        50%  { box-shadow: 0 0 6px cyan, 0 0 9px red, 0 0 12px green; }
@@ -480,18 +480,18 @@
         opacity: 0;
       }
       }
-      .timeline {
+    .timeline {
         position: relative;
         margin-left: 20px;   /* ruang di kiri teks */
         padding-left: 20px;  /* ruang supaya teks ora kena garis */
         border-left: 2px solid gray;
         list-style: none;    /* mateni bullet bawaan <ul> */
       }
-      .timeline > li {       /* hanya blok pengalaman */
+    .timeline > li {       /* hanya blok pengalaman */
         position: relative;
         margin-bottom: 24px; /* jarak antar pengalaman */
       }
-      .timeline > li::before {
+    .timeline > li::before {
         content:'';
         position:absolute;
         left:-31.3px;          /* sejajar garis (28px – 20px) */
@@ -502,15 +502,15 @@
         border:3px solid #fff;
       }
     
-      /* LIST PENJELASAN DENGAN ANGKA */
-      .inner{
+    /* LIST PENJELASAN DENGAN ANGKA */
+    .inner{
         list-style:decimal;       /* 1. 2. 3. */
         padding-left:20px;        /* jarak angka–teks */
         margin-top:6px;
       }
-      .inner li{margin-bottom:6px;}
+    .inner li{margin-bottom:6px;}
 
-     .gear-wrapper-kiri {
+    .gear-wrapper-kiri {
       position: fixed;
       left: -100px; /* Setengah dari ukuran gear */
       bottom: -34px;
@@ -552,17 +552,17 @@
     @keyframes spin-kanan {
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
-        }
+      }
 
-      .fade-paragraph {
-        opacity: 0;
-        transform: translateY(66px);
-        transition: all 0.7s ease-out;
+    .fade-paragraph {
+      opacity: 0;
+      transform: translateY(66px);
+      transition: all 0.7s ease-out;
       }
   
-      .fade-in {
-        opacity: 1;
-        transform: translateY(0);
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
       }
 
     .slider-container {
@@ -572,97 +572,97 @@
       margin-top: 15px;
     }
 
-      .circle-image {
-        position: absolute;       /* Biar bebas dari flow elemen */
-        top: 83px;               /* Geser ke atas (bisa negatif) */
-        right: -1px;                /* Tengah horizontal */
-        transform: translateX(-50%); /* Biar center pas */
-        width: 90px;             /* Atur ukuran bebas */
-        height: auto;
-        z-index: 4;               /* Lebih tinggi dari .inverse-circle */
-        pointer-events: none;     /* Biar nggak ganggu klik */
-      }
+    .circle-image {
+      position: absolute;       /* Biar bebas dari flow elemen */
+      top: 83px;               /* Geser ke atas (bisa negatif) */
+      right: -1px;                /* Tengah horizontal */
+      transform: translateX(-50%); /* Biar center pas */
+      width: 90px;             /* Atur ukuran bebas */
+      height: auto;
+      z-index: 4;               /* Lebih tinggi dari .inverse-circle */
+      pointer-events: none;     /* Biar nggak ganggu klik */
+    }
 
-      .slider-bg {
-        position: relative;
-        background-color: #111;
-        box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
-        border-radius: 60px;
-        padding: 20px 25px;
-        width: fit-content;
-        overflow: visible;
-        color: white;
-        isolation: isolate;
-      }
+    .slider-bg {
+      position: relative;
+      background-color: #111;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+      border-radius: 60px;
+      padding: 20px 25px;
+      width: fit-content;
+      overflow: visible;
+      color: white;
+      isolation: isolate;
+    }
   
-      .judul, .deskripsi {
-        text-align: center;
-        margin: 0;
-        position: relative;
-        z-index: 2;
-        font-weight: bold;
-      }
+    .judul, .deskripsi {
+      text-align: center;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+      font-weight: bold;
+    }
   
-      .judul {
-        font-family: 'Anton', sans-serif;
-        font-size: 24px;
-        color: #fff;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-      }
+    .judul {
+      font-family: 'Anton', sans-serif;
+      font-size: 24px;
+      color: #fff;
+      letter-spacing: 2px;
+       text-transform: uppercase;
+    }
   
-      .deskripsi {
-        color: #fff;
-        font-size: 14px;
-        font-weight: normal;
-        padding-top: 5px;
-      }
+    .deskripsi {
+      color: #fff;
+      font-size: 14px;
+      font-weight: normal;
+      padding-top: 5px;
+    }
   
-      .inverse-circle {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        aspect-ratio: 1 / 1;
-        border-radius: 50%;
-        background: white;
-        mix-blend-mode: difference;
-        animation: slideX 7s ease-in-out infinite alternate;
-        z-index: 3;
-        pointer-events: none;
-      }
+    .inverse-circle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background: white;
+      mix-blend-mode: difference;
+      animation: slideX 7s ease-in-out infinite alternate;
+      z-index: 3;
+      pointer-events: none;
+    }
   
-      @keyframes slideX {
-        0% { left: 0%; }
-        100% { left: calc(100% - 100px); }
-      }
+    @keyframes slideX {
+      0% { left: 0%; }
+      100% { left: calc(100% - 100px); }
+    }
 
-      .ripple-button {
-        position: relative;
-        overflow: hidden;
-        color: black;
-        font-family: "Times New Roman", Times, serif;
-        background: white;
-        border-radius: 10px;
-        padding: 2px 5px;
-        border: none;
-        cursor: pointer;
-        font-size: 15px;
-        transition: background 0.3s ease;
+    .ripple-button {
+      position: relative;
+      overflow: hidden;
+      color: black;
+      font-family: "Times New Roman", Times, serif;
+      background: white;
+      border-radius: 10px;
+      padding: 2px 5px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background 0.3s ease;
+    }
+      
+    .ripple-button .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple-animate 0.6s linear;
+      background-color: rgba(0, 0, 0, 0.3);
+      pointer-events: none;
       }
       
-      .ripple-button .ripple {
-        position: absolute;
-        border-radius: 50%;
-        transform: scale(0);
-        animation: ripple-animate 0.6s linear;
-        background-color: rgba(0, 0, 0, 0.3);
-        pointer-events: none;
-      }
-      
-      @keyframes ripple-animate {
-        to {
-          transform: scale(4);
-          opacity: 0;
+    @keyframes ripple-animate {
+      to {
+        transform: scale(4);
+        opacity: 0;
         }
-            }
+      }
