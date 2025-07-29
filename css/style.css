@@ -1,19 +1,26 @@
+    * {
+      scrollbar-width: none;     /* Firefox */
+      -ms-overflow-style: none;  /* IE dan Edge lama */
+    }
+
+    *::-webkit-scrollbar {
+      display: none;             /* Chrome, Safari, dan Opera */
+    }
+
     body {
       margin: 0;
-      padding-bottom: 120px; 
-      font-family: sans-serif;
-      background-color: #f0f0f0;
+      font-family: "Times New Roman", Times, serif;
     }
 
     /* HEADER STICKY */
       header {
       position: sticky;
-      top: 0;
-      background-color: #1e1e1e;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 9px rgba(0, 0, 0, 0.3);
       color: white;
       padding: 10px 10px;
       z-index: 1000;
-      box-shadow: 0 6px 9px rgba(0, 0, 0, 0.3);
     }
   
     .header-container {
@@ -36,7 +43,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 80vh;
+      min-height: 100vh;
     }
 
     .content {
@@ -58,14 +65,15 @@
     
     .sheet-footer {
       position: fixed;
-      bottom: 0;
+      bottom: 0px;
       width: 100%;
-      background-color: #1e1e1e;
       padding: 10px;
       text-align: center;
-      box-shadow: 0 -6px 9px rgba(0,0,0,0.3);
       font-size: 14px;
       z-index: 1000;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 9px rgba(0, 0, 0, 0.3);
     }
     
     .doa {
@@ -103,12 +111,6 @@
       color: #FFFFFF;
       font-family: "Times New Roman", Times, serif;
       font-weight: bold;
-    }
-    
-    body {
-      margin: 0;
-      padding-bottom: 65px; /* beri ruang agar tidak tertutup footer */
-      font-family: Arial, sans-serif;
     }
     
     .rainbow-text {
