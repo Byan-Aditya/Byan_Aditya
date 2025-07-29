@@ -4,13 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>𝔅𝔜𝔄𝔑 𝔄𝔇ℑ𝔗𝔜𝔄</title>
+  <link rel="stylesheet" href="css/splash_screen.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/autoresize.css">
   <link rel="stylesheet" href="css/autoresize_button.css">
-  <link rel="stylesheet" href="css/mouse.css">  
+  <link rel="stylesheet" href="css/mouse.css">
+  <link rel="stylesheet" href="css/view_pager.css">
+  <link rel="stylesheet" href="css/umur.css">
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </head>
-<body>
+  <body style="
+    background: url('images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+  ">
+  <div class="intro-wrapper" id="intro">
+    <img style="border: 2px solid #8a8a8a; border-radius: 50%;" src="images/logo.png" alt="Intro Logo" class="intro-logo" id="introLogo" />
+  </div>
   <!-- HEADER -->
   <header>
     <div class="header-container">
@@ -24,273 +35,330 @@
         </div>
       </div>
       <h1 class="rainbow-text">𝔅𝔜𝔄𝔑 𝔄𝔇ℑ𝔗𝔜𝔄</h1>
-    </div>
+    </div> 
+    <!-- Tab Navigasi -->
+    <div class="tab-bar">
+     <button onclick="goToPage(0)" class="active"><span class="teks-outline">Profile</span></button>
+     <button onclick="goToPage(1)"><span class="teks-outline">Umur</span></button>
+     <button onclick="goToPage(2)"><span class="teks-outline">Halaman 3</span></button>
+   </div>
   </header>
-  <!-- ISI -->
-  <main>
-    <div class="content">      
-      <div class="container">
-        <div class="sidebar">
-          <img src="images/profile.png" alt="Foto Byan Aditya" class="profile-img">
-          <div class="judul-container">
-            <div class="circle-wrapper">
-              <img src="images/biodata.png" alt="Data Diri" class="circle-img">
-            </div>
-            <h2>Data Diri</h2>
-          </div>
-          <p style="padding-top: 12px;"><strong>Nama</strong></p>
-          <p style="color:#b0b0b0; margin-bottom:8px;">Byan Aditya</p>
-          <p style="padding-top: 0px;"><strong>Tempat / Tgl Lahir</strong></p>
-          <p style="color:#b0b0b0; margin-bottom:8px;">Surabaya, 18 Desember 1997</p>
-          <p style="padding-top: 0px;"><strong>Alamat</strong></p>
-          <p style="color:#b0b0b0; margin-bottom:8px;">Jl. Kedung Tarukan V/70A, Jawa Timur, Surabaya, 60132</p>       
-          <p style="padding-top: 0px;"><strong>Jenis Kelamin</strong></p>
-          <p style="color:#b0b0b0; margin-bottom:8px;">Laki-Laki</p>
-          <p style="padding-top: 0px;"><strong>Agama</strong></p>
-          <p style="color:#b0b0b0; margin-bottom:8px;">Islam</p>  
-          <p style="padding-top: 0px;"><strong>Status</strong></p>
-          <p style="color:#b0b0b0; margin-bottom:8px;">Belum Kawin</p>
-          <p style="padding-top: 0px;"><strong>Kewarganegaraan</strong></p>
-          <p style="color:#b0b0b0; margin-bottom:0px;">Indonesia</p>
-          <div class="judul-container">
-            <div class="circle-wrapper">
-              <img src="images/kontak.png" alt="Kontak" class="circle-img">
-            </div>
-            <h2>Kontak Cepat</h2>
-          </div>      
-          <p style="padding-top: 12px;"><strong>LinkedIn //</strong>
-            <a style="margin-bottom:8px; font-size: 15px; background: white; border-radius: 10px; color: black; padding: 2px 5px;" href="https://id.linkedin.com/in/byan-aditya-4813841b3" target="_blank">
-              <strong style="color:#1e1e1e;">byan_aditya</strong>
-            </a>
-          </p>
-          <p style="padding-top: 10px;"><strong>Gmail //</strong>
-            <a style="margin-bottom:8px; font-size: 15px; background: white; border-radius: 10px; color: black; padding: 2px 5px;" href="mailto:aditya.byan6@gmail.com" target="_blank">
-              <strong style="color:#1e1e1e;">aditya.byan6@gmail.com</strong>
-            </a>
-          </p>
-          <p style="padding-top: 10px;"><strong>Lain-Lain //</strong>
-            <button id="labelTrigger" class="ripple-button">
-              <strong style="color:#1e1e1e;">Selengkapnya</strong>
-            </button>
-          </p>  
-          <div class="judul-container">
-            <div class="circle-wrapper">
-              <img src="images/software.png" alt="Software" class="circle-img">
-            </div>
-            <h2>Keahlian Software</h2>
-          </div>    
-          <div class="skill">
-            <div class="skill-title">Auto CAD - 80%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="autocad" data-percent="80"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-title">Inventor - 70%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="inventor" data-percent="70"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-title">Fusion 360 - 85%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="fusion-360" data-percent="85"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-title">UG NX7 - 80%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="UG-NX7" data-percent="80"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-title">MS Word - 90%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="word" data-percent="90"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-title">MS Exel - 95%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="exel" data-percent="95"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-title">MS Power Point - 96%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="ppt" data-percent="96"></div>
-            </div>
-          </div>
-          <div class="judul-container">
-            <div class="circle-wrapper">
-              <img src="images/bahasa.png" alt="Bahasa" class="circle-img">
-            </div>
-            <h2>Keahlian Bahasa</h2>
-          </div>
-          <div class="skill">
-            <div class="skill-title">Indonesia - 100%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="indonesia" data-percent="100"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-title">Inggris - 75%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="inggris" data-percent="75"></div>
-            </div>
-          </div>
-          <div class="judul-container">
-            <div class="circle-wrapper">
-              <img src="images/lainnya.png" alt="Lainnya" class="circle-img">
-            </div>
-            <h2>Keahlian Lainnya</h2>
-          </div>
-          <div class="skill">
-            <div class="skill-title">Leadership - 98%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="leadership" data-percent="98"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-title">Team Work - 100%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="team-work" data-percent="100"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-title">Mechanical - 100%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="mechanical" data-percent="100"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-title">Electrical - 95%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="electrical" data-percent="95"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-title">Coding (XML, HTML & CSS) - 70%</div>
-            <div class="progress-container">
-              <div class="progress-bar" data-skill="electrical" data-percent="70"></div>
-            </div>
-          </div>
-        </div>
-        <div class="mainisi">
-          <div class="gear-wrapper-kiri">
-            <img src="images/gear.png" alt="Gear" class="gear-kiri">
-          </div>
-          <div class="gear-wrapper-kanan">
-            <img src="images/gear.png" alt="Gear" class="gear-kanan">
-          </div>
-          <div style="height: 100px;"class="slider-container">
-            <div class="slider-bg">
-              <div class="inverse-circle">
-                <img class="circle-image" src="images/handlebar.png" alt="Gagang" class="circle-image">
+  <!-- View Pager Horizontal -->
+  <div class="viewpager" id="pager">
+    <section class="page">
+      <!-- ISI -->
+      <main>
+        <div class="content">      
+          <div class="container">
+            <div class="sidebar">
+              <img src="images/profile.png" alt="Foto Byan Aditya" class="profile-img">
+              <div class="judul-container">
+                <div class="circle-wrapper">
+                  <img src="images/biodata.png" alt="Data Diri" class="circle-img">
+                </div>
+                <h2>Data Diri</h2>
               </div>
-              <p class="judul">BYAN ADITYA S.T.</p>
-              <p class="deskripsi">MECHANICAL ENGINEERING</p>
+              <p style="padding-top: 12px;"><strong>Nama</strong></p>
+              <p style="color:#b0b0b0; margin-bottom:8px;">Byan Aditya</p>
+              <p style="padding-top: 0px;"><strong>Tempat / Tgl Lahir</strong></p>
+              <p style="color:#b0b0b0; margin-bottom:8px;">Surabaya, 18 Desember 1997</p>
+              <p style="padding-top: 0px;"><strong>Alamat</strong></p>
+              <p style="color:#b0b0b0; margin-bottom:8px;">Jl. Kedung Tarukan V/70A, Jawa Timur, Surabaya, 60132</p>       
+              <p style="padding-top: 0px;"><strong>Jenis Kelamin</strong></p>
+              <p style="color:#b0b0b0; margin-bottom:8px;">Laki-Laki</p>
+              <p style="padding-top: 0px;"><strong>Agama</strong></p>
+              <p style="color:#b0b0b0; margin-bottom:8px;">Islam</p>  
+              <p style="padding-top: 0px;"><strong>Status</strong></p>
+              <p style="color:#b0b0b0; margin-bottom:8px;">Belum Kawin</p>
+              <p style="padding-top: 0px;"><strong>Kewarganegaraan</strong></p>
+              <p style="color:#b0b0b0; margin-bottom:0px;">Indonesia</p>
+              <div class="judul-container">
+                <div class="circle-wrapper">
+                  <img src="images/kontak.png" alt="Kontak" class="circle-img">
+                </div>
+                <h2>Kontak Cepat</h2>
+              </div>      
+              <p style="padding-top: 12px;"><strong>LinkedIn //</strong>
+                <a style="margin-bottom:8px; font-size: 15px; background: white; border-radius: 10px; color: black; padding: 2px 5px;" href="https://id.linkedin.com/in/byan-aditya-4813841b3" target="_blank">
+                  <strong style="color:#1e1e1e;">byan_aditya</strong>
+                </a>
+              </p>
+              <p style="padding-top: 10px;"><strong>Gmail //</strong>
+                <a style="margin-bottom:8px; font-size: 15px; background: white; border-radius: 10px; color: black; padding: 2px 5px;" href="mailto:aditya.byan6@gmail.com" target="_blank">
+                  <strong style="color:#1e1e1e;">aditya.byan6@gmail.com</strong>
+                </a>
+              </p>
+              <p style="padding-top: 10px;"><strong>Lain-Lain //</strong>
+                <button id="labelTrigger" class="ripple-button">
+                  <strong style="color:#1e1e1e;">Selengkapnya</strong>
+                </button>
+              </p>  
+              <div class="judul-container">
+                <div class="circle-wrapper">
+                  <img src="images/software.png" alt="Software" class="circle-img">
+                </div>
+                <h2>Keahlian Software</h2>
+              </div>    
+              <div class="skill">
+                <div class="skill-title">Auto CAD - 80%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="autocad" data-percent="80"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-title">Inventor - 70%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="inventor" data-percent="70"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-title">Fusion 360 - 85%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="fusion-360" data-percent="85"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-title">UG NX7 - 80%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="UG-NX7" data-percent="80"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-title">MS Word - 90%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="word" data-percent="90"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-title">MS Exel - 95%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="exel" data-percent="95"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-title">MS Power Point - 96%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="ppt" data-percent="96"></div>
+                </div>
+              </div>
+              <div class="judul-container">
+                <div class="circle-wrapper">
+                  <img src="images/bahasa.png" alt="Bahasa" class="circle-img">
+                </div>
+                <h2>Keahlian Bahasa</h2>
+              </div>
+              <div class="skill">
+                <div class="skill-title">Indonesia - 100%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="indonesia" data-percent="100"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-title">Inggris - 75%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="inggris" data-percent="75"></div>
+                </div>
+              </div>
+              <div class="judul-container">
+                <div class="circle-wrapper">
+                  <img src="images/lainnya.png" alt="Lainnya" class="circle-img">
+                </div>
+                <h2>Keahlian Lainnya</h2>
+              </div>
+              <div class="skill">
+                <div class="skill-title">Leadership - 98%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="leadership" data-percent="98"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-title">Team Work - 100%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="team-work" data-percent="100"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-title">Mechanical - 100%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="mechanical" data-percent="100"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-title">Electrical - 95%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="electrical" data-percent="95"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-title">Coding (XML, HTML & CSS) - 70%</div>
+                <div class="progress-container">
+                  <div class="progress-bar" data-skill="electrical" data-percent="70"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mainisi">
+              <div class="gear-wrapper-kiri">
+                <img src="images/gear.png" alt="Gear" class="gear-kiri">
+              </div>
+              <div class="gear-wrapper-kanan">
+                <img src="images/gear.png" alt="Gear" class="gear-kanan">
+              </div>
+              <div style="height: 100px;"class="slider-container">
+                <div class="slider-bg">
+                  <div class="inverse-circle">
+                    <img class="circle-image" src="images/handlebar.png" alt="Gagang" class="circle-image">
+                  </div>
+                  <p class="judul">BYAN ADITYA S.T.</p>
+                  <p class="deskripsi">MECHANICAL ENGINEERING</p>
+                </div>
+              </div>
+              <section> 
+                <h2 style="margin-top: 20px;">Profile</h2>
+                <p style="text-align: justify; text-indent: 30px; margin-bottom: 12px;">
+                  Seorang profesional di bidang teknik permesinan yang memiliki semangat tinggi dalam mengeksplorasi dan mengembangkan teknologi manufaktur serta penerapannya di lingkungan industri.           
+                  Berpengalaman dalam pengoperasian dan pemeliharaan mesin-mesin produksi, memahami prinsip kerja mechanical dan electrical serta proses permesinan seperti CNC Miling, Bubut, Frais dan Las SMAW. 
+                </p>
+                <p style="text-align: justify; text-indent: 30px;">  
+                  Saya mencari peluang di perusahaan yang mendukung pembelajaran berkelanjutan, inovasi, dan kolaborasi tim, agar dapat memberikan kontribusi nyata dalam peningkatan efisiensi, kualitas produk dan keberlanjutan proses produksi.
+                  Saya percaya bahwa penguasaan teknologi permesinan yang baik dapat memberikan nilai tambah bagi perusahaan dan masyarakat secara luas.
+                </p>
+              </section>
+              <section>
+                <h2>Pendidikan</h2>
+                <ul class="timeline">
+                  <li><strong>2004 – 2010<br><span style="color:gray">SDN PACARKEMBANG IV SURABAYA</span></strong></br></li>
+                  <li><strong>2010 – 2013<br><span style="color:gray">SMP YP. TRISILA SURABAYA</span></strong></br></li>
+                  <li><strong>2013 – 2016<br><span style="color:gray">SMK PGRI 4 SURABAYA </span></strong><br>JURUSAN TEKNIK PEMESINAN</br></li>
+                  <li><strong>2017 – 2022<br><span style="color:gray">INSTITUT TEKNOLOGI ADHI TAMA SURABAYA</span></strong><br>JURUSAN S1 TEKNIK MESIN – IPK: 3.31/4.00</br></li>
+                </ul>
+              </section>
+              <section>
+                <h2>Pengalaman</h2>
+                <ul class="timeline">
+                  <li>
+                    <p><strong>2022 – SEKARANG</strong></p>
+                    <p style="color:gray;margin-bottom:8px;"><strong>PT Carbon & Electric – Job Costing</strong></p>
+                    <ol class="inner">
+                      <li>
+                        <p><strong>Perhitungan Biaya Produksi</strong></p>
+                        <p style="color:gray;">Melakukan kalkulasi kebutuhan material, ongkos kerja mesin (bubut, milling dan grinding) dan estimasi waktu produksi untuk menentukan harga jual produk.</p>
+                      </li>
+                      <li>
+                        <p><strong>Analisa Spesifikasi Teknis</strong></p>
+                        <p style="color:gray;">Membaca dan menafsirkan gambar teknik dari permintaan pelanggan untuk menentukan ukuran, material dan toleransi produk seperti contoh carbon brush, slipring, packing ring dan produk khusus/kostum lainnya.</p>
+                      </li>
+                      <li>
+                        <p><strong>Koordinasi Teknis & Follow-Up</strong></p>
+                        <p style="color:gray;">Berkomunikasi dengan tim produksi dan pelanggan terkait spesifikasi, perubahan desain serta memberikan solusi teknis pada produk khusus/custom.</p>
+                      </li>
+                    </ol>
+                  </li>
+                  <li>
+                    <p><strong>2020 – 2022</strong></p>
+                    <p style="color:gray;margin-bottom:8px;"><strong>PT Carbon & Electric – PPIC</strong></p>
+                    <ol class="inner">
+                      <li>
+                        <p><strong>Perencanaan Produksi</strong></p>
+                        <p style="color:gray;">Menyusun jadwal produksi harian / mingguan berdasarkan forecast, kapasitas mesin dan ketersediaan bahan baku untuk memastikan target produksi tercapai.</p>
+                      </li>
+                      <li>
+                        <p><strong>Pengendalian Stok & Material</strong></p>
+                        <p style="color:gray;">Memantau dan mengontrol persediaan bahan baku serta barang jadi agar selalu sesuai kebutuhan produksi tanpa overstock.</p>
+                      </li>
+                      <li>
+                        <p><strong>Koordinasi Lintas Divisi</strong></p>
+                        <p style="color:gray;">Berkoordinasi dengan tim produksi, gudang, pembelian dan marketing untuk sinkronisasi jadwal dan kelancaran distribusi barang produk.</p>                    
+                      </li>
+                    </ol>
+                  </li>
+                  <li>
+                    <p><strong>2016 – 2020</strong></p>
+                    <p style="color:gray;margin-bottom:8px;"><strong>PT Meshindo Alloy Wheel – Maintenance</strong></p>
+                    <ol class="inner">
+                      <li>
+                        <p><strong>Preventive Maintenance Mesin</strong></p>
+                        <p style="color:gray;">Melakukan perawatan secara berkala pada setiap komponen mesin produksi baik secara mekanik dan elektrik, sesuai dengan kebijakan kartu kontrol mesin yang berlaku.</p>
+                      </li>
+                      <li>
+                        <p><strong>Troubleshooting Sistem Otomatisasi</strong></p>
+                        <p style="color:gray;">Menangani kerusakan mesin dengan menganalisa panel kontrol meliputi pengecekan wiring, sensor dan aktuator untuk pemulihan cepat sistem produksi.</p>
+                      </li>
+                      <li>
+                        <p><strong>Modifikasi & Improvement Mesin</strong></p>
+                        <p style="color:gray;">Melakukan pengembangan sistem permesinan antara lain melalui perubahan dan penambahan komponen elektrik, modifikasi konsep sistem mekanis, serta peningkatan efisiensi mesin sesuai kebutuhan di lapangan sebagai bentuk upaya peningkatan kelayakan dan pemenuhan aspek K3.</p>
+                      </li>
+                    </ol>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </div>    
+        </div>
+      </main>
+      <div class="kemasan-copyright">
+        <div style="display: inline-block; background-color: rgba(255, 255, 255, 0.7); backdrop-filter: blur(2px); padding: 5px 10px; border-radius: 20px;">
+         <div class="fade-paragraph">Website made by Byan</div>
+         <div class="fade-paragraph">
+           <span style="color: black;">&copy;</span>
+           <span style="color: black;" id="tahun"></span> 
+           <span style="color: black;">Byan Aditya.</span>
+           <span style="color: grey;">All rights reserved.</span>
+         </div>
+        </div>
+      </div>
+    </section>
+    <section class="page">
+      <div class="kemasan-umur">
+        <div class="frame-box">
+          <h5>Tanggal (<span style="color: red";>*</span>)</h2>
+          <div class="row">
+            <input type="number" id="day" placeholder="Tanggal" min="1" max="31">
+            <input type="number" id="month" placeholder="Bulan" min="1" max="12">
+            <input type="number" id="year" placeholder="Tahun"  min="1900" max="2100">
+          </div>
+          <h5>Waktu (<span style="color: red";>Opsional</span>)</h2>
+          <div class="row">
+            <input type="number" id="hour" placeholder="Jam (24h)" min="0" max="23">
+            <input type="number" id="minute" placeholder="Menit" min="0" max="59">
+          </div>
+          <button onclick="generate()" id="animateBtn" data-original="">
+            <span>B</span><span>e</span><span>r</span><span>a</span><span>p</span><span>a</span>
+            <span>U</span><span>m</span><span>u</span><span>r</span>
+            <span>S</span><span>a</span><span>y</span><span>a</span><span class="spc"> </span>
+            <span>?</span>
+            <span></span>
+            <span></span>      
+          </button>
+          <div class="result" id="result">
+            <div class="result-row">
+              <div style="border-color: white; box-shadow: 0 0 5px white;" class="block"><span style="font-weight: bold;" class="value" id="val-year">0</span><div class="label">Tahun</div></div>
+              <div style="border-color: white; box-shadow: 0 0 5px white;" class="block"><span style="font-weight: bold;" class="value" id="val-month">0</span><div class="label">Bulan</div></div>
+              <div style="border-color: white; box-shadow: 0 0 5px white;" class="block"><span style="font-weight: bold;" class="value" id="val-day">0</span><div class="label">Hari</div></div>
+            </div>
+            <div class="result-row">
+              <div style="border-color: white; box-shadow: 0 0 5px white;" class="block"><span style="font-weight: bold;" class="value" id="val-hour">0</span><div class="label">Jam</div></div>
+              <div style="border-color: white; box-shadow: 0 0 5px white;"class="block"><span style="font-weight: bold;" class="value" id="val-minute">0</span><div class="label">Menit</div></div>
+              <div style="border-color: white; box-shadow: 0 0 5px white;" class="block"><span style="font-weight: bold;" class="value" id="val-second">0</span><div class="label">Detik</div></div>
             </div>
           </div>
-          <section> 
-            <h2 style="margin-top: 20px;">Profile</h2>
-            <p style="text-align: justify; text-indent: 30px; margin-bottom: 12px;">
-              Seorang profesional di bidang teknik permesinan yang memiliki semangat tinggi dalam mengeksplorasi dan mengembangkan teknologi manufaktur serta penerapannya di lingkungan industri.           
-              Berpengalaman dalam pengoperasian dan pemeliharaan mesin-mesin produksi, memahami prinsip kerja mechanical dan electrical serta proses permesinan seperti CNC Miling, Bubut, Frais dan Las SMAW. 
-            </p>
-            <p style="text-align: justify; text-indent: 30px;">  
-              Saya mencari peluang di perusahaan yang mendukung pembelajaran berkelanjutan, inovasi, dan kolaborasi tim, agar dapat memberikan kontribusi nyata dalam peningkatan efisiensi, kualitas produk dan keberlanjutan proses produksi.
-              Saya percaya bahwa penguasaan teknologi permesinan yang baik dapat memberikan nilai tambah bagi perusahaan dan masyarakat secara luas.
-            </p>
-          </section>
-          <section>
-            <h2>Pendidikan</h2>
-            <ul class="timeline">
-              <li><strong>2004 – 2010<br><span style="color:gray">SDN PACARKEMBANG IV SURABAYA</span></strong></br></li>
-              <li><strong>2010 – 2013<br><span style="color:gray">SMP YP. TRISILA SURABAYA</span></strong></br></li>
-              <li><strong>2013 – 2016<br><span style="color:gray">SMK PGRI 4 SURABAYA </span></strong><br>JURUSAN TEKNIK PEMESINAN</br></li>
-              <li><strong>2017 – 2022<br><span style="color:gray">INSTITUT TEKNOLOGI ADHI TAMA SURABAYA</span></strong><br>JURUSAN S1 TEKNIK MESIN – IPK: 3.31/4.00</br></li>
-            </ul>
-          </section>
-          <section>
-            <h2>Pengalaman</h2>
-            <ul class="timeline">
-              <li>
-                <p><strong>2022 – SEKARANG</strong></p>
-                <p style="color:gray;margin-bottom:8px;"><strong>PT Carbon & Electric – Job Costing</strong></p>
-                <ol class="inner">
-                  <li>
-                    <p><strong>Perhitungan Biaya Produksi</strong></p>
-                    <p style="color:gray;">Melakukan kalkulasi kebutuhan material, ongkos kerja mesin (bubut, milling dan grinding) dan estimasi waktu produksi untuk menentukan harga jual produk.</p>
-                  </li>
-                  <li>
-                    <p><strong>Analisa Spesifikasi Teknis</strong></p>
-                    <p style="color:gray;">Membaca dan menafsirkan gambar teknik dari permintaan pelanggan untuk menentukan ukuran, material dan toleransi produk seperti contoh carbon brush, slipring, packing ring dan produk khusus/kostum lainnya.</p>
-                  </li>
-                  <li>
-                    <p><strong>Koordinasi Teknis & Follow-Up</strong></p>
-                    <p style="color:gray;">Berkomunikasi dengan tim produksi dan pelanggan terkait spesifikasi, perubahan desain serta memberikan solusi teknis pada produk khusus/custom.</p>
-                  </li>
-                </ol>
-              </li>
-              <li>
-                <p><strong>2020 – 2022</strong></p>
-                <p style="color:gray;margin-bottom:8px;"><strong>PT Carbon & Electric – PPIC</strong></p>
-                <ol class="inner">
-                  <li>
-                    <p><strong>Perencanaan Produksi</strong></p>
-                    <p style="color:gray;">Menyusun jadwal produksi harian / mingguan berdasarkan forecast, kapasitas mesin dan ketersediaan bahan baku untuk memastikan target produksi tercapai.</p>
-                  </li>
-                  <li>
-                    <p><strong>Pengendalian Stok & Material</strong></p>
-                    <p style="color:gray;">Memantau dan mengontrol persediaan bahan baku serta barang jadi agar selalu sesuai kebutuhan produksi tanpa overstock.</p>
-                  </li>
-                  <li>
-                    <p><strong>Koordinasi Lintas Divisi</strong></p>
-                    <p style="color:gray;">Berkoordinasi dengan tim produksi, gudang, pembelian dan marketing untuk sinkronisasi jadwal dan kelancaran distribusi barang produk.</p>                    
-                  </li>
-                </ol>
-              </li>
-              <li>
-                <p><strong>2016 – 2020</strong></p>
-                <p style="color:gray;margin-bottom:8px;"><strong>PT Meshindo Alloy Wheel – Maintenance</strong></p>
-                <ol class="inner">
-                  <li>
-                    <p><strong>Preventive Maintenance Mesin</strong></p>
-                    <p style="color:gray;">Melakukan perawatan secara berkala pada setiap komponen mesin produksi baik secara mekanik dan elektrik, sesuai dengan kebijakan kartu kontrol mesin yang berlaku.</p>
-                  </li>
-                  <li>
-                    <p><strong>Troubleshooting Sistem Otomatisasi</strong></p>
-                    <p style="color:gray;">Menangani kerusakan mesin dengan menganalisa panel kontrol meliputi pengecekan wiring, sensor dan aktuator untuk pemulihan cepat sistem produksi.</p>
-                  </li>
-                  <li>
-                    <p><strong>Modifikasi & Improvement Mesin</strong></p>
-                    <p style="color:gray;">Melakukan pengembangan sistem permesinan antara lain melalui perubahan dan penambahan komponen elektrik, modifikasi konsep sistem mekanis, serta peningkatan efisiensi mesin sesuai kebutuhan di lapangan sebagai bentuk upaya peningkatan kelayakan dan pemenuhan aspek K3.</p>
-                  </li>
-                </ol>
-              </li>
-            </ul>
-          </section>
         </div>
-      </div>    
-    </div>
-  </main>
-  <footer class="sheet-footer">
-    <div class="doa">꧁لَا إِلهَ إِلَّا اللَّهُ مُحَمَّدْ رَسُولُ اللَّهِ꧂</div>
-    <div class="datetime" id="datetime">Memuat waktu...</div>
-  </footer> 
-  <div style="text-align: center; padding: 5px; margin-top: 0px; margin-bottom: 0px; font-size: 14px; color: grey; z-index: 500;">
-    <div style="display: inline-block; background-color: rgba(255, 255, 255, 0.7); backdrop-filter: blur(2px); padding: 5px 10px; border-radius: 20px;">
-      <div class="fade-paragraph">Website made by Byan</div>
-      <div class="fade-paragraph">
-       <span style="color: black;">&copy;</span>
-       <span style="color: black;" id="tahun"></span> 
-       <span style="color: black;">Byan Aditya.</span>
-       <span style="color: grey;">All rights reserved.</span>
       </div>
-    </div>
+    </section>
+    <section class="page">
+      <div style="text-align: center; padding: 5px; margin-top: 0px; margin-bottom: 0px; font-size: 14px; color: grey; z-index: 500;">
+        <div style="display: inline-block; background-color: rgba(255, 255, 255, 0.7); backdrop-filter: blur(2px); padding: 5px 10px; border-radius: 20px;">
+         <div class="fade-paragraph">Website made by Byan</div>
+         <div class="fade-paragraph">
+           <span style="color: black;">&copy;</span>
+           <span style="color: black;" id="tahun"></span> 
+           <span style="color: black;">Byan Aditya.</span>
+           <span style="color: grey;">All rights reserved.</span>
+         </div>
+        </div>
+      </div>
+    </section>
   </div>
-  <div class="dropdown-container">
+    <div class="dropdown-container">
     <div class="dropdown-wrapper">
       <div class="dropdown-bg" id="dropdownBg">
         <div class="dropdown-menu" id="dropdownMenu">
@@ -324,6 +392,10 @@
       </span>
     </button>
   </div>
+  <footer class="sheet-footer">
+    <div class="doa">꧁لَا إِلهَ إِلَّا اللَّهُ مُحَمَّدْ رَسُولُ اللَّهِ꧂</div>
+    <div class="datetime" id="datetime">Memuat waktu...</div>
+  </footer> 
   <!-- Isi Semua Java Script -->
   <script src="js/script.js"></script>
 </body>
