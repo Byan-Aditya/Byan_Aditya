@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const musik = document.getElementById('music');
   const icon = document.getElementById('icon');
   const playlist = [
-    "music/lagu1.flac",
+    "music/lagu1.mp3",
     "music/lagu2.mp3",
     "music/lagu3.mp3",
     "music/lagu4.mp3"
