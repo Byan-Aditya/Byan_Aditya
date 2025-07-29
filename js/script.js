@@ -5,9 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const musik = document.getElementById('music');
   const icon = document.getElementById('icon');
   const playlist = [
-    "music/lagu1.mp3",
+    "music/lagu1.flac",
     "music/lagu2.mp3",
-    "music/lagu3.mp3"
+    "music/lagu3.mp3",
+    "music/lagu4.mp3"
   ];
   let current = 0;
   musik.src = playlist[current]; // mulai lagu pertama
@@ -176,3 +177,153 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// === VIEW PAGER===
+document.addEventListener("DOMContentLoaded", () => {
+  const pager = document.getElementById('pager');
+  const buttons = document.querySelectorAll('.tab-bar button');
+
+  function goToPage(index) {
+    pager.scrollTo({
+      left: index * pager.offsetWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  buttons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      goToPage(index);
+    });
+  });
+
+  pager.addEventListener('scroll', () => {
+    const index = Math.round(pager.scrollLeft / pager.offsetWidth);
+    buttons.forEach((btn, i) => {
+      btn.classList.toggle('active', i === index);
+    });
+  });
+});
+
+// === SPLASH SCREEN===
+  window.addEventListener("load", () => {
+    const introLogo = document.getElementById("introLogo");
+    const fotomuter = document.getElementById("fotomuter");
+    const intro = document.getElementById("intro");
+
+    // Tampil logo besar di tengah
+    introLogo.style.width = "250px";
+    introLogo.style.height = "250px";
+    introLogo.style.left = "50%";
+    introLogo.style.top = "50%";
+    introLogo.style.transform = "translate(-50%, -50%)";
+
+    // Ambil posisi logo di header
+    const targetRect = fotomuter.getBoundingClientRect();
+
+    // Langsung munculkan konten web
+    document.body.classList.add("loaded");
+
+    // Jalankan animasi: pindah ke header + mengecil
+    setTimeout(() => {
+      introLogo.style.width = "50px";
+      introLogo.style.height = "50px";
+      introLogo.style.left = `${targetRect.left}px`;
+      introLogo.style.top = `${targetRect.top}px`;
+      introLogo.style.transform = "translate(0, 0)";
+    }, 400);
+
+    // Setelah animasi pindah selesai (1.5s), sembunyikan intro-wrapper
+    setTimeout(() => {
+      intro.classList.add("hide");
+    }, 1500);
+  });
+
+// === UMUR===
+    let timer;
+    let lastValues = [0, 0, 0, 0, 0, 0];
+    function generate() {
+      const d = +document.getElementById('day').value;
+      const m = +document.getElementById('month').value - 1;
+      const y = +document.getElementById('year').value;
+      const h = +document.getElementById('hour').value || 0;
+      const min = +document.getElementById('minute').value || 0;
+      const inputDate = new Date(y, m, d, h, min);
+      if (!d || !m || !y || isNaN(inputDate.getTime())) {
+        alert("WAJIB ISI KOLOM YANG BERTANDA (*) DENGAN BENAR, KECUALI WAKTU (OPSIONAL).");
+        return;
+      }
+      const btn = document.getElementById("animateBtn");
+      if (!btn.dataset.original) {
+        btn.dataset.original = btn.innerHTML;
+      }
+      // Ganti tulisan tombol sementara nganggo animasi span per huruf
+      const teksGanti = "Menghitung...";
+      let gantiHTML = "";
+      for (let i = 0; i < teksGanti.length; i++) {
+        const char = teksGanti[i] === " " ? "spc" : "";
+        gantiHTML += `<span class="${char}">${teksGanti[i]}</span>`;
+      }
+      btn.innerHTML = gantiHTML;
+      const spans = btn.querySelectorAll("span");
+      spans.forEach((span, i) => {
+        if (!span.classList.contains("spc")) {
+          span.style.animation = `zoomText 5s ease-in-out infinite`;
+          span.style.animationDelay = `${i * 0.1}s`;
+          span.style.display = "inline-block";
+          span.style.opacity = 0;
+          span.style.transform = "scale(0)";
+        }
+      });
+      // Sembunyikan hasil dulu (jika sebelumnya sudah muncul)
+      document.getElementById("result").classList.remove("show");
+      // Delay 3 detik → baru tampilkan hasil & mulai hitung umur
+      setTimeout(() => {
+        btn.innerHTML = btn.dataset.original;
+        document.getElementById("result").classList.add("show");
+        clearInterval(timer);
+        updateAge(inputDate);
+        timer = setInterval(() => updateAge(inputDate), 1000);
+      }, 3000);
+    }
+    function updateAge(fromDate) {
+      const now = new Date();
+      let years = now.getFullYear() - fromDate.getFullYear();
+      let months = now.getMonth() - fromDate.getMonth();
+      let days = now.getDate() - fromDate.getDate();
+      let hours = now.getHours() - fromDate.getHours();
+      let minutes = now.getMinutes() - fromDate.getMinutes();
+      let seconds = now.getSeconds() - fromDate.getSeconds();
+      if (seconds < 0) {
+        seconds += 60;
+        minutes--;
+      }
+      if (minutes < 0) {
+        minutes += 60;
+        hours--;
+      }
+      if (hours < 0) {
+        hours += 24;
+        days--;
+      }
+      if (days < 0) {
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += prevMonth.getDate();
+        months--;
+      }
+      if (months < 0) {
+        months += 12;
+        years--;
+      }
+      const values = [years, months, days, hours, minutes, seconds];
+      const ids = ['year', 'month', 'day', 'hour', 'minute', 'second'];
+      values.forEach((val, i) => {
+        const el = document.getElementById('val-' + ids[i]);
+        if (val !== lastValues[i]) {
+          el.textContent = val;
+          el.parentElement.classList.add("flip");
+          setTimeout(() => {
+            el.parentElement.classList.remove("flip");
+          }, 400);
+          lastValues[i] = val;
+        }
+      });
+    }
