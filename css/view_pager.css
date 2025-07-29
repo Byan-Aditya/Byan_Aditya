@@ -36,7 +36,7 @@
       position: absolute;
       top: 0px; /* header + tab bar */
       bottom: 0px; /* footer */
-      
+      height: 100vh;
       padding-bottom: 10px;
       left: 0;
       right: 0;
