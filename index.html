@@ -10,10 +10,27 @@
   <link rel="stylesheet" href="css/autoresize_button.css">
   <link rel="stylesheet" href="css/mouse.css">
   <link rel="stylesheet" href="css/view_pager.css">
+  <link rel="stylesheet" href="css/portofolio.css">
   <link rel="stylesheet" href="css/umur.css">
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+ 
+  <!-- ICON UNTUK BROWSER -->
+  <!-- ICON UNTUK BROWSER -->
+  <link rel="icon" type="images/png" sizes="32x32" href="aplikasi/favicon-32x32.png">
+  <link rel="icon" type="images/png" sizes="16x16" href="aplikasi/favicon-16x16.png">
+  
+  <!-- ICON UNTUK APPLE -->
+  <link rel="apple-touch-icon" sizes="180x180" href="aplikasi/apple-touch-icon.png">
+  
+  <!-- MANIFEST UNTUK PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Byan CV">
+  
 </head>
-<body>
+<body >
   <div class="intro-wrapper" id="intro">
     <img style="border: 2px solid #8a8a8a; border-radius: 50%;" src="images/logo.png" alt="Intro Logo" class="intro-logo" id="introLogo" />
   </div>
@@ -34,8 +51,8 @@
     <!-- Tab Navigasi -->
     <div class="tab-bar">
      <button onclick="goToPage(0)" class="active"><span class="teks-outline">Profile</span></button>
-     <button onclick="goToPage(1)"><span class="teks-outline">Umur</span></button>
-     <button onclick="goToPage(2)"><span class="teks-outline">Halaman 3</span></button>
+     <button onclick="goToPage(1)"><span class="teks-outline">Portofolio</span></button>
+     <button onclick="goToPage(2)"><span class="teks-outline">Umur</span></button>
    </div>
   </header>
   <!-- View Pager Horizontal -->
@@ -290,17 +307,113 @@
           </div>    
         </div>
       </main>
-      <div class="kemasan-copyright">
-        <div style="display: inline-block; background-color: rgba(255, 255, 255, 0.7); backdrop-filter: blur(2px); padding: 5px 10px; border-radius: 20px;">
-         <div class="fade-paragraph">Website made by Byan</div>
-         <div class="fade-paragraph">
-           <span style="color: black;">&copy;</span>
-           <span style="color: black;" id="tahun"></span> 
-           <span style="color: black;">Byan Aditya.</span>
-           <span style="color: grey;">All rights reserved.</span>
-         </div>
-        </div>
-      </div>
+    </section>
+    <section class="page">
+      <div class="kemasan-portofolio">
+        <ul id="cards">
+          <li class="card" id="card1">
+            <div class="card-body">
+              <div class="overlay-portofolio">
+                <p class="singkat">Selamat datang di portofolioku!</p>
+                <p class="lengkap">
+                  Perkenalkan saya Byan, seorang pribadi yang berdedikasi dan senang belajar hal baru, terutama di bidang Mechanical dan Electrical.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="card" id="card2">
+            <div class="card-body">
+              <div class="overlay-portofolio">
+                <p class="singkat">Pengalaman Kerja di PT. Meshindo Alloy Wheel</p>
+                <p class="lengkap">
+                  Saya pernah bekerja di perusahaan manufaktur velg mobil ini selama 4 tahun, yang berfokus pada industri otomotif internasional.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="card" id="card3">
+            <div class="card-body">
+              <div class="overlay-portofolio">
+                <p class="singkat">Profesi sebagai Maintenance Mechanical & Electrical</p>
+                <p class="lengkap">
+                  Di perusahaan ini, saya bertanggung jawab pada perawatan dan perbaikan sistem kelistrikan serta mekanik untuk mendukung kelancaran produksi.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="card" id="card4">
+            <div class="card-body">
+              <div class="overlay-portofolio">
+                <p class="singkat">Produk yang dihasilkan</p>
+                <p class="lengkap">
+                  Berikut adalah salah satu contoh velg hasil produksi PT. Meshindo Alloy Wheel, yang dibuat dari proses casting sampai dengan produk jadi dengan proses Full CNC Machining, yang bertujuan untuk menunjukkan kualitas dan standar tinggi dari perusahaan.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="card" id="card5">
+            <div class="card-body">
+              <div class="overlay-portofolio">
+                <p class="singkat">Sarjana S1 di Tahun 2022</p>
+                <p class="lengkap">
+                  Saya menyelesaikan pendidikan S1 sambil tetap bekerja selama 4 tahun. Ini menunjukkan komitmen saya untuk terus berkembang secara akademik maupun profesional.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="card" id="card6">
+            <div class="card-body">
+              <div class="overlay-portofolio">
+                <p class="singkat">Effort menjadi seorang pekerja dan mahasiswa</p>
+                <p class="lengkap">
+                  Selama kuliah, saya harus bisa mengatur waktu antara shift kerja dan kuliah malam. Proses ini membentuk karakter saya menjadi pribadi yang tangguh, disiplin dan mampu mengelola waktu secara efektif.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="card" id="card7">
+            <div class="card-body">
+              <div class="overlay-portofolio">
+                <p class="singkat">Kunjungan Kerja PLTA Wlingi Blitar oleh PT. Carbon & Electric Surabaya</p>
+                <p class="lengkap">
+                  Pengalaman selanjutnya bekerja di PT. Carbon & Electric Surabaya, saya melakukan kunjungan survey dan improvisasi terhadap produk yang akan disuplai ke PLTA sebagai bentuk peningkatan kualitas layanan.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="card" id="card8">
+            <div class="card-body">
+              <div class="overlay-portofolio">
+                <p class="singkat">Kunjungan Kerja PT. KAI DAOP 8 Surabaya oleh PT. Carbon & Electric Surabaya</p>
+                <p class="lengkap">
+                  Kegiatan ini merupakan bagian dari survey pengadaan komponen elektrikal pada lokomotif yang dilakukan oleh PT. KAI melalui PT. Carbon & Electric Surabaya.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="card" id="card9">
+            <div class="card-body">
+              <div class="overlay-portofolio">
+                <p class="singkat">Tindak Lanjut dan Koordinasi Teknis</p>
+                <p class="lengkap">
+                  Dalam survey yang diadakan oleh PT. Carbon & Electric, saya turut terlibat dalam analisis dan pengembangan komponen untuk memastikan spesifikasi teknis komponen elektrik tersebut sesuai kebutuhan customer.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="card" id="card10">
+            <div class="card-body">
+              <div class="overlay-portofolio">
+                <p class="singkat">Hobi Berburu</p>
+                <p class="lengkap">
+                  Di luar pekerjaan, saya senang berburu di alam terbuka sebagai bentuk relaksasi dan pelampiasan semangat petualangan.
+                  Terima kasih telah mengunjungi portofolioku! Semoga bisa memberikan gambaran tentang siapa saya dan pengalaman yang saya miliki.
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>    
     </section>
     <section class="page">
       <div class="kemasan-umur">
@@ -339,21 +452,8 @@
         </div>
       </div>
     </section>
-    <section class="page">
-      <div style="text-align: center; padding: 5px; margin-top: 0px; margin-bottom: 0px; font-size: 14px; color: grey; z-index: 500;">
-        <div style="display: inline-block; background-color: rgba(255, 255, 255, 0.7); backdrop-filter: blur(2px); padding: 5px 10px; border-radius: 20px;">
-         <div class="fade-paragraph">Website made by Byan</div>
-         <div class="fade-paragraph">
-           <span style="color: black;">&copy;</span>
-           <span style="color: black;" id="tahun"></span> 
-           <span style="color: black;">Byan Aditya.</span>
-           <span style="color: grey;">All rights reserved.</span>
-         </div>
-        </div>
-      </div>
-    </section>
   </div>
-    <div class="dropdown-container">
+  <div class="dropdown-container">
     <div class="dropdown-wrapper">
       <div class="dropdown-bg" id="dropdownBg">
         <div class="dropdown-menu" id="dropdownMenu">
@@ -388,9 +488,27 @@
     </button>
   </div>
   <footer class="sheet-footer">
-    <div class="doa">꧁لَا إِلهَ إِلَّا اللَّهُ مُحَمَّدْ رَسُولُ اللَّهِ꧂</div>
-    <div class="datetime" id="datetime">Memuat waktu...</div>
-  </footer> 
+    <div class="zoom-container">
+      <!-- Frame 1 -->
+      <div class="zoom-text active">
+        <div class="blur-box">
+          <div class="doa">꧁لَا إِلهَ إِلَّا اللَّهُ مُحَمَّدْ رَسُولُ اللَّهِ꧂</div>
+          <div class="datetime" id="datetime">Memuat waktu...</div>
+        </div>
+      </div>
+      <!-- Frame 2 -->
+      <div class="zoom-text">
+        <div class="blur-box"><strong>
+          <div style="padding-bottom: 5px;">Website made by Byan</div>
+          <span>&copy;</span>
+          <span id="tahun"></span>
+          <span>Byan Aditya.</span>
+          <span style="color: grey;">All rights reserved.</span>
+        </strong>
+        </div>
+      </div>
+    </div>
+  </footer>
   <!-- Isi Semua Java Script -->
   <script src="js/script.js"></script>
 </body>
