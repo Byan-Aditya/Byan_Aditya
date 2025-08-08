@@ -243,9 +243,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const h = +document.getElementById('hour').value || 0;
       const min = +document.getElementById('minute').value || 0;
       const inputDate = new Date(y, m, d, h, min);
-      if (!d || !m || !y || isNaN(inputDate.getTime())) {
-        alert("WAJIB ISI KOLOM YANG BERTANDA (*) DENGAN BENAR, KECUALI WAKTU (OPSIONAL).");
-        return;
+      if (!d || document.getElementById('month').value === "" || !y || isNaN(inputDate.getTime())) {
+        alert("WAJIB ISI KOLOM YANG BERTANDA (*) DENGAN BENAR, KECUALI WAKTU (OPSIONAL).");
+        return;
       }
       const btn = document.getElementById("animateBtn");
       if (!btn.dataset.original) {
@@ -368,10 +368,10 @@ document.addEventListener("click", function (e) {
 });
 
 // === aplikasi===
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(reg => console.log('✅ Service Worker registered!', reg))
-          .catch(err => console.log('❌ Service Worker registration failed:', err));
-      });
-    }
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+  navigator.serviceWorker.register('service-worker.js')
+  .then(reg => console.log('✅ Service Worker registered!', reg))
+  .catch(err => console.log('❌ Service Worker registration failed:', err));
+  });
+ }
