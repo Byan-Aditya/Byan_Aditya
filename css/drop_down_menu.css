@@ -4,7 +4,7 @@
       right: 20px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 20px;
     }
 
     .dropdown-wrapper {
@@ -253,6 +253,10 @@
 
     /* Responsive Style */
     @media (max-width: 768px) {
+      .dropdown-container {
+        gap: 10px;
+      }
+    
       .dropdown-btn {
         width: 40px;
         height: 40px;
