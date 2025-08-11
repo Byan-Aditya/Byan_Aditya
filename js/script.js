@@ -11,26 +11,56 @@ document.addEventListener("DOMContentLoaded", () => {
     "music/lagu4.mp3"
   ];
   let current = 0;
-  musik.src = playlist[current]; // mulai lagu pertama
+  musik.src = playlist[current];
+
+  function fadeIn(audio, targetVolume = 1, duration = 2000) {
+    audio.volume = 0;
+    let step = targetVolume / (duration / 100);
+    let fade = setInterval(() => {
+      if (audio.volume < targetVolume) {
+        audio.volume = Math.min(audio.volume + step, targetVolume);
+      } else {
+        clearInterval(fade);
+      }
+    }, 100);
+  }
+
+  function fadeOut(audio, duration = 2000, callback) {
+    let step = audio.volume / (duration / 100);
+    let fade = setInterval(() => {
+      if (audio.volume > 0) {
+        audio.volume = Math.max(audio.volume - step, 0);
+      } else {
+        clearInterval(fade);
+        if (callback) callback(); // jalankan fungsi setelah fade out
+      }
+    }, 100);
+  }
 
   tombol.addEventListener('click', () => {
     if (musik.paused) {
       musik.play();
+      fadeIn(musik, 1, 1000);
       foto.style.animationPlayState = 'running';
       icon.src = "images/pause.png";
       icon.alt = "Pause";
     } else {
-      musik.pause();
-      foto.style.animationPlayState = 'paused';
-      icon.src = "images/play.png";
-      icon.alt = "Play";
+      fadeOut(musik, 1000, () => {
+        musik.pause();
+        foto.style.animationPlayState = 'paused';
+        icon.src = "images/play.png";
+        icon.alt = "Play";
+      });
     }
   });
 
   musik.addEventListener('ended', () => {
-    current = (current + 1) % playlist.length;
-    musik.src = playlist[current];
-    musik.play();
+    fadeOut(musik, 1000, () => {
+      current = (current + 1) % playlist.length;
+      musik.src = playlist[current];
+      musik.play();
+      fadeIn(musik, 1, 1000);
+    });
   });
 });
 
