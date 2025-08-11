@@ -1,7 +1,7 @@
     .tab-bar {
       margin-top: 10px; 
       justify-content: center;
-      padding: 10px;
+      padding: 10px 50px;
       align-items: center; 
       display: flex;
       border-radius: 50px;
@@ -19,7 +19,7 @@
       color: white;
       border: none;
       cursor: pointer;
-      margin-right: 20px; /* jarak antar tombol */
+      margin-right: 50px; /* jarak antar tombol */
     }
 
     /* Hapus margin kanan di tombol terakhir */
@@ -66,7 +66,7 @@
       }
       
       .tab-bar {
-        padding: 5px;
+        padding: 5px 5px;
       }
       
       .tab-bar button {
