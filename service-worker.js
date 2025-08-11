@@ -7,8 +7,8 @@ self.addEventListener("install", event => {
       
         "js/script.js",
       
-        "css/autoresize.css",
-        "css/autoresize_button.css",
+        "css/profile.css",
+        "css/drop_down_menu.css",
         "css/mouse.css",
         "css/portofolio.css",
         "css/splash_screen.css",
