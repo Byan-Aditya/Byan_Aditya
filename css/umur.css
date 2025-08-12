@@ -1,3 +1,23 @@
+    /* Hilangno spinner ing Chrome, Edge, Safari */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Hilangno spinner ing Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+    
+    .element {
+      -ms-overflow-style: none;       /* untuk IE dan Edge */
+      scrollbar-width: none;          /* untuk Firefox */
+    }
+    .element::-webkit-scrollbar {
+      display: none;                  /* untuk Chrome, Safari, Opera */
+    }
+
    .kemasan-umur {
       display: flex;
       justify-content: center; /* tengah horizontal */
@@ -101,18 +121,11 @@
       font-weight: bold;
     }
     .result-row {
-       display: flex;
+      display: flex;
       gap: 15px;
       justify-content: center;
       margin-bottom: 10px;
       flex-wrap: wrap;
-    }
-    .element {
-      -ms-overflow-style: none;       /* untuk IE dan Edge */
-      scrollbar-width: none;          /* untuk Firefox */
-    }
-    .element::-webkit-scrollbar {
-      display: none;                  /* untuk Chrome, Safari, Opera */
     }
     #animateBtn {
       margin-top: 20px;
