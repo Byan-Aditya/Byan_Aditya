@@ -1,0 +1,41 @@
+    .intro-wrapper {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .intro-logo {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 1.5s ease-in-out;
+      box-shadow:
+        0 0 2px red,
+        0 0 6px green,
+        0 0 10px cyan;
+      animation: rgbGlow 4s infinite linear;
+    }
+
+    @keyframes rgbGlow {
+      0%   { box-shadow: 0 0 2px cyan, 0 0 5px green, 0 0 8px blue; }
+      25%  { box-shadow: 0 0 4px green, 0 0 7px blue, 0 0 10px red; }
+      50%  { box-shadow: 0 0 6px cyan, 0 0 9px red, 0 0 12px green; }
+      75%  { box-shadow: 0 0 4px red, 0 0 7px green, 0 0 10px blue; }
+      100% { box-shadow: 0 0 2px cyan, 0 0 5px green, 0 0 8px blue; }
+    }
+    
+      .intro-wrapper.hide {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1.8s ease-in-out;
+    }
