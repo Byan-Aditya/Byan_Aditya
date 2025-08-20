@@ -13,57 +13,38 @@ document.addEventListener("DOMContentLoaded", () => {
   let current = 0;
   musik.src = playlist[current];
 
-  function fadeIn(audio, targetVolume = 1, duration = 2000) {
-    audio.volume = 0;
-    audio.play();
-    let step = targetVolume / (duration / 20);
-    let fade = setInterval(() => {
-      if (audio.volume < targetVolume) {
-        audio.volume = Math.min(audio.volume + step, targetVolume);
-      } else {
-        clearInterval(fade);
-      }
-    }, 20);
-  }
-
-  function fadeOut(audio, duration = 2000, callback) {
-    let step = audio.volume / (duration / 20);
-    let fade = setInterval(() => {
-      if (audio.volume > step) {
-        audio.volume = Math.max(audio.volume - step, 0);
-      } else {
-        clearInterval(fade);
-        audio.volume = 0;
-        if (callback) callback();
-      }
-    }, 20);
-  }
-
-  tombol.addEventListener('click', () => {
+  // Sinkron animasi foto dengan status audio
+  function updateFotoAnimation() {
     if (musik.paused) {
-      // PLAY dengan fade in
-      fadeIn(musik, 1, 1000);
+      foto.style.animationPlayState = 'paused';
+      icon.src = "images/play.png";
+      icon.alt = "Play";
+    } else {
       foto.style.animationPlayState = 'running';
       icon.src = "images/pause.png";
       icon.alt = "Pause";
-    } else {
-      // PAUSE dengan fade out
-      fadeOut(musik, 1000, () => {
-        musik.pause();
-        foto.style.animationPlayState = 'paused';
-        icon.src = "images/play.png";
-        icon.alt = "Play";
-      });
     }
-  });
+  }
 
+  function toggleAudio(e) {
+    e.preventDefault();
+    if (musik.paused) {
+      musik.play().catch(()=>{}); // play langsung
+    } else {
+      musik.pause();
+    }
+    updateFotoAnimation();
+  }
+
+  tombol.addEventListener('click', toggleAudio);
+  tombol.addEventListener('touchend', toggleAudio);
+
+  // Auto lanjut lagu berikut
   musik.addEventListener('ended', () => {
-    // otomatis lanjut lagu berikut dengan efek fade
-    fadeOut(musik, 500, () => {
-      current = (current + 1) % playlist.length;
-      musik.src = playlist[current];
-      fadeIn(musik, 1, 1000);
-    });
+    current = (current + 1) % playlist.length;
+    musik.src = playlist[current];
+    musik.play().catch(()=>{});
+    updateFotoAnimation();
   });
 });
 
