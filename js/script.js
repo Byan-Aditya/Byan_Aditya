@@ -417,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.lineTo(w, h);
       ctx.lineTo(0, h);
       ctx.closePath();
-      ctx.fillStyle = "rgb(243, 156, 18, 0.8)";
+      ctx.fillStyle = "rgb(243, 156, 18)";
       ctx.fill();
 
       // ombak kedua
