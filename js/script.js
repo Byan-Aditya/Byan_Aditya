@@ -15,36 +15,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function fadeIn(audio, targetVolume = 1, duration = 2000) {
     audio.volume = 0;
-    let step = targetVolume / (duration / 100);
+    audio.play();
+    let step = targetVolume / (duration / 20);
     let fade = setInterval(() => {
       if (audio.volume < targetVolume) {
         audio.volume = Math.min(audio.volume + step, targetVolume);
       } else {
         clearInterval(fade);
       }
-    }, 100);
+    }, 20);
   }
 
   function fadeOut(audio, duration = 2000, callback) {
-    let step = audio.volume / (duration / 100);
+    let step = audio.volume / (duration / 20);
     let fade = setInterval(() => {
-      if (audio.volume > 0) {
+      if (audio.volume > step) {
         audio.volume = Math.max(audio.volume - step, 0);
       } else {
         clearInterval(fade);
-        if (callback) callback(); // jalankan fungsi setelah fade out
+        audio.volume = 0;
+        if (callback) callback();
       }
-    }, 100);
+    }, 20);
   }
 
   tombol.addEventListener('click', () => {
     if (musik.paused) {
-      musik.play();
+      // PLAY dengan fade in
       fadeIn(musik, 1, 1000);
       foto.style.animationPlayState = 'running';
       icon.src = "images/pause.png";
       icon.alt = "Pause";
     } else {
+      // PAUSE dengan fade out
       fadeOut(musik, 1000, () => {
         musik.pause();
         foto.style.animationPlayState = 'paused';
@@ -55,10 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   musik.addEventListener('ended', () => {
-    fadeOut(musik, 1000, () => {
+    // otomatis lanjut lagu berikut dengan efek fade
+    fadeOut(musik, 500, () => {
       current = (current + 1) % playlist.length;
       musik.src = playlist[current];
-      musik.play();
       fadeIn(musik, 1, 1000);
     });
   });
