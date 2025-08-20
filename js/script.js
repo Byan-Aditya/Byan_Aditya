@@ -348,7 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // ================== PROGRESBAR OMBak ==================
+    // ================== PROGRESBAR OMBAK ==================
     const canvas = document.getElementById("progress");
     const ctx = canvas.getContext("2d");
     
@@ -417,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.lineTo(w, h);
       ctx.lineTo(0, h);
       ctx.closePath();
-      ctx.fillStyle = "rgb(243, 156, 18)";
+      ctx.fillStyle = "rgb(243, 156, 18, 1)";
       ctx.fill();
 
       // ombak kedua
@@ -429,7 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.lineTo(w, h);
       ctx.lineTo(0, h);
       ctx.closePath();
-      ctx.fillStyle = "rgb(243, 156, 18, 0.5)";
+      ctx.fillStyle = "rgb(243, 156, 18, 0.8)";
       ctx.fill();
 
       ctx.restore();
