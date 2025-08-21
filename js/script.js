@@ -348,104 +348,132 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // ================== PROGRESBAR OMBAK ==================
+    // ================== PROGRESBAR OMBak ==================
     const canvas = document.getElementById("progress");
     const ctx = canvas.getContext("2d");
     
-    // ukuran tampilan
-    const w = 300;
-    const h = 300;
-    
-    // cek pixel ratio layar
+    const w = 300, h = 300;
     const scale = window.devicePixelRatio || 3;
     
-    // set resolusi internal canvas biar HD
     canvas.width = w * scale;
     canvas.height = h * scale;
     canvas.style.width = w + "px";
     canvas.style.height = h + "px";
     
-    // skala context biar gambar tetep proporsional
     ctx.scale(scale, scale);
     
     const radius = w / 2;
-    let waveOffset1 = 0, waveOffset2 = 0;
-
+    
+    // offset gelombang
+    let waveOffset1 = 0, waveOffset2 = 0, waveOffset3 = 0;
+    
+    // amplitudo dasar
+    let amp1 = 10, amp2 = 6, amp3 = 4;
+    
+    // target amplitudo (bisa berubah pas klik)
+    let targetAmp1 = 10, targetAmp2 = 6, targetAmp3 = 4;
+    
     function hitungPersentase() {
-      if (!birthDate) return 0; // belum input
+      if (!birthDate) return 0;
       const now = new Date();
-
-      // tanggal ultah tahun ini
       let nextBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
-      if (nextBirthday < now) {
-        nextBirthday = new Date(now.getFullYear() + 1, birthDate.getMonth(), birthDate.getDate());
-      }
-
-      // total 1 tahun
-      const lastBirthday = new Date(nextBirthday.getFullYear() - 1, birthDate.getMonth(), birthDate.getDate());
+      if (nextBirthday < now) nextBirthday = new Date(now.getFullYear()+1, birthDate.getMonth(), birthDate.getDate());
+      const lastBirthday = new Date(nextBirthday.getFullYear()-1, birthDate.getMonth(), birthDate.getDate());
       const total = nextBirthday - lastBirthday;
       const elapsed = now - lastBirthday;
-
       return (elapsed / total) * 100;
     }
-
+    
     function drawWave() {
       ctx.clearRect(0, 0, w, h);
       let percent = hitungPersentase();
-
+    
       // lingkaran luar
       ctx.beginPath();
       ctx.arc(radius, radius, radius, 0, 2*Math.PI);
       ctx.strokeStyle = "white";
-      ctx.lineWidth = 5;
+      ctx.lineWidth = 10;
       ctx.stroke();
-
-      // area clip
+    
+      // clip area
       ctx.save();
       ctx.beginPath();
-      ctx.arc(radius, radius, radius-5, 0, 2*Math.PI);
+      ctx.arc(radius, radius, radius-10, 0, 2*Math.PI);
       ctx.clip();
-
+    
       const level = h - (percent/100)*h;
-
-      // ombak utama
+    
+      // ombak 1
       ctx.beginPath();
       for (let x = 0; x <= w; x++) {
-        let y = 10 * Math.sin((x/30) + waveOffset1) + level;
+        let y = amp1 * Math.sin((x/30) + waveOffset1) + level;
         ctx.lineTo(x, y);
       }
       ctx.lineTo(w, h);
       ctx.lineTo(0, h);
       ctx.closePath();
-      ctx.fillStyle = "rgb(243, 156, 18, 1)";
+      ctx.fillStyle = "rgba(243, 156, 18, 0.8)";
       ctx.fill();
-
-      // ombak kedua
+    
+      // ombak 2
       ctx.beginPath();
       for (let x = 0; x <= w; x++) {
-        let y = 6 * Math.sin((x/25) + waveOffset2) + level;
+        let y = amp2 * Math.sin((x/25) + waveOffset2) + level;
         ctx.lineTo(x, y);
       }
       ctx.lineTo(w, h);
       ctx.lineTo(0, h);
       ctx.closePath();
-      ctx.fillStyle = "rgb(243, 156, 18, 0.8)";
+      ctx.fillStyle = "rgba(243, 156, 18, 0.6)";
       ctx.fill();
-
+    
+      // ombak 3
+      ctx.beginPath();
+      for (let x = 0; x <= w; x++) {
+        let y = amp3 * Math.sin((x/20) + waveOffset3) + level;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(w, h);
+      ctx.lineTo(0, h);
+      ctx.closePath();
+      ctx.fillStyle = "rgba(243, 156, 18, 0.5)";
+      ctx.fill();
+    
       ctx.restore();
-
+    
       // persentase teks
       ctx.fillStyle = "white";
       ctx.font = "bold 25px 'Times New Roman', serif";
       ctx.textAlign = "center";
       ctx.fillText(Math.round(percent) + "%", radius, radius);
-
+    
+      // animasi offset (gerakan ombak)
       waveOffset1 += 0.05;
       waveOffset2 += 0.08;
+      waveOffset3 += 0.1;
+    
+      // animasi transisi amplitudo biar halus
+      amp1 += (targetAmp1 - amp1) * 0.05;
+      amp2 += (targetAmp2 - amp2) * 0.05;
+      amp3 += (targetAmp3 - amp3) * 0.05;
+    
       requestAnimationFrame(drawWave);
     }
-
+    
     drawWave();
+
+// pas canvas di-klik, ombak dadi gede
+canvas.addEventListener("click", () => {
+  targetAmp1 = 25; // ombak 1 jadi gede
+  targetAmp2 = 15; // ombak 2 agak gede
+  targetAmp3 = 10; // ombak 3 kecil
+  // balekno meneh sakwise 1 detik
+  setTimeout(() => {
+    targetAmp1 = 10;
+    targetAmp2 = 6;
+    targetAmp3 = 4;
+  }, 1000);
+});
 
 // === ANIMASI ALERT ? ===
 document.addEventListener('DOMContentLoaded', () => {
@@ -551,4 +579,5 @@ if ('serviceWorker' in navigator) {
   .then(reg => console.log('✅ Service Worker registered!', reg))
   .catch(err => console.log('❌ Service Worker registration failed:', err));
   });
- }
+        }
+    
