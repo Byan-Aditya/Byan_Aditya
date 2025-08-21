@@ -163,27 +163,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === MOUSE MOVE===
 document.addEventListener("DOMContentLoaded", () => {
-  // Deteksi apakah perangkat adalah touchscreen
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-  if (isTouchDevice) return; // Jangan jalankan kursor custom kalau touchscreen
-
   const cursor = document.createElement("div");
   cursor.classList.add("custom-cursor");
   document.body.appendChild(cursor);
 
-  document.addEventListener("mousemove", (e) => {
-    cursor.style.top = `${e.clientY}px`;
-    cursor.style.left = `${e.clientX}px`;
-    cursor.style.opacity = "1";
+  // Awal disembunyikan
+  cursor.style.opacity = "0";
+
+  // Gerakan pointer
+  document.addEventListener("pointermove", (e) => {
+    if (e.pointerType === "mouse") { // cuma jalan kalau mouse
+      cursor.style.top = `${e.clientY}px`;
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.opacity = "1";
+    } else {
+      cursor.style.opacity = "0"; // kalau touch, sembunyikan
+    }
   });
 
   document.addEventListener("mouseleave", () => {
     cursor.style.opacity = "0";
   });
 
-  document.addEventListener("mouseenter", () => {
-    cursor.style.opacity = "1";
+  document.addEventListener("mouseenter", (e) => {
+    if (e.pointerType === "mouse") {
+      cursor.style.opacity = "1";
+    }
   });
 });
 
@@ -579,5 +584,4 @@ if ('serviceWorker' in navigator) {
   .then(reg => console.log('✅ Service Worker registered!', reg))
   .catch(err => console.log('❌ Service Worker registration failed:', err));
   });
-        }
-    
+}
