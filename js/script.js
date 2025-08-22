@@ -577,6 +577,34 @@ document.addEventListener("click", function (e) {
   }
 });
 
+// === INDIKATOR UMUR PROFILE===
+const indikatorBirthDate = new Date(1997, 11, 18) // 18 Desember 1997
+
+function hitungIndikatorUmur() {
+  const today = new Date();
+  let umur = today.getFullYear() - indikatorBirthDate.getFullYear();
+  const bulan = today.getMonth();
+  const tanggal = today.getDate();
+
+  // cek apakah ulang tahun tahun ini sudah lewat
+  if (
+    bulan < indikatorBirthDate.getMonth() ||
+    (bulan === indikatorBirthDate.getMonth() && tanggal < indikatorBirthDate.getDate())
+  ) {
+    umur--; // kalau belum ultah tahun ini
+  }
+
+  return umur;
+}
+
+// tunggu DOM siap dulu
+document.addEventListener("DOMContentLoaded", () => {
+  const el = document.getElementById("umur");
+  if (el) {
+    el.textContent = hitungIndikatorUmur();
+  }
+});
+
 // === aplikasi===
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
