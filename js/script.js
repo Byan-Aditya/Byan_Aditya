@@ -573,7 +573,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     Swal.fire({
       title: 'Download CV?',
-      text: 'Yakin mau mendownload CV Byan Aditya secara offline?',
+      text: 'Yakin mau mendownload CV Byan Aditya ?',
       imageUrl: 'images/download-alert.gif', // ganti path gambar eksternalmu
       imageWidth: 150,
       imageHeight: 150,
@@ -581,7 +581,12 @@ document.addEventListener("DOMContentLoaded", () => {
       confirmButtonColor: '#00c6ff',
       cancelButtonColor: '#ff4e50',
       confirmButtonText: 'Ya, download!',
-      cancelButtonText: 'Batal'
+      cancelButtonText: 'Batal',
+      backdrop: `
+        rgba(0,0,0,0.4) 
+        left top
+        no-repeat
+      `
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.href = btn.getAttribute("href");
