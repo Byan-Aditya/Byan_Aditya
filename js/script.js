@@ -534,6 +534,69 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// === LOCK PDF DOWNLOAD BUTTON ===
+document.addEventListener('DOMContentLoaded', () => {
+  const downloadBtn = document.querySelector('.download-btn'); // tombol download
+  const pager = document.getElementById('pager'); // container scroll horizontal
+
+  if (!downloadBtn || !pager) return;
+
+  // default: sembunyikan
+  downloadBtn.style.display = 'none';
+
+  // fungsi cek halaman aktif
+  function checkPage() {
+    const index = Math.round(pager.scrollLeft / pager.offsetWidth);
+
+    if (index === 0) { // Halaman ke-1
+      downloadBtn.style.display = 'flex'; // flex biar posisi center icon tetap
+    } else {
+      downloadBtn.style.display = 'none';
+    }
+  }
+
+  // pas scroll pager
+  pager.addEventListener('scroll', checkPage);
+
+  // pas load awal
+  checkPage();
+});
+
+// === ANIMASI POPUP DOWNLOAD ===
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("downloadBtn");
+
+  if (!btn) return;
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    Swal.fire({
+      title: 'Download CV?',
+      text: 'Yakin mau mendownload CV Byan Aditya secara offline?',
+      imageUrl: 'images/download-alert.gif', // ganti path gambar eksternalmu
+      imageWidth: 150,
+      imageHeight: 150,
+      showCancelButton: true,
+      confirmButtonColor: '#00c6ff',
+      cancelButtonColor: '#ff4e50',
+      confirmButtonText: 'Ya, download!',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = btn.getAttribute("href");
+        Swal.fire({
+          imageUrl: 'images/complate-alert.gif', // ganti path gambar eksternalmu
+          imageWidth: 150,
+          imageHeight: 150,
+          title: 'Berhasil!',
+          text: 'File CV Byan Aditya telah diunduh.'
+        });
+      }
+    });
+  });
+});
+
 // === ANIMASI FOOTER ===
     const texts = document.querySelectorAll(".zoom-text");
     let index = 0;
