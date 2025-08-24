@@ -308,6 +308,58 @@
       100% { left: calc(100% - 100px); }
     }
 
+    .download-btn {
+      position: fixed;
+      bottom: 100px;   /* jarak dari bawah */
+      left: 20px;      /* jarak dari kiri */
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(128, 128, 128, 0.3);
+      backdrop-filter: blur(3px);
+      border: 2px solid #8a8a8a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1;
+      animation: rgbGlow 4s infinite linear;
+    }
+    
+    @keyframes rgbGlow {
+      0%   { box-shadow: 0 0 2px cyan, 0 0 5px green, 0 0 8px blue; }
+      25%  { box-shadow: 0 0 4px green, 0 0 7px blue, 0 0 10px red; }
+      50%  { box-shadow: 0 0 6px cyan, 0 0 9px red, 0 0 12px green; }
+      75%  { box-shadow: 0 0 4px red, 0 0 7px green, 0 0 10px blue; }
+      100% { box-shadow: 0 0 2px cyan, 0 0 5px green, 0 0 8px blue; }
+    }
+    
+    /* Icon di dalam tombol */
+    .download-btn img {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      pointer-events: none;
+      transition: transform 0.4s ease; /* biar bisa ikut animasi */
+    }
+    
+    /* Hover efek biar cakep */
+    .download-btn:hover img {
+      transform: scale(1.0);
+    }
+    
+    /* Animasi klik (zoom in - zoom out) */
+    .download-btn:active img {
+      transform: scale(0.5);
+    }
+
+    .swal2-popup {
+      border: 2px solid transparent;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px grey;
+    }
+
     /* RESPONSIF UNTUK LAYAR KECIL */
     @media (max-width: 768px) {
       .container {
@@ -348,4 +400,9 @@
         padding-left: 20px;
         text-align: left;
       }
+      
+       .download-btn {
+         width: 50px;
+         height: 50px;
+       }
     }
