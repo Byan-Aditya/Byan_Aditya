@@ -16,6 +16,8 @@ self.addEventListener("install", event => {
         "css/umur.css",
         "css/view_pager.css",
       
+        "files/CV-Byan-Aditya.pdf",
+      
         "aplikasi/android-chrome-192x192.png",
         "aplikasi/android-chrome-512x512.png",
         "aplikasi/apple-touch-icon.png",
@@ -30,6 +32,8 @@ self.addEventListener("install", event => {
         "images/background.jpg",
         "images/bahasa.png",
         "images/biodata.png",
+        "images/complate-alert.gif",
+        "images/download-alert.gif",
         "images/emergency.gif",
         "images/facebook.png",
         "images/gear.png",
@@ -42,6 +46,7 @@ self.addEventListener("install", event => {
         "images/logo.png",
         "images/menu.gif",
         "images/pause.png",
+        "images/pdf-download.gif",
         "images/play.png",
         "images/profile.png",
         "images/software.png",
