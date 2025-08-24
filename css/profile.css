@@ -360,6 +360,11 @@
       box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px grey;
     }
 
+    .swal2-container {
+      backdrop-filter: blur(8px);   /* tingkat blur */
+      -webkit-backdrop-filter: blur(8px); /* safari */
+    }
+
     /* RESPONSIF UNTUK LAYAR KECIL */
     @media (max-width: 768px) {
       .container {
