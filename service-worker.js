@@ -10,7 +10,7 @@ self.addEventListener("install", event => {
         "css/profile.css",
         "css/drop_down_menu.css",
         "css/mouse.css",
-        "css/portofolio.css",
+        "css/autobiografi.css",
         "css/splash_screen.css",
         "css/style.css",
         "css/umur.css",
