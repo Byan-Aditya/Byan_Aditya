@@ -572,31 +572,52 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     Swal.fire({
-      title: 'Download CV?',
-      text: 'Yakin mau mendownload CV Byan Aditya ?',
-      imageUrl: 'images/download-alert.gif', // ganti path gambar eksternalmu
+      imageUrl: 'images/password.gif',
       imageWidth: 150,
       imageHeight: 150,
+      title: 'Masukkan Password',
+      input: 'password',
+      inputPlaceholder: 'Password download...',
       showCancelButton: true,
-      confirmButtonColor: '#00c6ff',
-      cancelButtonColor: '#ff4e50',
-      confirmButtonText: 'Ya, download!',
-      cancelButtonText: 'Batal',
-      backdrop: `
-        rgba(0,0,0,0.4) 
-        left top
-        no-repeat
-      `
+      confirmButtonText: 'Lanjut',
+      cancelButtonText: 'Batal'
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = btn.getAttribute("href");
-        Swal.fire({
-          imageUrl: 'images/complate-alert.gif', // ganti path gambar eksternalmu
-          imageWidth: 150,
-          imageHeight: 150,
-          title: 'Berhasil!',
-          text: 'File CV Byan Aditya telah diunduh.'
-        });
+        const password = result.value;
+
+        if (password === "byan123") {
+          Swal.fire({
+            title: 'Download CV?',
+            text: 'Yakin mau mendownload CV Byan Aditya?',
+            imageUrl: 'images/download-alert.gif',
+            imageWidth: 150,
+            imageHeight: 150,
+            showCancelButton: true,
+            confirmButtonColor: '#00c6ff',
+            cancelButtonColor: '#ff4e50',
+            confirmButtonText: 'Ya, download!',
+            cancelButtonText: 'Batal'
+          }).then((res) => {
+            if (res.isConfirmed) {
+              window.location.href = btn.getAttribute("href");
+              Swal.fire({
+                imageUrl: 'images/complate-alert.gif',
+                imageWidth: 150,
+                imageHeight: 150,
+                title: 'Berhasil!',
+                text: 'File CV Byan Aditya telah diunduh.'
+              });
+            }
+          });
+        } else {
+          Swal.fire({
+            imageUrl: 'images/download-failed.gif',
+            imageWidth: 150,
+            imageHeight: 150,
+            title: 'Salah Bro!',
+            text: 'Password yang anda masukkan salah.'
+          });
+        }
       }
     });
   });
