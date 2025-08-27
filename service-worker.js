@@ -46,6 +46,7 @@ self.addEventListener("install", event => {
         "images/linkedin.png",
         "images/logo.png",
         "images/menu.gif",
+        "images/music-password.gif",
         "images/password.gif",
         "images/pause.png",
         "images/pdf-download.gif",
