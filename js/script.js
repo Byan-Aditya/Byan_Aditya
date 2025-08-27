@@ -13,7 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let current = 0;
   musik.src = playlist[current];
 
-  // Sinkron animasi foto dengan status audio
+  // flag password
+  let sudahLogin = false;
+  const passwordBenar = "adit123";
+
+  // sinkron animasi foto
   function updateFotoAnimation() {
     if (musik.paused) {
       foto.style.animationPlayState = 'paused';
@@ -26,10 +30,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // toggle musik
   function toggleAudio(e) {
     e.preventDefault();
+
+    // kalau belum login, munculkan SweetAlert
+    if (!sudahLogin) {
+      Swal.fire({
+        imageUrl: 'images/music-password.gif',
+        imageWidth: 150,
+        imageHeight: 150,
+        title: 'Masukkan Password',
+        input: 'password',
+        inputPlaceholder: 'Password musik...',
+        showCancelButton: true,
+        confirmButtonText: 'Lanjut',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (result.value === passwordBenar) {
+            sudahLogin = true; // password valid
+            Swal.fire({
+              imageUrl: 'images/complate-alert.gif',
+              imageWidth: 150,
+              imageHeight: 150,
+              title: 'Berhasil!',
+              text: 'Password benar, musik siap dimainkan 🎶'
+            }).then(() => {
+              musik.play().catch(()=>{});
+              updateFotoAnimation();
+            });
+          } else {
+            Swal.fire({
+              imageUrl: 'images/download-failed.gif',
+              imageWidth: 150,
+              imageHeight: 150,
+              title: 'Salah Bro!',
+              text: 'Password yang anda masukkan salah.'
+            });
+          }
+        }
+      });
+      return;
+    }
+
+    // kalau sudah login → normal toggle
     if (musik.paused) {
-      musik.play().catch(()=>{}); // play langsung
+      musik.play().catch(()=>{});
     } else {
       musik.pause();
     }
@@ -39,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
   tombol.addEventListener('click', toggleAudio);
   tombol.addEventListener('touchend', toggleAudio);
 
-  // Auto lanjut lagu berikut
+  // auto lanjut lagu
   musik.addEventListener('ended', () => {
     current = (current + 1) % playlist.length;
     musik.src = playlist[current];
@@ -585,7 +632,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (result.isConfirmed) {
         const password = result.value;
 
-        if (password === "byan123") {
+        if (password === "adit123") {
           Swal.fire({
             title: 'Download CV?',
             text: 'Yakin mau mendownload CV Byan Aditya?',
