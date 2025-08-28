@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
         imageUrl: 'images/music-password.gif',
         imageWidth: 150,
         imageHeight: 150,
-        title: 'Masukkan Password',
+        title: 'Hanya Untuk Developer',
+        text: 'User ID : Byan Aditya',
         input: 'password',
         inputPlaceholder: 'Password musik...',
         showCancelButton: true,
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
               imageWidth: 150,
               imageHeight: 150,
               title: 'Berhasil!',
-              text: 'Password benar, musik siap dimainkan 🎶'
+              text: 'Selamat datang Byan, musik dimainkan 🎶'
             }).then(() => {
               musik.play().catch(()=>{});
               updateFotoAnimation();
