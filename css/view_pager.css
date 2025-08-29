@@ -1,0 +1,98 @@
+    .tab-bar {
+      margin-top: 10px; 
+      justify-content: center;
+      padding: 10px 50px;
+      align-items: center; 
+      display: flex;
+      border-radius: 50px;
+      background-color: transparent;
+    }
+
+    .tab-bar button {
+      flex: 1;
+      padding: 10px 10px;
+      font-size: 18px;
+      font-weight: bold;
+      background: #444;
+      font-family: "Times New Roman", Times, serif;
+      border-radius: 50px;
+      color: white;
+      -webkit-text-stroke: 0.5px black;
+      text-shadow: 0 0 3px black;
+      border: none;
+      cursor: pointer;
+      margin-right: 50px; /* jarak antar tombol */
+      transition: 
+        background 0.5s ease,
+        box-shadow 0.4s ease,
+        transform 0.3s ease;
+    }
+
+    /* Hapus margin kanan di tombol terakhir */
+    .tab-bar button:last-child {
+      margin-right: 0;
+    }
+
+    .tab-bar button.active {
+      background: #f39c12;
+      box-shadow: 0 0 5px #f39c12;
+      transform: scale(1.1);
+    }
+
+    .tab-bar button.active span {
+      display: inline-block;
+      animation: zoomIn 0.5s forwards;
+      animation-delay: calc(var(--i) * 0.1s); /* beda delay tiap huruf */
+      transform: scale(0);
+      -webkit-text-stroke: 0.5px black;
+      text-shadow: 0 0 3px black;
+    }
+    
+    @keyframes zoomIn {
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .viewpager {
+      position: absolute;
+      top: 0px; /* header + tab bar */
+      bottom: 0px; /* footer */
+      height: 100vh;
+      padding-bottom: 10px;
+      left: 0;
+      right: 0;
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .page {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      padding-top: 130px;
+      padding-bottom: 90px;
+      overflow-y: auto;
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+        padding-top: 110px;
+        padding-bottom: 90px;
+        overflow-y: auto;
+      }
+      
+      .tab-bar {
+        padding: 5px 5px;
+      }
+      
+      .tab-bar button {
+        padding: 5px 5px;
+        font-size: 14px;
+        margin-right: 15px; /* jarak antar tombol */
+      }
+    }
