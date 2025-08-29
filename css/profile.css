@@ -74,6 +74,7 @@
     }
 
     .sidebar h2 {
+      font-family: 'Anton', sans-serif;
       display: inline-block;
       background-color: #5c5c5c;
       font-size: 20px;
@@ -106,6 +107,7 @@
     }
 
     section h2 {
+      font-family: 'Anton', sans-serif;
       text-align: justify;
       display: inline-block;
       color: White;
