@@ -74,9 +74,10 @@
     }
 
     .sidebar h2 {
-      border-bottom: 2px solid #adadadad;
-      padding-bottom: 5px;
-      margin-top: 20px;
+      display: inline-block;
+      background-color: #5c5c5c;
+      border-radius: 30px;
+      padding: 2px 10px;
     }
 
     .sidebar a {
@@ -104,9 +105,12 @@
     }
 
     section h2 {
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
       text-align: justify;
+      display: inline-block;
+      color: White;
+      background-color: #5c5c5c;
+      border-radius: 30px;
+      padding: 2px 10px;
     }
 
     ul {
@@ -121,13 +125,14 @@
     .judul-container {
       display: flex;
       align-items: center;
-      gap: 10px;
+      padding-top: 20px;
+      gap: 5px;
     }
     
     .circle-wrapper {
       width: 35px;
       height: 35px;
-      margin-top: 20px;
+      margin-top: 0px;
       background-color: #5c5c5c;
       border-radius: 50%;
       display: flex;
@@ -208,20 +213,20 @@
       }
     .timeline {
         position: relative;
-        margin-left: 20px;   /* ruang di kiri teks */
-        padding-left: 20px;  /* ruang supaya teks ora kena garis */
+        margin-left: 20px;   
+        padding-left: 20px;  
         border-left: 2px solid gray;
-        list-style: none;    /* mateni bullet bawaan <ul> */
+        list-style: none;    
       }
-    .timeline > li {       /* hanya blok pengalaman */
+    .timeline > li {      
         position: relative;
-        margin-bottom: 24px; /* jarak antar pengalaman */
+        margin-bottom: 0px; 
       }
     .timeline > li::before {
         content:'';
         position:absolute;
-        left:-31.3px;          /* sejajar garis (28px – 20px) */
-        top:-0.5px;            /* sejajar baris pertama */
+        left:-31.3px;         
+        top:-0.5px;           
         width:15px;height:15px;
         background:gray;
         border-radius:50%;
