@@ -18,7 +18,7 @@
       border-radius: 50px;
       color: white;
       -webkit-text-stroke: 0.5px black;
-      text-shadow: 0 0 3px black;
+      text-shadow: 0 0 1px black;
       border: none;
       cursor: pointer;
       margin-right: 50px; /* jarak antar tombol */
@@ -45,7 +45,7 @@
       animation-delay: calc(var(--i) * 0.1s); /* beda delay tiap huruf */
       transform: scale(0);
       -webkit-text-stroke: 0.5px black;
-      text-shadow: 0 0 0px black;
+      text-shadow: 0 0 1px black;
     }
     
     @keyframes zoomIn {
