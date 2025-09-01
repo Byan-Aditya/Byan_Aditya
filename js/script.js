@@ -299,6 +299,7 @@ window.addEventListener("load", () => {
   loadingText.style.left = "50%";
   loadingText.style.top = "calc(50% + 160px)";
   loadingText.style.transform = "translateX(-50%)";
+  loadingText.style.transition = "opacity 0.5s ease"; // 🔹 pasang dulu
 
   // 🔹 Animasi titik "..."
   const dots = loadingText.querySelector(".dots");
@@ -318,25 +319,28 @@ window.addEventListener("load", () => {
   // Ambil posisi logo di header
   const targetRect = fotomuter.getBoundingClientRect();
 
-  // 🔹 Tunggu animasi titik selesai siklus ke-3 (1.5s), baru jalan animasi logo
+  // Langsung munculkan konten web
+  document.body.classList.add("loaded");
+
+  // 🔹 Fade-out teks lebih dulu (biar halus)
   setTimeout(() => {
-    // Jalankan animasi: pindah ke header + mengecil
+    loadingText.style.opacity = "0";
+    clearInterval(dotInterval);
+  }, 400);
+
+  // 🔹 Jalankan animasi logo pindah ke header
+  setTimeout(() => {
     introLogo.style.width = "50px";
     introLogo.style.height = "50px";
     introLogo.style.left = `${targetRect.left}px`;
     introLogo.style.top = `${targetRect.top}px`;
     introLogo.style.transform = "translate(0, 0)";
+  }, 800);
 
-    // 🔹 Sembunyikan tulisan loading pas logo pindah ke header
-    loadingText.style.opacity = "0";
-    loadingText.style.transition = "opacity 0.5s ease";
-  }, 1500); // ⬅️ delay nunggu titik selesai
-
-  // Setelah animasi pindah selesai (1.5s setelah mulai pindah)
+  // 🔹 Setelah animasi selesai, sembunyikan intro-wrapper
   setTimeout(() => {
-    clearInterval(dotInterval);
     intro.classList.add("hide");
-  }, 3000); // ⬅️ total 3s (1.5s titik + 1.5s animasi logo)
+  }, 1800);
 });
 
 // ================== UMUR COUNTER ==================
