@@ -294,12 +294,13 @@ window.addEventListener("load", () => {
   loadingText.innerHTML = 'Loading<span class="dots"></span>';
   intro.appendChild(loadingText);
 
-  // 🔹 Posisi loading text tepat di bawah logo
+  // 🔹 Style loading text
   loadingText.style.position = "absolute";
   loadingText.style.left = "50%";
   loadingText.style.top = "calc(50% + 160px)";
   loadingText.style.transform = "translateX(-50%)";
-  loadingText.style.transition = "opacity 0.5s ease"; // 🔹 pasang dulu
+  loadingText.style.opacity = "1";                  // langsung muncul
+  loadingText.style.transition = "opacity 0.5s ease";
 
   // 🔹 Animasi titik "..."
   const dots = loadingText.querySelector(".dots");
@@ -309,33 +310,32 @@ window.addEventListener("load", () => {
     dots.textContent = ".".repeat(dotCount);
   }, 500);
 
-  // Tampil logo besar di tengah
+  // 🔹 Logo muncul di tengah
   introLogo.style.width = "250px";
   introLogo.style.height = "250px";
   introLogo.style.left = "50%";
   introLogo.style.top = "50%";
   introLogo.style.transform = "translate(-50%, -50%)";
 
-  // Ambil posisi logo di header
+  // 🔹 Ambil posisi logo di header
   const targetRect = fotomuter.getBoundingClientRect();
 
-  // Langsung munculkan konten web
+  // 🔹 Munculkan konten web
   document.body.classList.add("loaded");
-
-  // 🔹 Fade-out teks lebih dulu (biar halus)
-  setTimeout(() => {
-    loadingText.style.opacity = "0";
-    clearInterval(dotInterval);
-  }, 400);
 
   // 🔹 Jalankan animasi logo pindah ke header
   setTimeout(() => {
+    // sebelum logo naik → teks ilang
+    loadingText.style.opacity = "0";
+    clearInterval(dotInterval);
+
+    // logo geser ke header
     introLogo.style.width = "50px";
     introLogo.style.height = "50px";
     introLogo.style.left = `${targetRect.left}px`;
     introLogo.style.top = `${targetRect.top}px`;
     introLogo.style.transform = "translate(0, 0)";
-  }, 800);
+  }, 800); // delay 0.8s biar logo & teks bareng
 
   // 🔹 Setelah animasi selesai, sembunyikan intro-wrapper
   setTimeout(() => {
