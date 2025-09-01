@@ -287,60 +287,44 @@ window.addEventListener("load", () => {
   const introLogo = document.getElementById("introLogo");
   const fotomuter = document.getElementById("fotomuter");
   const intro = document.getElementById("intro");
+  const dots = document.getElementById("dots");
+  const splashText = document.querySelector(".splash-screen-text");
 
-  // 🔹 Tambahan: bikin elemen loading text
-  const loadingText = document.createElement("div");
-  loadingText.className = "loading-text";
-  loadingText.innerHTML = 'Loading<span class="dots"></span>';
-  intro.appendChild(loadingText);
-
-  // 🔹 Style loading text
-  loadingText.style.position = "absolute";
-  loadingText.style.left = "50%";
-  loadingText.style.top = "calc(50% + 160px)";
-  loadingText.style.transform = "translateX(-50%)";
-  loadingText.style.opacity = "1";                  // langsung muncul
-  loadingText.style.transition = "opacity 0.5s ease";
-
-  // 🔹 Animasi titik "..."
-  const dots = loadingText.querySelector(".dots");
+  // animasi titik2
   let dotCount = 0;
   const dotInterval = setInterval(() => {
     dotCount = (dotCount + 1) % 4;
     dots.textContent = ".".repeat(dotCount);
   }, 500);
 
-  // 🔹 Logo muncul di tengah
+  // Logo besar di tengah
   introLogo.style.width = "250px";
   introLogo.style.height = "250px";
   introLogo.style.left = "50%";
   introLogo.style.top = "50%";
   introLogo.style.transform = "translate(-50%, -50%)";
 
-  // 🔹 Ambil posisi logo di header
+  // Posisi target logo di header
   const targetRect = fotomuter.getBoundingClientRect();
 
-  // 🔹 Munculkan konten web
+  // Munculkan konten web
   document.body.classList.add("loaded");
 
-  // 🔹 Jalankan animasi logo pindah ke header
+  // Jalankan animasi: teks ilang + logo pindah
   setTimeout(() => {
-    // sebelum logo naik → teks ilang
-    loadingText.style.opacity = "0";
-    clearInterval(dotInterval);
-
-    // logo geser ke header
+    splashText.classList.add("hide"); // ✨ teks ilang
     introLogo.style.width = "50px";
     introLogo.style.height = "50px";
     introLogo.style.left = `${targetRect.left}px`;
     introLogo.style.top = `${targetRect.top}px`;
     introLogo.style.transform = "translate(0, 0)";
-  }, 800); // delay 0.8s biar logo & teks bareng
+  }, 400);
 
-  // 🔹 Setelah animasi selesai, sembunyikan intro-wrapper
+  // Setelah animasi selesai, splash screen ilang
   setTimeout(() => {
     intro.classList.add("hide");
-  }, 1800);
+    clearInterval(dotInterval);
+  }, 1500);
 });
 
 // ================== UMUR COUNTER ==================
