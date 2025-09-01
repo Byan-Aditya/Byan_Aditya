@@ -283,38 +283,63 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // === SPLASH SCREEN===
-  window.addEventListener("load", () => {
-    const introLogo = document.getElementById("introLogo");
-    const fotomuter = document.getElementById("fotomuter");
-    const intro = document.getElementById("intro");
+window.addEventListener("load", () => {
+  const introLogo = document.getElementById("introLogo");
+  const fotomuter = document.getElementById("fotomuter");
+  const intro = document.getElementById("intro");
 
-    // Tampil logo besar di tengah
-    introLogo.style.width = "250px";
-    introLogo.style.height = "250px";
-    introLogo.style.left = "50%";
-    introLogo.style.top = "50%";
-    introLogo.style.transform = "translate(-50%, -50%)";
+  // 🔹 Tambahan: bikin elemen loading text
+  const loadingText = document.createElement("div");
+  loadingText.className = "loading-text";
+  loadingText.innerHTML = 'Loading<span class="dots"></span>';
+  intro.appendChild(loadingText);
 
-    // Ambil posisi logo di header
-    const targetRect = fotomuter.getBoundingClientRect();
+  // 🔹 Posisi loading text tepat di bawah logo
+  loadingText.style.position = "absolute";
+  loadingText.style.left = "50%";
+  loadingText.style.top = "calc(50% + 160px)"; // 50% tengah + setengah tinggi logo (250/2=125) + margin 35px
+  loadingText.style.transform = "translateX(-50%)";
 
-    // Langsung munculkan konten web
-    document.body.classList.add("loaded");
+  // 🔹 Animasi titik "..."
+  const dots = loadingText.querySelector(".dots");
+  let dotCount = 0;
+  const dotInterval = setInterval(() => {
+    dotCount = (dotCount + 1) % 4; // 0 - 3
+    dots.textContent = ".".repeat(dotCount);
+  }, 500);
 
-    // Jalankan animasi: pindah ke header + mengecil
-    setTimeout(() => {
-      introLogo.style.width = "50px";
-      introLogo.style.height = "50px";
-      introLogo.style.left = `${targetRect.left}px`;
-      introLogo.style.top = `${targetRect.top}px`;
-      introLogo.style.transform = "translate(0, 0)";
-    }, 400);
+  // Tampil logo besar di tengah
+  introLogo.style.width = "250px";
+  introLogo.style.height = "250px";
+  introLogo.style.left = "50%";
+  introLogo.style.top = "50%";
+  introLogo.style.transform = "translate(-50%, -50%)";
 
-    // Setelah animasi pindah selesai (1.5s), sembunyikan intro-wrapper
-    setTimeout(() => {
-      intro.classList.add("hide");
-    }, 1500);
-  });
+  // Ambil posisi logo di header
+  const targetRect = fotomuter.getBoundingClientRect();
+
+  // Langsung munculkan konten web
+  document.body.classList.add("loaded");
+
+  // Jalankan animasi: pindah ke header + mengecil
+  setTimeout(() => {
+    introLogo.style.width = "50px";
+    introLogo.style.height = "50px";
+    introLogo.style.left = `${targetRect.left}px`;
+    introLogo.style.top = `${targetRect.top}px`;
+    introLogo.style.transform = "translate(0, 0)";
+
+    // 🔹 Sembunyikan tulisan loading pas logo pindah ke header
+    loadingText.style.opacity = "0";
+    loadingText.style.transition = "opacity 0.5s ease";
+  }, 400);
+
+  // Setelah animasi pindah selesai (1.5s), sembunyikan intro-wrapper
+  setTimeout(() => {
+    clearInterval(dotInterval); // stop animasi titik
+    intro.classList.add("hide");
+  }, 1500);
+});
 
 // ================== UMUR COUNTER ==================
     let timer;
