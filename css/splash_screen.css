@@ -1,31 +1,31 @@
     .intro-wrapper {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
+      inset: 0;
       background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(12px);
       z-index: 9999;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      transition: opacity 1.8s ease-in-out, backdrop-filter 1.8s ease-in-out;
     }
-    
+
     .intro-logo {
-      position: absolute;
+      position: absolute;   /* penting biar bisa dipindah pakai JS */
       width: 250px;
       height: 250px;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
       transition: all 1.5s ease-in-out;
+      border-radius: 50%;
       box-shadow:
         0 0 2px red,
         0 0 6px green,
         0 0 10px cyan;
       animation: rgbGlow 4s infinite linear;
     }
-
     @keyframes rgbGlow {
       0%   { box-shadow: 0 0 2px cyan, 0 0 5px green, 0 0 8px blue; }
       25%  { box-shadow: 0 0 4px green, 0 0 7px blue, 0 0 10px red; }
@@ -38,4 +38,23 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 1.8s ease-in-out;
+    }
+    
+    .splash-screen-text {
+      position: relative;
+      margin-top: 320px;
+      font-family: 'Anton', sans-serif;
+      color: white;
+      -webkit-text-stroke: 1px black;
+      text-shadow: 0 0 1px black;
+      font-size: 18px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(1px);
+      padding: 5px 15px;
+      border-radius: 30px;
+      transition: opacity 0.6s ease; /* biar alus ilang */
+    }
+
+    .splash-screen-text.hide {
+      opacity: 0;
     }
