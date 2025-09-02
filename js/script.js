@@ -753,6 +753,37 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// === SAFETY COPY & PASTE + SAFETY CTRL ===
+  // Mateni klik kanan global
+  document.addEventListener("contextmenu", e => e.preventDefault());
+
+  // Fungsi cek shortcut terlarang
+  function blockKeys(e) {
+    const k = e.key.toLowerCase();
+
+    if (
+      (e.ctrlKey && ["c","x","v","u","s","a","p"].includes(k)) || // Ctrl+...
+      (e.ctrlKey && e.shiftKey && ["i","j"].includes(k)) ||       // Ctrl+Shift+...
+      (e.key && e.key.startsWith("F"))                            // F1-F12
+    ) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  }
+
+  // Pasang ke semua event keyboard
+  document.addEventListener("keydown", blockKeys, true);
+  document.addEventListener("keyup", blockKeys, true);
+  document.addEventListener("keypress", blockKeys, true);
+
+  // Mateni event copy/paste drag-drop
+  document.addEventListener("copy", e => e.preventDefault());
+  document.addEventListener("cut", e => e.preventDefault());
+  document.addEventListener("paste", e => e.preventDefault());
+  document.addEventListener("dragstart", e => e.preventDefault());
+  document.addEventListener("drop", e => e.preventDefault());
+
 // === aplikasi===
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
