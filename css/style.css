@@ -1,3 +1,10 @@
+    /* MATENI BLOCK TEXT DI SEMUA ELEMEN WEB */
+    * {
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      -ms-user-select: none !important;
+    }
+
     * {
       scrollbar-width: none;     /* Firefox */
       -ms-overflow-style: none;  /* IE dan Edge lama */
