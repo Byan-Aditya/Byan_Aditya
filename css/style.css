@@ -53,11 +53,11 @@
     .bg5 { background-image: url('../images/bg5.jpg'); animation-delay: 260s; }
     
     @keyframes fadeCycle {
-      0%   { opacity: 0; }
-      5%   { opacity: 1; }   /* fade in 1s */
-      20%  { opacity: 1; }   /* tampil 15s */
-      25%  { opacity: 0; }   /* fade out 1s */
-      100% { opacity: 0; }
+      0%     { opacity: 0; }
+      1.5%   { opacity: 1; }   /* fade in 5s */
+      20%    { opacity: 1; }   /* tampil */
+      21.5%  { opacity: 0; }   /* fade out 5s */
+      100%   { opacity: 0; }
     }
 
     /* HEADER STICKY */
