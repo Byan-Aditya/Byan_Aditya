@@ -81,7 +81,6 @@
   
     .header-container h1 {
       margin: 0px;
-      font-size: 23px;
     }
 
     .doa {
@@ -120,35 +119,47 @@
       font-family: "Times New Roman", Times, serif;
       font-weight: bold;
     }
+
+    .creepster-regular {
+      font-family: "Creepster", system-ui;
+      font-size: 38px;
+      font-style: normal;
+      -webkit-text-stroke: 1px black;
+      display: inline-block;
     
-    .rainbow-text {
-      font-size: 35px;
-      font-weight: bold;
-      background: linear-gradient(
-      90deg,
-      cyan,
-      white, 
-      orange,
-      cyan,      
-      orange,
-      gold, 
-      cyan,
-      pink,  
-      gold, 
-      cyan,
-      white,
-      orange,
-      cyan
-      );
-      background-size: 400% 100%;
-      background-repeat: repeat;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: pelangi 7s linear infinite;
+      color: cyan;
+      -webkit-text-fill-color: cyan;
+    
+      animation: rainbowHue 15s linear infinite;
     }
-    @keyframes pelangi {
-      0%   { background-position: 0% 100%; }
-      100% { background-position: 100% 0%; }
+    
+    .creepster-regular span {
+      display: inline-block;
+      color: inherit;
+      -webkit-text-fill-color: inherit;
+    
+      animation: wiggle 3s infinite ease-in-out;
+    }
+    
+    .creepster-regular span:nth-child(odd) {
+      animation-delay: 0.6s;
+    }
+    
+    .creepster-regular span:nth-child(even) {
+      animation-delay: 0.9s;
+    }
+    
+    /* smooth banget karena rotasi hue */
+    @keyframes rainbowHue {
+      0%   { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+    
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg) translateY(0px); }
+      25% { transform: rotate(2deg) translateY(-2px); }
+      50% { transform: rotate(-2deg) translateY(2px); }
+      75% { transform: rotate(1deg) translateY(-1px); }
     }
 
     .fotoframe {
@@ -314,4 +325,4 @@
       padding: 10px 20px;
       border-radius: 50px;
       color: white;
-    }
+          }
