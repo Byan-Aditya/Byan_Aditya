@@ -96,6 +96,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// === BYAN TULISAN GOYANG ===
+document.querySelectorAll(".creepster-regular").forEach(el => {
+  let text = el.innerText;
+  el.innerHTML = ""; // kosongin dulu
+  [...text].forEach(char => {
+    let span = document.createElement("span");
+    span.textContent = char;
+    if (char === " ") span.style.width = "0.2em"; // biar spasi tetep keliatan
+    el.appendChild(span);
+  });
+});
+
 // === PROGRESS BAR + FIREWORK ===
 window.addEventListener("load", () => {
   document.querySelectorAll('.progress-bar').forEach(bar => {
