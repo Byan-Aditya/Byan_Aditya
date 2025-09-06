@@ -77,6 +77,7 @@
       font-family: 'Anton', sans-serif;
       display: inline-block;
       background-color: #5c5c5c;
+      box-shadow: 0px 0px 7px rgba(0,0,0,0.8);
       font-size: 20px;
       border-radius: 30px;
       padding: 5px 15px;
@@ -112,6 +113,7 @@
       display: inline-block;
       color: White;
       background-color: #5c5c5c;
+      box-shadow: 0px 0px 7px rgba(0,0,0,0.8);
       font-size: 20px;
       border-radius: 30px;
       padding: 5px 15px;
@@ -132,24 +134,24 @@
       display: flex;
       align-items: center;
       padding-top: 20px;
-      gap: 5px;
+      gap: 8px;
     }
     
     .circle-wrapper {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       margin-top: 0px;
       background-color: #5c5c5c;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 6px rgba(0, 0, 0, 0.2); /* efek glow tipis */
+      box-shadow: 0px 0px 7px rgba(0,0,0,0.8);
     }
     
     .circle-img {
-      width: 32px;
-      height: 32px;
+      width: 37px;
+      height: 37px;
       border-radius: 50%;
       object-fit: cover;
     }
