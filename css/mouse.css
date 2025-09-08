@@ -1,40 +1,43 @@
-      /* Hilangkan Cursor Bawaan */
-      body, button, a, input, textarea, select, label {
-        cursor: none !important;
-      }
+    /* Hilangkan Cursor Bawaan */
+    body, button, a, input, textarea, select, label {
+      cursor: none !important;
+    }
 
-      /* Elemen kustom cursor */
-      .custom-cursor {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        background-color: white;
-        border: 3px solid grey;
-        mix-blend-mode: difference;
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition: transform 0.05s ease-out;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 3);
-      }
+    /* Elemen kustom cursor */
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: white;
+      border: 3px solid grey;
+      mix-blend-mode: difference;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      display: block; /* tetep tampil default */
+    }
 
-        /* Default: tampilin kursor kustom */
+    /* Animasi mengecil pas klik */
+    .custom-cursor.click {
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    /* Supaya cursor default ilang */
+    * {
+      cursor: none;
+    }
+
+    /* Khusus layar sentuh (tanpa hover) → sembunyikan kursor kustom & munculin default cursor */
+    @media (hover: none) and (pointer: coarse) {
       .custom-cursor {
-        display: block;
+        display: none;
       }
       * {
-        cursor: none;
+        cursor: auto;
       }
-      
-      /* Khusus layar sentuh (tanpa hover) → sembunyikan kursor kustom & munculin default cursor */
-      @media (hover: none) and (pointer: coarse) {
-        .custom-cursor {
-          display: none;
-        }
-        * {
-          cursor: auto;
-        }
-      }
+    }
