@@ -564,14 +564,18 @@
             <input type="number" id="hour" placeholder="Jam (24h)" min="0" max="23">
             <input type="number" id="minute" placeholder="Menit" min="0" max="59">
           </div>
-          <button onclick="generate()" id="animateBtn" data-original="">
-            <span>B</span><span>e</span><span>r</span><span>a</span><span>p</span><span>a</span>
-            <span>U</span><span>m</span><span>u</span><span>r</span>
-            <span>S</span><span>a</span><span>y</span><span>a</span><span class="spc"> </span>
-            <span>?</span>
-            <span></span>
-            <span></span>      
-          </button>
+          <div class="row" style="margin-top: 20px; gap:10px; justify-content:center;">
+            <button onclick="generate()" id="animateBtn" data-original="">
+              <span>B</span><span>e</span><span>r</span><span>a</span><span>p</span><span>a</span>
+              <span>U</span><span>m</span><span>u</span><span>r</span>
+              <span>S</span><span>a</span><span>y</span><span>a</span><span class="spc"> </span>
+              <span>?</span>
+            </button>
+            <!-- tombol clear -->
+            <button id="clearBtn" class="clear-btn" title="Clear">
+              <img id="clearIcon" src="images/cancel.gif" alt="Clear">
+            </button>
+          </div>
           <div class="result" id="result">
             <div class="result-row">
               <div style="border-color: white; box-shadow: 0 0 5px white;" class="block"><span style="font-weight: bold;" class="value" id="val-year">0</span><div class="label">Tahun</div></div>
