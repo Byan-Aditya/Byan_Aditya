@@ -232,12 +232,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Gerakan pointer
   document.addEventListener("pointermove", (e) => {
-    if (e.pointerType === "mouse") { // cuma jalan kalau mouse
+    if (e.pointerType === "mouse") {
       cursor.style.top = `${e.clientY}px`;
       cursor.style.left = `${e.clientX}px`;
       cursor.style.opacity = "1";
     } else {
-      cursor.style.opacity = "0"; // kalau touch, sembunyikan
+      cursor.style.opacity = "0";
     }
   });
 
@@ -249,6 +249,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.pointerType === "mouse") {
       cursor.style.opacity = "1";
     }
+  });
+
+  // Efek klik → tambah class click sebentar
+  document.addEventListener("mousedown", () => {
+    cursor.classList.add("click");
+  });
+
+  document.addEventListener("mouseup", () => {
+    cursor.classList.remove("click");
   });
 });
 
