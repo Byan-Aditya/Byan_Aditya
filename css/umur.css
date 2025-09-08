@@ -188,6 +188,43 @@
       }
     }
 
+    .clear-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: #c0392b; /* merah default */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      overflow: hidden;
+    }
+    
+    .clear-btn img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      pointer-events: none;
+      transition: transform 0.4s ease;
+    }
+    
+    /* hover efek */
+    .clear-btn:hover img {
+      transform: scale(1.0);
+    }
+    
+    /* klik efek */
+    .clear-btn:active img {
+      transform: scale(0.7);
+    }
+    
+    /* sukses → ubah warna background */
+    .clear-btn.success {
+      background: #27ae60;
+    }
+
     @media (max-width: 768px) {
       .kemasan-umur {
         display: flex;
