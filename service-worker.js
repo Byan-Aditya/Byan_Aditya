@@ -36,6 +36,8 @@ self.addEventListener("install", event => {
         "images/bg4.jpg",
         "images/bg5.jpg",
         "images/biodata.png",
+        "images/cancel.gif",
+        "images/cancel-completed.gif",
         "images/complate-alert.gif",
         "images/download-alert.gif",
         "images/download-failed.gif",
