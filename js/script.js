@@ -580,6 +580,38 @@ canvas.addEventListener("click", () => {
   }, 1000);
 });
 
+// === CLEAR BUTTON ===
+document.getElementById("clearBtn").addEventListener("click", () => {
+  const btn = document.getElementById("clearBtn");
+  const icon = document.getElementById("clearIcon");
+
+  // ganti gif ke completed
+  btn.classList.add("success");
+  icon.src = "images/cancel-completed.gif";
+
+  // balik ke normal setelah 2 detik
+  setTimeout(() => {
+    btn.classList.remove("success");
+    icon.src = "images/cancel.gif";
+  }, 2000);
+
+  // clear input
+  ["day","month","year","hour","minute"].forEach(id => {
+    document.getElementById(id).value = "";
+  });
+
+  // reset hasil umur
+  clearInterval(timer);
+  lastValues = [0,0,0,0,0,0];
+  ['year','month','day','hour','minute','second'].forEach(id => {
+    document.getElementById('val-'+id).textContent = "0";
+  });
+
+  // sembunyikan hasil
+  document.getElementById("result").classList.remove("show");
+  birthDate = null;
+});
+
 // === ANIMASI ALERT ? ===
 document.addEventListener('DOMContentLoaded', () => {
   const helpBtn = document.getElementById('helpBtn');
