@@ -581,18 +581,29 @@ canvas.addEventListener("click", () => {
 });
 
 // === CLEAR BUTTON ===
-document.getElementById("clearBtn").addEventListener("click", () => {
-  const btn = document.getElementById("clearBtn");
-  const icon = document.getElementById("clearIcon");
+const btn = document.getElementById("clearBtn");
+const iconCancel = document.getElementById("iconCancel");
+const iconDone = document.getElementById("iconDone");
 
-  // ganti gif ke completed
+btn.addEventListener("click", () => {
+  // zoom klik
+  btn.classList.add("clicked");
+  setTimeout(() => btn.classList.remove("clicked"), 200);
+
+  // silang hilang → centang muncul
   btn.classList.add("success");
-  icon.src = "images/cancel-completed.gif";
+  iconCancel.classList.remove("show");
+  iconCancel.classList.add("hidden");
+  iconDone.classList.remove("hidden");
+  iconDone.classList.add("show");
 
-  // balik ke normal setelah 2 detik
+  // balik silang setelah 2 detik
   setTimeout(() => {
     btn.classList.remove("success");
-    icon.src = "images/cancel.gif";
+    iconDone.classList.remove("show");
+    iconDone.classList.add("hidden");
+    iconCancel.classList.remove("hidden");
+    iconCancel.classList.add("show");
   }, 2000);
 
   // clear input
