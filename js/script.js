@@ -227,17 +227,19 @@ document.addEventListener("DOMContentLoaded", () => {
   cursor.classList.add("custom-cursor");
   document.body.appendChild(cursor);
 
-  // Awal disembunyikan
   cursor.style.opacity = "0";
 
-  // Gerakan pointer
+  const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+  if (isTouch) {
+    cursor.style.display = "none";
+    return;
+  }
+
   document.addEventListener("pointermove", (e) => {
     if (e.pointerType === "mouse") {
       cursor.style.top = `${e.clientY}px`;
       cursor.style.left = `${e.clientX}px`;
       cursor.style.opacity = "1";
-    } else {
-      cursor.style.opacity = "0";
     }
   });
 
@@ -251,13 +253,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Efek klik → tambah class click sebentar
+  let pressTime = 0;
+  let holdTimer;
+
   document.addEventListener("mousedown", () => {
-    cursor.classList.add("click");
+    pressTime = Date.now();
+
+    // delay supaya klik cepat ora sempet nambah .hold
+    holdTimer = setTimeout(() => {
+      cursor.classList.add("hold");
+    }, 200);
   });
 
   document.addEventListener("mouseup", () => {
-    cursor.classList.remove("click");
+    const held = Date.now() - pressTime;
+    clearTimeout(holdTimer);
+
+    cursor.classList.remove("hold");
+
+    if (held < 200) {
+      // klik cepat → animasi bounce
+      cursor.classList.remove("click"); // reset animasi
+      void cursor.offsetWidth;          // reflow trick
+      cursor.classList.add("click");
+    }
+    // klik lama (>200ms) → cukup balik normal
   });
 });
 
