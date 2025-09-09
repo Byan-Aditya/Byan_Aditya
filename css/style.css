@@ -46,11 +46,11 @@
       animation: fadeCycle 325s infinite;
     }
     
-    .bg1 { background-image: url('../images/bg1.webp'); animation-delay:   0s; }
-    .bg2 { background-image: url('../images/bg2.webp'); animation-delay:  65s; }
-    .bg3 { background-image: url('../images/bg3.webp'); animation-delay: 130s; }
-    .bg4 { background-image: url('../images/bg4.webp'); animation-delay: 195s; }
-    .bg5 { background-image: url('../images/bg5.webp'); animation-delay: 260s; }
+    .bg1 { background-image: url('../images/bg1.jpg'); animation-delay:   0s; }
+    .bg2 { background-image: url('../images/bg2.jpg'); animation-delay:  65s; }
+    .bg3 { background-image: url('../images/bg3.jpg'); animation-delay: 130s; }
+    .bg4 { background-image: url('../images/bg4.jpg'); animation-delay: 195s; }
+    .bg5 { background-image: url('../images/bg5.jpg'); animation-delay: 260s; }
     
     @keyframes fadeCycle {
       0%     { opacity: 0; }
