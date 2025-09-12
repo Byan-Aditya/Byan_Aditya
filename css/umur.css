@@ -24,14 +24,14 @@
       justify-content: center; /* tengah horizontal */
       align-items: flex-start;
       font-family: "Times New Roman", Times, serif;
-      padding-top: 15px;
+      padding: 15px;
    }
 
    .frame-box {
       background-color: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(6px);
       width: 700px;
-      padding: 20px;
+      padding: 15px;
       border-radius: 30px;
       text-align: center;
       color: white;
