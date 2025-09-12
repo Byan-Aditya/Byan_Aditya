@@ -6,6 +6,25 @@
       cursor: none !important;  /* hilangkan cursor Default */
     }
 
+   .kemasan-catur {
+      display: flex;
+      justify-content: center; /* tengah horizontal */
+      align-items: flex-start;
+      font-family: "Times New Roman", Times, serif;
+      padding: 15px;
+   }
+
+   .catur-box {
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      width: 700px;
+      padding: 15px;
+      border-radius: 30px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
     #chessboard {
       position: relative;
       width: 492px; /* (8x60)+(6x2) */
