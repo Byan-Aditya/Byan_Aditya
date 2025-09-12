@@ -1,0 +1,251 @@
+    /* ================== CHESSBOARD ================== */
+    #chessboard, 
+    #chessboard *, 
+    .custom-select, 
+    .custom-select * {
+      cursor: none !important;  /* hilangkan cursor Default */
+    }
+
+    #chessboard {
+      position: relative;
+      width: 492px; /* (8x60)+(6x2) */
+      height: 492px;
+      margin: 15px auto;
+      border: 6px solid black;
+      border-radius: 10px;
+      box-shadow: 0 0 15px white;
+      background: #222;
+      display: grid;
+      grid-template-columns: repeat(8, 60px);
+      grid-template-rows: repeat(8, 60px);
+    }
+
+    .square {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .white { background: #f0d9b5; }
+    .black { background: #b58863; }
+
+    .selected { outline: 3px solid #38f; z-index: 2; }
+
+    .highlight::after {
+      content: '';
+      width: 18px;
+      height: 18px;
+      background: rgba(56,168,255,0.6);
+      border-radius: 50%;
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .king-skak {
+      outline: 4px solid #e00 !important;
+      box-shadow: 0 0 12px #e00;
+      z-index: 5;
+    }
+
+    .piece-img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      pointer-events: none; /* supaya klik tetap ke kotak, bukan ke gambar */
+    }
+
+    .piece-anim {
+      position: absolute;
+      left: 0; top: 0;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: left 0.25s, top 0.25s;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* ================== STATUS ================== */
+    .status {
+      margin-top: 12px;
+      font-size: 18px;
+    }
+
+    /* ================== UNDO BUTTON ================== */
+    .undo-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .undo-btn.pressed img {
+      transform: scale(0.8); /* ngecil halus */
+    }
+
+    /* ikon di dalam tombol */
+    .undo-btn img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      pointer-events: none;
+      transition: transform 0.2s ease;
+    }
+
+    /* fokus default ilang */
+    #undoBtn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    /* ================== CUSTOM DROPDOWN ================== */
+    .custom-select {
+      position: relative;
+      width: 200px;
+      user-select: none;
+      font-weight: bold;
+    }
+
+    /* Tombol utama dropdown */
+    .select-trigger {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(2px);
+      border: 1px solid #444;
+      color: black;
+      border-radius: 20px;
+      font-size: 1em;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      /* ilangke highlight biru default */
+      outline: none !important;
+      box-shadow: none !important;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .select-trigger span {
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .select-trigger:hover span {
+      color: black;
+      transform: scale(1.05);
+    }
+
+    .select-trigger:active {
+      transform: none;
+    }
+
+    /* Panah */
+    .arrow {
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid #333;
+      transition: transform 0.3s;
+    }
+
+    .custom-select.open .arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Daftar opsi */
+    .options {
+      position: absolute;
+      top: 110%;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(2px);
+      border: 1px solid Black;
+      color: black;
+      border-radius: 12px;
+      box-shadow: 0 0 10px black;
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    .custom-select.open .options {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .options span {
+      display: block;
+      padding: 10px 14px;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .options span:hover {
+      background: #d6eaff;
+    }
+
+    /* ================== RESPONSIVE ================== */
+    @media (max-width: 768px) {
+      #chessboard {
+        width: 292px;
+        height: 292px;
+        margin: 10px auto;
+        border: 6px solid black;
+        border-radius: 10px;
+        box-shadow: 0 0 10px white;
+        grid-template-columns: repeat(8, 35px);
+        grid-template-rows: repeat(8, 35px);
+      }
+
+      .square {
+        width: 35px;
+        height: 35px;
+      }
+
+      .piece-anim {
+        width: 35px;
+        height: 35px;
+      }
+
+      .undo-btn {
+        width: 40px;
+        height: 40px;
+      }
+
+      .undo-btn img {
+        width: 30px;
+        height: 30px;
+      }
+      
+      .custom-select {
+        width: 175px;
+      }
+    }
