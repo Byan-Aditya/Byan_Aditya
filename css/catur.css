@@ -121,7 +121,7 @@
     /* ================== CUSTOM DROPDOWN ================== */
     .custom-select {
       position: relative;
-      width: 200px;
+      width: 220px;
       user-select: none;
       font-weight: bold;
     }
@@ -212,15 +212,24 @@
       background: #d6eaff;
     }
 
+    .notification-catur {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(2px);
+      border: 1px solid #444;
+      color: black;
+      border-radius: 20px;
+      font-size: 1em;
+      font-weight: bold;
+      padding: 5px 10px;
+      display: inline-block;
+      align-items: center;
+    }
+
     /* ================== RESPONSIVE ================== */
     @media (max-width: 768px) {
       #chessboard {
         width: 292px;
         height: 292px;
-        margin: 10px auto;
-        border: 6px solid black;
-        border-radius: 10px;
-        box-shadow: 0 0 10px white;
         grid-template-columns: repeat(8, 35px);
         grid-template-rows: repeat(8, 35px);
       }
@@ -246,6 +255,12 @@
       }
       
       .custom-select {
-        width: 175px;
+        width: 192.5px;
+      }
+      
+      .notification-catur {
+        border-radius: 20px;
+        font-size: 0.8em;
+        padding: 5px 10px;
       }
     }
