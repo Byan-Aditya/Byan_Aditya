@@ -783,7 +783,7 @@ document.addEventListener("DOMContentLoaded", () => {
         current.classList.remove("exit");
         next.classList.add("active");
       }, 700);
-    }, 10000);
+    }, 20000);
 
 // === CARD STACK PORTOFOLIO ===
 document.querySelectorAll(".card-body").forEach((card) => {
