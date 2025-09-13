@@ -309,20 +309,58 @@
       transform: scale(0.8);
       transition: all 0.6s ease;
       text-align: center;
+      pointer-events: none;   /* default: ora iso diklik */
     }
     
     .zoom-text.active {
       opacity: 1;
       transform: scale(1);
+      pointer-events: auto;   /* iso diklik mung nek aktif */
     }
     
     .zoom-text.exit {
       opacity: 0;
       transform: scale(1.2);
+      pointer-events: none;   /* tetep ora iso diklik */
     }
     
     .blur-box {
       padding: 10px 20px;
       border-radius: 50px;
       color: white;
-          }
+    }
+
+    .support-container {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .support-container a img {
+      width: 25px;
+      height: 25px;
+      padding: 2px;
+      border-radius: 50%;
+      background: white;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .support-container a img:hover {
+      transform: scale(1.2);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .support-container a {
+      outline: none !important;
+    }
+    
+    .support-container a:focus,
+    .support-container a:focus-visible,
+    .support-container a:active {
+      outline: none !important;
+      box-shadow: none !important;
+      -webkit-tap-highlight-color: transparent; /* khusus Chrome/Safari/HP */
+    }
