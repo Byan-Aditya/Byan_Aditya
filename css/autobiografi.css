@@ -89,52 +89,52 @@
   }
 
   #card1 .card-body {
-    background-image: url('../slide2-images/1.jpg');
+    background-image: url('../images/autobiografi/1.jpg');
     background-position: top center;
   }
 
   #card2 .card-body {
-    background-image: url('../slide2-images/2.jpg');
+    background-image: url('../images/autobiografi/2.jpg');
     background-position: center;
   }
 
   #card3 .card-body {
-    background-image: url('../slide2-images/3.jpg');
+    background-image: url('../images/autobiografi/3.jpg');
     background-position: top center;
   }
 
   #card4 .card-body {
-    background-image: url('../slide2-images/4.jpg');
+    background-image: url('../images/autobiografi/4.jpg');
     background-position: top center;
   }
 
   #card5 .card-body {
-    background-image: url('../slide2-images/5.jpg');
+    background-image: url('../images/autobiografi/5.jpg');
     background-position: top center;
   }
 
   #card6 .card-body {
-    background-image: url('../slide2-images/6.jpg');
+    background-image: url('../images/autobiografi/6.jpg');
     background-position: center;
   }
 
   #card7 .card-body {
-    background-image: url('../slide2-images/7.jpg');
+    background-image: url('../images/autobiografi/7.jpg');
     background-position: center;
   }
 
   #card8 .card-body {
-    background-image: url('../slide2-images/8.jpg');
+    background-image: url('../images/autobiografi/8.jpg');
     background-position: center;
   }
 
   #card9 .card-body {
-    background-image: url('../slide2-images/9.jpg');
+    background-image: url('../images/autobiografi/9.jpg');
     background-position: center;
   }
 
   #card10 .card-body {
-    background-image: url('../slide2-images/10.jpg');
+    background-image: url('../images/autobiografi/10.jpg');
     background-position: top center;
   }
 
@@ -368,52 +368,52 @@
   }
   
   #card1 .card-body {
-    background-image: url('../slide2-images/1.jpg');
+    background-image: url('../images/autobiografi/1.jpg');
     background-position: center;
   }
 
   #card2 .card-body {
-    background-image: url('../slide2-images/2.jpg');
+    background-image: url('../images/autobiografi/2.jpg');
     background-position: center;
   }
 
   #card3 .card-body {
-    background-image: url('../slide2-images/3.jpg');
+    background-image: url('../images/autobiografi/3.jpg');
     background-position: center;
   }
 
   #card4 .card-body {
-    background-image: url('../slide2-images/4.jpg');
+    background-image: url('../images/autobiografi/4.jpg');
     background-position: center;
   }
 
   #card5 .card-body {
-    background-image: url('../slide2-images/5.jpg');
+    background-image: url('../images/autobiografi/5.jpg');
     background-position: center;
   }
 
   #card6 .card-body {
-    background-image: url('../slide2-images/6.jpg');
+    background-image: url('../images/autobiografi/6.jpg');
     background-position: center;
   }
 
   #card7 .card-body {
-    background-image: url('../slide2-images/7.jpg');
+    background-image: url('../images/autobiografi/7.jpg');
     background-position: center;
   }
 
   #card8 .card-body {
-    background-image: url('../slide2-images/8.jpg');
+    background-image: url('../images/autobiografi/8.jpg');
     background-position: center;
   }
 
   #card9 .card-body {
-    background-image: url('../slide2-images/9.jpg');
+    background-image: url('../images/autobiografi/9.jpg');
     background-position: center;
   }
 
   #card10 .card-body {
-    background-image: url('../slide2-images/10.jpg');
+    background-image: url('../images/autobiografi/10.jpg');
     background-position: center;
     }
     
@@ -425,5 +425,4 @@
   .question-btn {
     font-size: 1rem;
   }
-  
 }
