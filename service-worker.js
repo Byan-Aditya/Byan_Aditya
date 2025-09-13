@@ -96,6 +96,17 @@ self.addEventListener("install", event => {
         "images/catur/seimbang.gif",
         "images/catur/undo.gif",
       
+        "images/copyright/logo-facebook.png",
+        "images/copyright/logo-flaticon.png",
+        "images/copyright/logo-github.png",
+        "images/copyright/logo-gmail.png",
+        "images/copyright/logo-gpt.png",      
+        "images/copyright/logo-icons8.png",
+        "images/copyright/logo-instagram.png",
+        "images/copyright/logo-linkedin.png",
+        "images/copyright/logo-twitter.png",
+        "images/copyright/logo-vercel.png",
+      
         "music/lagu1.mp3",
         "music/lagu2.mp3",
         "music/lagu3.mp3",
