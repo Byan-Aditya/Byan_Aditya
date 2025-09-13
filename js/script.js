@@ -235,11 +235,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // ===== MOUSE LOGIC =====
   document.addEventListener("pointermove", (e) => {
     if (e.pointerType === "mouse") {
       cursor.style.top = `${e.clientY}px`;
       cursor.style.left = `${e.clientX}px`;
-      cursor.style.opacity = "1";
+      cursor.style.opacity = "1"; // mouse always shows cursor
     }
   });
 
@@ -248,9 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("mouseenter", (e) => {
-    if (e.pointerType === "mouse") {
-      cursor.style.opacity = "1";
-    }
+    if (e.pointerType === "mouse") cursor.style.opacity = "1";
   });
 
   let pressTime = 0;
@@ -258,8 +257,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("mousedown", () => {
     pressTime = Date.now();
-
-    // delay supaya klik cepat ora sempet nambah .hold
     holdTimer = setTimeout(() => {
       cursor.classList.add("hold");
     }, 200);
@@ -272,12 +269,36 @@ document.addEventListener("DOMContentLoaded", () => {
     cursor.classList.remove("hold");
 
     if (held < 200) {
-      // klik cepat → animasi bounce
-      cursor.classList.remove("click"); // reset animasi
-      void cursor.offsetWidth;          // reflow trick
+      cursor.classList.remove("click"); 
+      void cursor.offsetWidth;          
       cursor.classList.add("click");
     }
-    // klik lama (>200ms) → cukup balik normal
+  });
+
+  // ===== TOUCH/HYBRID FIX =====
+  // touch gesture cuma sembunyikan cursor sementara
+  const hideCursorTemporarily = () => cursor.style.opacity = "0";
+
+  document.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "touch") hideCursorTemporarily();
+  });
+
+  document.addEventListener("pointerup", (e) => {
+    if (e.pointerType === "touch") hideCursorTemporarily();
+  });
+
+  document.addEventListener("pointercancel", () => {
+    hideCursorTemporarily();
+  });
+
+  // ===== SCROLL FIX =====
+  let scrollTimeout;
+  window.addEventListener("scroll", () => {
+    cursor.style.opacity = "0";
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      // cursor muncul otomatis saat mouse bergerak
+    }, 300);
   });
 });
 
