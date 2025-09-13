@@ -5,6 +5,13 @@
       -ms-user-select: none !important;
     }
 
+    #sheet-footer, 
+    #sheet-footer *, 
+    .sheet-footer, 
+    .sheet-footer * {
+      cursor: none !important;  /* hilangkan cursor Default */
+    }
+
     * {
       scrollbar-width: none;     /* Firefox */
       -ms-overflow-style: none;  /* IE dan Edge lama */
