@@ -345,48 +345,80 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // === SPLASH SCREEN===
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const introLogo = document.getElementById("introLogo");
   const fotomuter = document.getElementById("fotomuter");
   const intro = document.getElementById("intro");
   const dots = document.getElementById("dots");
   const splashText = document.querySelector(".splash-screen-text");
 
-  // animasi titik2
-  let dotCount = 0;
-  const dotInterval = setInterval(() => {
-    dotCount = (dotCount + 1) % 4;
-    dots.textContent = ".".repeat(dotCount);
-  }, 500);
+  // Kumpulin asset sing iso dilacak
+  const assets = [
+    ...document.images,
+    ...document.querySelectorAll("audio, video")
+  ];
+  let loadedCount = 0;
+  const totalAssets = assets.length;
 
-  // Logo besar di tengah
-  introLogo.style.width = "250px";
-  introLogo.style.height = "250px";
-  introLogo.style.left = "50%";
-  introLogo.style.top = "50%";
-  introLogo.style.transform = "translate(-50%, -50%)";
+  function updateProgress(asset) {
+    if (asset.dataset.done) return; // wis keitung, skip
+    asset.dataset.done = true;
 
-  // Posisi target logo di header
-  const targetRect = fotomuter.getBoundingClientRect();
+    loadedCount++;
+    let percent = Math.min(100, Math.round((loadedCount / totalAssets) * 100));
+    splashText.textContent = `Loading ${percent}%`;
 
-  // Munculkan konten web
-  document.body.classList.add("loaded");
+    if (loadedCount >= totalAssets) {
+      startAnimation();
+    }
+  }
 
-  // Jalankan animasi: teks ilang + logo pindah
-  setTimeout(() => {
-    splashText.classList.add("hide"); // ✨ teks ilang
-    introLogo.style.width = "50px";
-    introLogo.style.height = "50px";
-    introLogo.style.left = `${targetRect.left}px`;
-    introLogo.style.top = `${targetRect.top}px`;
-    introLogo.style.transform = "translate(0, 0)";
-  }, 400);
+  if (totalAssets === 0) {
+    startAnimation();
+  } else {
+    assets.forEach(asset => {
+      if (asset.complete || asset.readyState >= 3) {
+        updateProgress(asset);
+      } else {
+        asset.addEventListener("load", () => updateProgress(asset));
+        asset.addEventListener("error", () => updateProgress(asset));
+        asset.addEventListener("loadeddata", () => updateProgress(asset));
+        asset.addEventListener("canplaythrough", () => updateProgress(asset));
+      }
+    });
+  }
 
-  // Setelah animasi selesai, splash screen ilang
-  setTimeout(() => {
-    intro.classList.add("hide");
-    clearInterval(dotInterval);
-  }, 1500);
+  // Animasi splash
+  function startAnimation() {
+    let dotCount = 0;
+    const dotInterval = setInterval(() => {
+      dotCount = (dotCount + 1) % 4;
+      dots.textContent = ".".repeat(dotCount);
+    }, 500);
+
+    introLogo.style.width = "250px";
+    introLogo.style.height = "250px";
+    introLogo.style.left = "50%";
+    introLogo.style.top = "50%";
+    introLogo.style.transform = "translate(-50%, -50%)";
+
+    const targetRect = fotomuter.getBoundingClientRect();
+    document.body.classList.add("loaded");
+
+    setTimeout(() => {
+      splashText.classList.add("hide");
+      introLogo.style.width = "50px";
+      introLogo.style.height = "50px";
+      introLogo.style.left = `${targetRect.left}px`;
+      introLogo.style.top = `${targetRect.top + window.scrollY}px`;
+      introLogo.style.transform = "translate(0, 0)";
+    }, 400);
+
+    setTimeout(() => {
+      intro.classList.add("hide");
+      clearInterval(dotInterval);
+    }, 1500);
+  }
 });
 
 // ================== UMUR COUNTER ==================
