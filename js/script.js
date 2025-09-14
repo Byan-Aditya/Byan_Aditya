@@ -351,56 +351,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const intro = document.getElementById("intro");
   const splashText = document.querySelector(".splash-screen-text");
 
-  // Kumpulin gambar wae
-  const assets = [...document.images];
+  // 🔥 Ambil semua resource (gambar, css, js, font, dll.)
+  const resources = performance.getEntriesByType("resource");
+  let totalAssets = resources.length + 1; // +1 kanggo dokumen HTML utama
   let loadedCount = 0;
-  const totalAssets = assets.length;
 
-  function updateProgress(asset) {
-    if (asset.dataset.done) return;
-    asset.dataset.done = true;
-
+  function updateProgress() {
     loadedCount++;
     let percent = Math.min(100, Math.round((loadedCount / totalAssets) * 100));
-
     splashText.textContent = `Loading ${percent}%`;
 
-    // ✨ animasi mung di-start pas persentase wis 100%
     if (loadedCount >= totalAssets) {
       startAnimation();
     }
   }
 
-  if (totalAssets === 0) {
-    startAnimation();
-  } else {
-    assets.forEach(asset => {
-      if (asset.complete) {
-        updateProgress(asset);
-      } else {
-        asset.addEventListener("load", () => updateProgress(asset));
-        asset.addEventListener("error", () => updateProgress(asset));
-      }
-    });
-  }
+  // Mark dokumen HTML rampung
+  updateProgress();
 
+  // 🎯 Nunggu kabeh resource rampung
+  window.addEventListener("load", () => {
+    // kabeh resource (css, js, image, font) wis selesai
+    while (loadedCount < totalAssets) {
+      updateProgress();
+    }
+  });
+
+  // -----------------
+  // Animasi Splash
+  // -----------------
   function startAnimation() {
-    // Logo gede di tengah
     introLogo.style.width = "250px";
     introLogo.style.height = "250px";
     introLogo.style.left = "50%";
     introLogo.style.top = "50%";
     introLogo.style.transform = "translate(-50%, -50%)";
 
-    // Posisi target logo di header
     const targetRect = fotomuter.getBoundingClientRect();
 
-    // Munculkan konten web
     document.body.classList.add("loaded");
 
-    // Animasi: teks ilang + logo pindah
     setTimeout(() => {
-      splashText.classList.add("hide"); 
+      splashText.classList.add("hide");
       introLogo.style.width = "50px";
       introLogo.style.height = "50px";
       introLogo.style.left = `${targetRect.left}px`;
@@ -408,7 +400,6 @@ document.addEventListener("DOMContentLoaded", () => {
       introLogo.style.transform = "translate(0, 0)";
     }, 400);
 
-    // Splash screen ilang
     setTimeout(() => {
       intro.classList.add("hide");
     }, 1500);
