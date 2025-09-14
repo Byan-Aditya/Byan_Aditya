@@ -352,16 +352,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const dots = document.getElementById("dots");
   const splashText = document.querySelector(".splash-screen-text");
 
-  // Kumpulin asset sing iso dilacak
-  const assets = [
-    ...document.images,
-    ...document.querySelectorAll("audio, video")
-  ];
+  // Kumpulin gambar wae (audio/video skip ben ora macet iPhone)
+  const assets = [...document.images];
   let loadedCount = 0;
   const totalAssets = assets.length;
 
   function updateProgress(asset) {
-    if (asset.dataset.done) return; // wis keitung, skip
+    if (asset.dataset.done) return;
     asset.dataset.done = true;
 
     loadedCount++;
@@ -377,18 +374,22 @@ document.addEventListener("DOMContentLoaded", () => {
     startAnimation();
   } else {
     assets.forEach(asset => {
-      if (asset.complete || asset.readyState >= 3) {
+      if (asset.complete) {
         updateProgress(asset);
       } else {
         asset.addEventListener("load", () => updateProgress(asset));
         asset.addEventListener("error", () => updateProgress(asset));
-        asset.addEventListener("loadeddata", () => updateProgress(asset));
-        asset.addEventListener("canplaythrough", () => updateProgress(asset));
       }
     });
   }
 
-  // Animasi splash
+  // Fallback anti-stuck (misal 5 detik langsung jalan)
+  setTimeout(() => {
+    if (loadedCount < totalAssets) {
+      startAnimation();
+    }
+  }, 5000);
+
   function startAnimation() {
     let dotCount = 0;
     const dotInterval = setInterval(() => {
