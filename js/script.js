@@ -345,7 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // === SPLASH SCREEN===
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const introLogo = document.getElementById("introLogo");
   const fotomuter = document.getElementById("fotomuter");
   const intro = document.getElementById("intro");
@@ -386,7 +386,7 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     intro.classList.add("hide");
     clearInterval(dotInterval);
-  }, 1500);
+  }, 5000);
 });
 
 // ================== UMUR COUNTER ==================
