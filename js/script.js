@@ -365,6 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     splashText.textContent = `Loading ${percent}%`;
 
+    // ✨ animasi mung di-start pas persentase wis 100%
     if (loadedCount >= totalAssets) {
       startAnimation();
     }
@@ -383,13 +384,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Fallback anti-stuck (misal 5 detik langsung jalan)
-  setTimeout(() => {
-    if (loadedCount < totalAssets) {
-      startAnimation();
-    }
-  }, 5000);
-
   function startAnimation() {
     // Logo gede di tengah
     introLogo.style.width = "250px";
@@ -401,10 +395,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Posisi target logo di header
     const targetRect = fotomuter.getBoundingClientRect();
 
+    // Munculkan konten web
     document.body.classList.add("loaded");
 
+    // Animasi: teks ilang + logo pindah
     setTimeout(() => {
-      splashText.classList.add("hide");
+      splashText.classList.add("hide"); 
       introLogo.style.width = "50px";
       introLogo.style.height = "50px";
       introLogo.style.left = `${targetRect.left}px`;
@@ -412,6 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
       introLogo.style.transform = "translate(0, 0)";
     }, 400);
 
+    // Splash screen ilang
     setTimeout(() => {
       intro.classList.add("hide");
     }, 1500);
