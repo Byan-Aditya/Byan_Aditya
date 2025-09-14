@@ -345,13 +345,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // === SPLASH SCREEN===
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const introLogo = document.getElementById("introLogo");
   const fotomuter = document.getElementById("fotomuter");
   const intro = document.getElementById("intro");
   const splashText = document.querySelector(".splash-screen-text");
 
-  // Kumpulin gambar wae (audio/video skip ben ora macet iPhone)
+  // Kumpulin gambar wae
   const assets = [...document.images];
   let loadedCount = 0;
   const totalAssets = assets.length;
@@ -362,6 +362,7 @@ window.addEventListener("load", () => {
 
     loadedCount++;
     let percent = Math.min(100, Math.round((loadedCount / totalAssets) * 100));
+
     splashText.textContent = `Loading ${percent}%`;
 
     if (loadedCount >= totalAssets) {
@@ -390,7 +391,7 @@ window.addEventListener("load", () => {
   }, 5000);
 
   function startAnimation() {
-    // Logo besar di tengah
+    // Logo gede di tengah
     introLogo.style.width = "250px";
     introLogo.style.height = "250px";
     introLogo.style.left = "50%";
@@ -400,12 +401,10 @@ window.addEventListener("load", () => {
     // Posisi target logo di header
     const targetRect = fotomuter.getBoundingClientRect();
 
-    // Munculkan konten web
     document.body.classList.add("loaded");
 
-    // Jalankan animasi: teks ilang + logo pindah
     setTimeout(() => {
-      splashText.classList.add("hide"); // ✨ teks ilang
+      splashText.classList.add("hide");
       introLogo.style.width = "50px";
       introLogo.style.height = "50px";
       introLogo.style.left = `${targetRect.left}px`;
@@ -413,7 +412,6 @@ window.addEventListener("load", () => {
       introLogo.style.transform = "translate(0, 0)";
     }, 400);
 
-    // Setelah animasi selesai, splash screen ilang
     setTimeout(() => {
       intro.classList.add("hide");
     }, 1500);
