@@ -153,6 +153,7 @@
       color: black;
       border-radius: 20px;
       font-size: 1em;
+      line-height: 20px;
       padding: 10px 15px;
       display: flex;
       justify-content: space-between;
@@ -275,6 +276,10 @@
       
       .custom-select {
         width: 192.5px;
+      }
+      
+      .select-trigger {
+        line-height: 17.5px;
       }
       
       .notification-catur {
