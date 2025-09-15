@@ -411,7 +411,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Splash screen ilang
     setTimeout(() => {
       intro.classList.add("hide");
-    }, 1500);
+    }, 2500);
   }
 });
 
