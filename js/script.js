@@ -540,12 +540,24 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.clearRect(0, 0, w, h);
       let percent = hitungPersentase();
     
-      // lingkaran luar
-      ctx.beginPath();
-      ctx.arc(radius, radius, radius, 0, 2*Math.PI);
-      ctx.strokeStyle = "white";
-      ctx.lineWidth = 10;
-      ctx.stroke();
+    // lingkaran luar
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(radius, radius, radius, 0, 2 * Math.PI);
+
+    // cek theme
+    const dark = document.documentElement.getAttribute("data-theme") === "dark";
+
+    // warna border + shadow
+    ctx.strokeStyle = dark ? "white" : "black";
+    ctx.lineWidth = 10;
+    ctx.shadowColor = dark ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.6)";
+    ctx.shadowBlur = 20;
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 0;
+
+    ctx.stroke();
+    ctx.restore();
     
       // clip area
       ctx.save();
@@ -883,6 +895,31 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = hitungIndikatorUmur();
   }
 });
+
+// === DARK MODE ===
+(function(){
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+
+  const saved = localStorage.getItem('site-theme');
+  if(saved==='dark') root.setAttribute('data-theme','dark');
+  if(saved==='light') root.removeAttribute('data-theme');
+
+  function setDark(dark){
+    if(dark){
+      root.setAttribute('data-theme','dark');
+      localStorage.setItem('site-theme','dark');
+    } else {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('site-theme','light');
+    }
+  }
+
+  toggle.addEventListener('click',()=>{
+    const isDark = root.getAttribute('data-theme')==='dark';
+    setDark(!isDark);
+  });
+})();
 
 // === SAFETY COPY & PASTE + SAFETY CTRL ===
   // Mateni klik kanan global
