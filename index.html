@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,6 +61,7 @@
   <link rel="stylesheet" href="css/catur.css">
   <link rel="stylesheet" href="css/drop_down_menu.css">
   <link rel="stylesheet" href="css/mouse.css">
+  <link rel="stylesheet" href="css/dark_mode.css">
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   
@@ -561,7 +562,7 @@
             <input type="number" id="month" placeholder="Bulan" min="1" max="12">
             <input type="number" id="year" placeholder="Tahun"  min="1900" max="2100">
           </div>
-          <h5>Waktu (<span style="color: red";>Opsional</span>)</h2>
+          <h5>Waktu (<span style="color: red";>Opsional</span>)</h5>
           <div class="row">
             <input type="number" id="hour" placeholder="Jam (24h)" min="0" max="23">
             <input type="number" id="minute" placeholder="Menit" min="0" max="59">
@@ -581,16 +582,16 @@
           </div>
           <div class="result" id="result">
             <div class="result-row">
-              <div style="border-color: white; box-shadow: 0 0 5px white;" class="block"><span style="font-weight: bold;" class="value" id="val-year">0</span><div class="label">Tahun</div></div>
-              <div style="border-color: white; box-shadow: 0 0 5px white;" class="block"><span style="font-weight: bold;" class="value" id="val-month">0</span><div class="label">Bulan</div></div>
-              <div style="border-color: white; box-shadow: 0 0 5px white;" class="block"><span style="font-weight: bold;" class="value" id="val-day">0</span><div class="label">Hari</div></div>
+              <div class="block"><span style="font-weight: bold;" class="value" id="val-year">0</span><div class="label">Tahun</div></div>
+              <div class="block"><span style="font-weight: bold;" class="value" id="val-month">0</span><div class="label">Bulan</div></div>
+              <div class="block"><span style="font-weight: bold;" class="value" id="val-day">0</span><div class="label">Hari</div></div>
             </div>
             <div class="result-row">
-              <div style="border-color: white; box-shadow: 0 0 5px white;" class="block"><span style="font-weight: bold;" class="value" id="val-hour">0</span><div class="label">Jam</div></div>
-              <div style="border-color: white; box-shadow: 0 0 5px white;"class="block"><span style="font-weight: bold;" class="value" id="val-minute">0</span><div class="label">Menit</div></div>
-              <div style="border-color: white; box-shadow: 0 0 5px white;" class="block"><span style="font-weight: bold;" class="value" id="val-second">0</span><div class="label">Detik</div></div>
+              <div class="block"><span style="font-weight: bold;" class="value" id="val-hour">0</span><div class="label">Jam</div></div>
+              <div class="block"><span style="font-weight: bold;" class="value" id="val-minute">0</span><div class="label">Menit</div></div>
+              <div class="block"><span style="font-weight: bold;" class="value" id="val-second">0</span><div class="label">Detik</div></div>
             </div>
-            <canvas id="progress" style="border-radius: 50%; box-shadow: 0 0 10px white;"></canvas>
+            <canvas id="progress" class="progress-ombak"></canvas>
           </div>
         </div>
       </div>
@@ -668,6 +669,12 @@
         </span>
       </div>
     </button>
+  </div>
+  <div class="switch" id="themeToggle">
+    <div class="knob">
+      <span class="icon sun">☀️</span>
+      <span class="icon moon">🌙</span>
+    </div>
   </div>
   <footer class="sheet-footer">
     <div class="zoom-container">
