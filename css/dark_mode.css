@@ -1,0 +1,87 @@
+  :root {
+    /*--- HEADER ---*/
+    --header-light: rgba(255, 255, 255, 0.5);
+    --header-dark: rgba(0, 0, 0, 0.5);
+    
+    /*--- FOOTER ---*/
+    --footer-light: rgba(255, 255, 255, 0.5);
+    --footer-dark: rgba(0, 0, 0, 0.5);
+    
+    /*--- BOX & TOMBOL SLIDE 3 & 4 ---*/
+    --trigger-light: rgba(255, 255, 255, 0.7);
+    --text-trigger-light: white;
+    --trigger-dark:  rgba(0, 0, 0, 0.7);
+    --text-trigger-dark: black;
+    
+    /*--- UMUR ---*/
+    --border-color-hasil-light: white;
+    --border-color-hasil-dark: black;
+    --box-shadow-hasil-light: 0 0 5px white;
+    --box-shadow-hasil-dark: 0 0 5px black;
+    --ombak-light: 0 0 10px white;
+    --ombak-dark: 0 0 10px black;
+    
+    /*--- CATUR ---*/
+    --shadow-box-chess-light: 0 0 15px rgba(255,255,255,0.5);
+    --shadow-box-chess-dark: 0 0 15px rgba(0,0,0,0.5);
+    --bg-light: rgba(255, 255, 255, 0.5);
+    --bg-dark: rgba(0, 0, 0, 0.5);
+    --chessboard-light: 0 0 15px white;
+    --chessboard-dark: 0 0 15px black;
+    
+    /*--- ANIMASI TRANSISI ---*/
+    --transition: 400ms ease;
+  }
+
+  /* ==== SLIDER ==== */
+  .switch {
+    position: fixed;
+    bottom: 100px; /* jarak dari bawah layar */
+    left: 50%;    /* center horizontal */
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 70px;
+    height: 34px;
+    border-radius: 50px;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background var(--transition);
+    padding: 4px;
+    box-sizing: border-box;
+  }
+  :root[data-theme="dark"] .switch {
+    background: #333333;
+  }
+
+  .knob {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transform: translateX(0);
+    transition: transform var(--transition), background var(--transition);
+  }
+  :root[data-theme="dark"] .knob {
+    transform: translateX(36px);
+    background: #000000;
+    color: #f1f1f1;
+  }
+
+  /* Ikon */
+  .icon {
+    font-size: 14px;
+    transition: opacity var(--transition);
+    line-height: 1;
+  }
+  
+  .sun { color: #111; }
+  .moon { color: #f1f1f1; position: absolute; }
+  .knob .moon { opacity: 0; }
+  :root[data-theme="dark"] .knob .sun { opacity: 0; }
+  :root[data-theme="dark"] .knob .moon { opacity: 1; }
