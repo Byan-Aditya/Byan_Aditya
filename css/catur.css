@@ -15,28 +15,37 @@
    }
 
    .catur-box {
-      background-color: rgba(0, 0, 0, 0.5);
+      background: var(--bg-light);
+      box-shadow: var(--shadow-box-chess-light);
+      transition: background var(--transition), color var(--transition), box-shadow var(--transition);
       backdrop-filter: blur(6px);
       width: 700px;
       padding: 15px;
       border-radius: 30px;
       text-align: center;
       color: white;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+    :root[data-theme="dark"] .catur-box {
+      background: var(--bg-dark);
+      box-shadow: var(----shadow-box-chess-dark);
     }
 
     #chessboard {
+      box-shadow: var(--chessboard-dark);
+      transition: box-shadow var(--transition);
       position: relative;
       width: 492px; /* (8x60)+(6x2) */
       height: 492px;
       margin: 15px auto;
       border: 6px solid black;
       border-radius: 10px;
-      box-shadow: 0 0 15px white;
       background: #222;
       display: grid;
       grid-template-columns: repeat(8, 60px);
       grid-template-rows: repeat(8, 60px);
+    }
+    :root[data-theme="dark"] #chessboard {
+      box-shadow: var(--chessboard-light);
     }
 
     .square {
@@ -104,11 +113,12 @@
 
     /* ================== UNDO BUTTON ================== */
     .undo-btn {
+      background: var(--trigger-dark);
+      transition: background var(--transition);
       width: 40px;
       height: 40px;
       border-radius: 50%;
       border: none;
-      background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(2px);
       display: flex;
       align-items: center;
@@ -116,6 +126,9 @@
       cursor: pointer;
       overflow: hidden;
       position: relative;
+    }
+    :root[data-theme="dark"] .undo-btn {
+      background: var(--trigger-light);
     }
     
     .undo-btn.pressed img {
@@ -147,10 +160,11 @@
 
     /* Tombol utama dropdown */
     .select-trigger {
-      background: rgba(255, 255, 255, 0.7);
+      background: var(--trigger-dark);
+      color: var(--text-trigger-light);
+      transition: background var(--transition), color var(--transition);
       backdrop-filter: blur(2px);
       border: 1px solid #444;
-      color: black;
       border-radius: 20px;
       font-size: 1em;
       line-height: 20px;
@@ -166,14 +180,21 @@
       box-shadow: none !important;
       -webkit-tap-highlight-color: transparent;
     }
+    :root[data-theme="dark"] .select-trigger {
+      background: var(--trigger-light);
+      color: var(--text-trigger-dark);
+    }
 
     .select-trigger span {
       transition: color 0.3s, transform 0.3s;
     }
 
     .select-trigger:hover span {
-      color: black;
+      color: var(--text-trigger-light);
       transform: scale(1.05);
+    }
+    :root[data-theme="dark"] .select-trigger:hover span {
+      color: var(--text-trigger-dark);
     }
 
     .select-trigger:active {
@@ -196,14 +217,15 @@
 
     /* Daftar opsi */
     .options {
+      background: var(--trigger-dark);
+      color: var(--text-trigger-light);
+      transition: background var(--transition), color var(--transition);
       position: absolute;
       top: 110%;
       left: 0;
       right: 0;
-      background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(2px);
       border: 1px solid Black;
-      color: black;
       border-radius: 12px;
       box-shadow: 0 0 10px black;
       opacity: 0;
@@ -212,6 +234,10 @@
       transition: all 0.3s ease;
       overflow: hidden;
       z-index: 999;
+    }
+    :root[data-theme="dark"] .options {
+      background: var(--trigger-light);
+      color: var(--text-trigger-dark);
     }
 
     .custom-select.open .options {
@@ -233,16 +259,21 @@
     }
 
     .notification-catur {
-      background: rgba(255, 255, 255, 0.7);
+      background: var(--trigger-dark);
+      color: var(--text-trigger-light);
+      transition: background var(--transition), color var(--transition);
       backdrop-filter: blur(2px);
       border: 1px solid #444;
-      color: black;
       border-radius: 20px;
       font-size: 1em;
       font-weight: bold;
       padding: 5px 10px;
       display: inline-block;
       align-items: center;
+    }
+    :root[data-theme="dark"] .notification-catur {
+      background: var(--trigger-light);
+      color: var(--text-trigger-dark);
     }
 
     /* ================== RESPONSIVE ================== */
