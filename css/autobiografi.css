@@ -139,14 +139,15 @@
   }
 
   .overlay-portofolio {
+    color: var(--text-trigger-dark);
+    background: var(--bg-light);
+    transition: color var(--transition), background var(--transition);
     position: absolute;
     bottom: 0;
     width: 100%;
     max-height: 5em;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(8px);
-    color: white;
     padding: 1em;
     border-radius: 0 0 50px 50px;
     transition: max-height 0.5s ease, padding 0.5s ease, border-radius 0.5s ease;
@@ -155,6 +156,10 @@
     justify-content: center; /* center secara vertikal */
     align-items: center;
     text-align: center;
+  }
+  :root[data-theme="dark"] .overlay-portofolio {
+    color: var(--text-trigger-light);
+    background: var(--bg-dark);
   }
   
   .overlay-portofolio .singkat {
