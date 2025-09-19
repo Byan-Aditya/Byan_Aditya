@@ -953,10 +953,54 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("drop", e => e.preventDefault());
 
 // === aplikasi===
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-  navigator.serviceWorker.register('service-worker.js')
-  .then(reg => console.log('✅ Service Worker registered!', reg))
-  .catch(err => console.log('❌ Service Worker registration failed:', err));
-  });
-}
+const CACHE_NAME = "byan-cache-v1";
+
+// aktif langsung
+self.addEventListener("install", event => {
+  console.log("✅ Service Worker: Installed");
+  event.waitUntil(self.skipWaiting());
+});
+
+self.addEventListener("activate", event => {
+  console.log("✅ Service Worker: Activated");
+  event.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(
+        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+      );
+    })
+  );
+  return self.clients.claim();
+});
+
+// dynamic caching
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      if (response) {
+        // file sudah ada di cache → langsung pakai
+        return response;
+      }
+
+      // nek ora ana → fetch online lan simpen
+      return fetch(event.request)
+        .then(fetchRes => {
+          if (
+            event.request.url.startsWith("http") && // skip chrome-extension://
+            fetchRes && fetchRes.status === 200 && fetchRes.type === "basic"
+          ) {
+            const resClone = fetchRes.clone();
+            caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, resClone);
+              console.log("📥 Cached new file:", event.request.url);
+            });
+          }
+          return fetchRes;
+        })
+        .catch(() => {
+          // fallback nek offline → coba buka index.html
+          return caches.match("/index.html");
+        });
+    })
+  );
+});
