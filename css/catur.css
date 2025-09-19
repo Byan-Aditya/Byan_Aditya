@@ -207,8 +207,12 @@
       height: 0;
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
-      border-top: 6px solid #333;
+      border-top: 6px solid white;
+      transition: border-top var(--transition);
       transition: transform 0.3s;
+    }
+    :root[data-theme="dark"] .arrow {
+      border-top: 6px solid black;
     }
 
     .custom-select.open .arrow {
