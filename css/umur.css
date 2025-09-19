@@ -29,7 +29,7 @@
 
    .frame-box {
       background: var(--bg-light);
-      box-shadow: var(--shadow-box-light);
+      box-shadow: var(--shadow-box-umur-light);
       color: var(--text-trigger-dark);
       transition: background var(--transition), color var(--transition), box-shadow var(--transition);
       backdrop-filter: blur(6px);
@@ -37,11 +37,10 @@
       padding: 15px;
       border-radius: 30px;
       text-align: center;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
     }
     :root[data-theme="dark"] .frame-box {
       background: var(--bg-dark);
-      box-shadow: var(--shadow-box-dark);
+      box-shadow: var(--shadow-box-umur-dark);
       color: var(--text-trigger-light);
     }
 
