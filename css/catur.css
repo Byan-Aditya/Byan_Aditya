@@ -27,7 +27,7 @@
     }
     :root[data-theme="dark"] .catur-box {
       background: var(--bg-dark);
-      box-shadow: var(----shadow-box-chess-dark);
+      box-shadow: var(--shadow-box-chess-dark);
     }
 
     #chessboard {
