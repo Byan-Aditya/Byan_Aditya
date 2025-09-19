@@ -412,3 +412,10 @@
       box-shadow: none !important;
       -webkit-tap-highlight-color: transparent; /* khusus Chrome/Safari/HP */
     }
+
+    /* Default (light mode) */
+    .swal2-input {
+      color: black !important;
+      background-color: white !important;
+      border: 1px solid #ccc !important;
+    }
