@@ -1,3 +1,9 @@
+    /*--- HILANGKAN CURSOR DEFAULT ---*/
+    .switch, 
+    .switch * {
+      cursor: none !important;  /* hilangkan cursor Default */
+    }
+
   :root {
     /*--- HEADER ---*/
     --header-light: rgba(255, 255, 255, 0.5);
@@ -7,13 +13,19 @@
     --footer-light: rgba(255, 255, 255, 0.5);
     --footer-dark: rgba(0, 0, 0, 0.5);
     
-    /*--- BOX & TOMBOL SLIDE 3 & 4 ---*/
+    /*--- TOMBOL & TULISAN SLIDE 3 & 4 ---*/
     --trigger-light: rgba(255, 255, 255, 0.7);
     --text-trigger-light: white;
     --trigger-dark:  rgba(0, 0, 0, 0.7);
     --text-trigger-dark: black;
     
+    /*--- AUTOBIOGRAFI ---*/
+    --shadow-box-autobiografi-light: 0 0 25px 0 rgba(255,255,256,1);
+    --shadow-box-autobiografi-dark: 0 0 25px 0 rgba(0,0,0,1);
+    
     /*--- UMUR ---*/
+    --shadow-box-umur-light: 0 0 15px rgba(255,255,255,0.7);
+    --shadow-box-umur-dark: 0 0 15px rgba(0,0,0,0.7);
     --border-color-hasil-light: white;
     --border-color-hasil-dark: black;
     --box-shadow-hasil-light: 0 0 5px white;
@@ -22,8 +34,8 @@
     --ombak-dark: 0 0 10px black;
     
     /*--- CATUR ---*/
-    --shadow-box-chess-light: 0 0 15px rgba(255,255,255,0.5);
-    --shadow-box-chess-dark: 0 0 15px rgba(0,0,0,0.5);
+    --shadow-box-chess-light: 0 0 15px rgba(255,255,255,0.7);
+    --shadow-box-chess-dark: 0 0 15px rgba(0,0,0,0.7);
     --bg-light: rgba(255, 255, 255, 0.5);
     --bg-dark: rgba(0, 0, 0, 0.5);
     --chessboard-light: 0 0 15px white;
@@ -36,23 +48,27 @@
   /* ==== SLIDER ==== */
   .switch {
     position: fixed;
-    bottom: 100px; /* jarak dari bawah layar */
+    bottom: 113px; /* jarak dari bawah layar */
     left: 50%;    /* center horizontal */
     transform: translateX(-50%);
     z-index: 1;
     width: 70px;
     height: 34px;
     border-radius: 50px;
-    background: #e0e0e0;
+    background: rgb(224, 224, 224, 0.7);
+    backdrop-filter: blur(3px);
     display: flex;
     align-items: center;
     cursor: pointer;
     transition: background var(--transition);
     padding: 4px;
     box-sizing: border-box;
+    outline: none !important;    /* ilangke highlight biru default */
+    box-shadow: 0 0 6px white;
   }
   :root[data-theme="dark"] .switch {
-    background: #333333;
+    background: rgb(51, 51, 51, 0.7);
+    box-shadow: 0 0 6px black;
   }
 
   .knob {
@@ -60,28 +76,42 @@
     height: 26px;
     border-radius: 50%;
     background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     transform: translateX(0);
     transition: transform var(--transition), background var(--transition);
+    position: relative; /* biar icon absolute keikat disini */
+    overflow: hidden;
   }
+
+  /* Knob geser ke kanan saat dark mode */
   :root[data-theme="dark"] .knob {
     transform: translateX(36px);
     background: #000000;
     color: #f1f1f1;
   }
 
-  /* Ikon */
+  /* Icon */
   .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 14px;
     transition: opacity var(--transition);
     line-height: 1;
   }
-  
-  .sun { color: #111; }
-  .moon { color: #f1f1f1; position: absolute; }
-  .knob .moon { opacity: 0; }
+
+  /* Default sun keliatan, moon disembunyiin */
+  .sun { color: #111; opacity: 1; }
+  .moon { color: #f1f1f1; opacity: 0; }
+
+  /* Saat dark mode → sun hilang, moon muncul */
   :root[data-theme="dark"] .knob .sun { opacity: 0; }
   :root[data-theme="dark"] .knob .moon { opacity: 1; }
+
+  /* Responsive Typography dan Layout */
+  @media (max-width: 768px) {
+    .switch {
+      bottom: 108px; /* jarak dari bawah layar */
+    }
+  }
