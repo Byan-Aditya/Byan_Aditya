@@ -96,20 +96,44 @@
     .doa {
       font-weight: bold;
       background: linear-gradient(
-      90deg,
-      cyan,
-      white,
-      grey,
-      cyan,
-      white,
-      grey,
-      cyan,
-      white,
-      grey,
-      cyan,
-      white,
-      grey,
-      cyan
+        90deg,
+        #269e9e,
+        black,
+        #2a7a7a,
+        #269e9e,
+        black,
+        #2a7a7a,
+        #269e9e,
+        black,
+        #2a7a7a,
+        #269e9e,
+        black,
+        #2a7a7a,
+        #269e9e
+      );
+      background-size: 500% 100%;
+      background-repeat: repeat;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: doa 7s linear infinite;
+      transition: background var(--transition);
+    }
+    :root[data-theme="dark"] .doa {
+      background: linear-gradient(
+        90deg,
+        cyan,
+        white,
+        grey,
+        cyan,
+        white,
+        grey,
+        cyan,
+        white,
+        grey,
+        cyan,
+        white,
+        grey,
+        cyan
       );
       background-size: 500% 100%;
       background-repeat: repeat;
@@ -299,6 +323,14 @@
       background: var(--footer-dark);
       color: var(--text-trigger-light);
     }
+    
+    .dilindungi{
+      color: #4a4a4a;
+      transition: color var(--transition);
+    }
+    :root[data-theme="dark"] .dilindungi {
+      color: #898989;
+    }
 
     .zoom-container {
       position: relative;
@@ -361,7 +393,11 @@
     }
 
     .support-container a img:hover {
+      box-shadow: 0 2.5px 5px rgba(0,0,0,0.7);
+      transition: box-shadow var(--transition);
       transform: scale(1.2);
+    }
+    :root[data-theme="dark"] .support-container a img:hover {
       box-shadow: 0 2.5px 5px rgba(255,255,255,0.7);
     }
 
