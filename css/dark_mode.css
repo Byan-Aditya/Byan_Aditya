@@ -20,8 +20,8 @@
     --text-trigger-dark: black;
     
     /*--- AUTOBIOGRAFI ---*/
-    --shadow-box-autobiografi-light: 0 0 25px 0 rgba(255,255,256,1);
-    --shadow-box-autobiografi-dark: 0 0 25px 0 rgba(0,0,0,1);
+    --shadow-box-autobiografi-light: 0 0 15px 0 rgba(255,255,256,0.7);
+    --shadow-box-autobiografi-dark: 0 0 15px 0 rgba(0,0,0,0.7);
     
     /*--- UMUR ---*/
     --shadow-box-umur-light: 0 0 15px rgba(255,255,255,0.7);
