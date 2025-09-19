@@ -92,7 +92,7 @@ self.addEventListener("install", event => {
         "images/catur/pawn-black.png",
         "images/catur/pawn-white.png",
         "images/catur/queen-black.png",
-        "images/catur/qween-white.png",
+        "images/catur/queen-white.png",
         "images/catur/rook-black.png",
         "images/catur/rook-white.png",
         "images/catur/seimbang.gif",
