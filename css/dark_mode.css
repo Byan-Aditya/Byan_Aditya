@@ -91,14 +91,24 @@
   }
 
   /* Icon */
+  /* Animasi goyang kanan-kiri */
+  @keyframes swing {
+    0%   { transform: translate(-50%, -50%) rotate(0deg); }
+    25%  { transform: translate(-50%, -50%) rotate(10deg); }
+    50%  { transform: translate(-50%, -50%) rotate(0deg); }
+    75%  { transform: translate(-50%, -50%) rotate(-10deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+  }
+
+  /* Icon */
   .icon {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     font-size: 14px;
-    transition: opacity var(--transition);
     line-height: 1;
+    transition: opacity var(--transition);
+    animation: swing 3s ease-in-out infinite;  /* Kecepatan Durasi Gerak */
   }
 
   /* Default sun keliatan, moon disembunyiin */
@@ -113,5 +123,5 @@
   @media (max-width: 768px) {
     .switch {
       bottom: 108px; /* jarak dari bawah layar */
-    }
+    } 
   }
