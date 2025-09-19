@@ -255,7 +255,12 @@
     }
 
     .options span:hover {
+      color: black;
+      transition: color var(--transition);
       background: #d6eaff;
+    }
+    :root[data-theme="dark"] .options {
+      color: black;
     }
 
     .notification-catur {
