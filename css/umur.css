@@ -163,6 +163,7 @@
     }
 
     #animateBtn {
+      color: black;
       margin-top: 0px;
       padding: 10px 15px;
       background: #f39c12;
