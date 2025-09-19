@@ -1,8 +1,7 @@
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open("byan-cache").then(cache => {
-      return cache.addAll([
-        "/",
+    caches.open("byan-cache").then(async cache => {
+      const files = [
         "/index.html",
 
         "/js/catur.js",
@@ -92,7 +91,7 @@ self.addEventListener("install", event => {
         "/images/catur/pawn-black.png",
         "/images/catur/pawn-white.png",
         "/images/catur/queen-black.png",
-        "/images/catur/queen-white.png",   // ✅ typo sudah dibenerno
+        "/images/catur/queen-white.png",   // ✅ typo dibenerno
         "/images/catur/rook-black.png",
         "/images/catur/rook-white.png",
         "/images/catur/seimbang.gif",
@@ -113,13 +112,26 @@ self.addEventListener("install", event => {
         "/music/lagu2.mp3",
         "/music/lagu3.mp3",
         "/music/lagu4.mp3"
-      ]);
+      ];
+
+      await Promise.all(
+        files.map(file =>
+          fetch(file).then(resp => {
+            if (!resp.ok) {
+              console.error("❌ Gagal fetch:", file, resp.status);
+            } else {
+              console.log("✅ Cached:", file);
+              cache.put(file, resp.clone());
+            }
+          }).catch(err => console.error("⚠️ Error fetch:", file, err))
+        )
+      );
     })
   );
 });
 
 self.addEventListener("activate", event => {
-  event.waitUntil(self.clients.claim()); // 👉 ambil alih semua tab langsung
+  event.waitUntil(self.clients.claim());
 });
 
 self.addEventListener("fetch", event => {
