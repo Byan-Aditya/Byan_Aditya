@@ -419,3 +419,15 @@
       background-color: white !important;
       border: 1px solid #ccc !important;
     }
+    
+    .swal2-popup {
+      border: 2px solid transparent;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px grey;
+    }
+
+    .swal2-container {
+      backdrop-filter: blur(8px);   /* tingkat blur */
+      -webkit-backdrop-filter: blur(8px); /* safari */
+    }
