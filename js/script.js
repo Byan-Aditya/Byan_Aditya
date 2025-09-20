@@ -953,54 +953,50 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("drop", e => e.preventDefault());
 
 // === aplikasi===
-const CACHE_NAME = "byan-cache-v1";
+const CACHE_NAME = "byan-cache-auto";
 
-// aktif langsung
+// file inti supaya offline bisa jalan
+const PRECACHE_FILES = [
+  "/index.html",
+  "/css/style.css",
+  "/js/script.js",
+  "/js/catur.js"
+  // bisa tambah file inti lainnya
+];
+
 self.addEventListener("install", event => {
-  console.log("✅ Service Worker: Installed");
-  event.waitUntil(self.skipWaiting());
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(PRECACHE_FILES))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener("activate", event => {
-  console.log("✅ Service Worker: Activated");
   event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(
+    caches.keys().then(keys =>
+      Promise.all(
         keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-      );
-    })
+      )
+    )
   );
-  return self.clients.claim();
+  self.clients.claim();
 });
 
-// dynamic caching
 self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request).then(response => {
-      if (response) {
-        // file sudah ada di cache → langsung pakai
-        return response;
-      }
+    caches.match(event.request).then(cachedRes => {
+      if (cachedRes) return cachedRes;
 
-      // nek ora ana → fetch online lan simpen
+      // dynamic caching: file baru otomatis masuk cache
       return fetch(event.request)
         .then(fetchRes => {
-          if (
-            event.request.url.startsWith("http") && // skip chrome-extension://
-            fetchRes && fetchRes.status === 200 && fetchRes.type === "basic"
-          ) {
-            const resClone = fetchRes.clone();
-            caches.open(CACHE_NAME).then(cache => {
-              cache.put(event.request, resClone);
-              console.log("📥 Cached new file:", event.request.url);
-            });
+          if (event.request.url.startsWith("http") && fetchRes && fetchRes.status === 200 && fetchRes.type === "basic") {
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, fetchRes.clone()));
           }
           return fetchRes;
         })
-        .catch(() => {
-          // fallback nek offline → coba buka index.html
-          return caches.match("/index.html");
-        });
+        .catch(() => caches.match("/index.html")) // fallback offline
     })
   );
 });
