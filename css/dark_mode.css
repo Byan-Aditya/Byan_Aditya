@@ -41,6 +41,12 @@
     --chessboard-light: 0 0 15px white;
     --chessboard-dark: 0 0 15px black;
     
+    /*--- ALL ABOUTH BUTTON ---*/
+    --button-light: rgba(224, 224, 224, 0.7);
+    --button-dark: rgb(51, 51, 51, 0.7);
+    --border-button-light: 1px solid rgba(224, 224, 224, 0.7);
+    --border-button-dark: 1px solid rgba(51, 51, 51, 0.7);
+    
     /*--- ANIMASI TRANSISI ---*/
     --transition: 400ms ease;
   }
@@ -55,12 +61,13 @@
     width: 70px;
     height: 34px;
     border-radius: 50px;
+    border: var(--border-button-light);
     background: rgb(224, 224, 224, 0.7);
     backdrop-filter: blur(3px);
     display: flex;
     align-items: center;
     cursor: pointer;
-    transition: background var(--transition);
+    transition: background var(--transition), border var(--transition);
     padding: 4px;
     box-sizing: border-box;
     outline: none !important;    /* ilangke highlight biru default */
@@ -69,6 +76,7 @@
   :root[data-theme="dark"] .switch {
     background: rgb(51, 51, 51, 0.7);
     box-shadow: 0 0 6px black;
+    border: var(--border-button-dark);
   }
 
   .knob {
