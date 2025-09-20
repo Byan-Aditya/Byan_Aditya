@@ -331,21 +331,26 @@
     }
 
     .download-btn {
+      background: var(--button-light);
+      border: var(--border-button-light);
+      transition: background var(--transition), border var(--transition);
       position: fixed;
       bottom: 100px;   /* jarak dari bawah */
       left: 20px;      /* jarak dari kiri */
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background: rgba(128, 128, 128, 0.3);
       backdrop-filter: blur(3px);
-      border: 2px solid #8a8a8a;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       z-index: 1;
       animation: rgbGlow 4s infinite linear;
+    }
+    :root[data-theme="dark"] .download-btn {
+      background: var(--button-dark);
+      border: var(--border-button-dark);
     }
     
     @keyframes rgbGlow {
@@ -373,18 +378,6 @@
     /* Animasi klik (zoom in - zoom out) */
     .download-btn:active img {
       transform: scale(0.5);
-    }
-
-    .swal2-popup {
-      border: 2px solid transparent;
-      border-radius: 20px;
-      background: white;
-      box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px grey;
-    }
-
-    .swal2-container {
-      backdrop-filter: blur(8px);   /* tingkat blur */
-      -webkit-backdrop-filter: blur(8px); /* safari */
     }
 
     /* RESPONSIF UNTUK LAYAR KECIL */
