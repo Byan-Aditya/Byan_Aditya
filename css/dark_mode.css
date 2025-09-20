@@ -83,7 +83,7 @@
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background: #ffffff;
+    background: transparent;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     transform: translateX(0);
     transition: transform var(--transition), background var(--transition);
@@ -93,12 +93,11 @@
 
   /* Knob geser ke kanan saat dark mode */
   :root[data-theme="dark"] .knob {
-    transform: translateX(36px);
-    background: #000000;
+    transform: translateX(35px);
+    background: transparent;
     color: #f1f1f1;
   }
 
-  /* Icon */
   /* Animasi goyang kanan-kiri */
   @keyframes swing {
     0%   { transform: translate(-50%, -50%) rotate(0deg); }
@@ -108,21 +107,30 @@
     100% { transform: translate(-50%, -50%) rotate(0deg); }
   }
 
-  /* Icon */
-  .icon {
+  /* Icon khusus di dalam knob */
+  .icon-goyang {
     position: absolute;
     top: 50%;
     left: 50%;
     font-size: 14px;
     line-height: 1;
+    transform: translate(-50%, -50%); /* biar center */
     transition: opacity var(--transition);
-    animation: swing 3s ease-in-out infinite;  /* Kecepatan Durasi Gerak */
+    animation: swing 3s ease-in-out infinite;
   }
-
+  
+  .icon-goyang img {
+    width: 26px;
+    height: 26px;
+    display: block;
+    object-fit: contain;
+    filter: none !important; /* biar warnane asli */
+  }
+  
   /* Default sun keliatan, moon disembunyiin */
-  .sun { color: #111; opacity: 1; }
-  .moon { color: #f1f1f1; opacity: 0; }
-
+  .sun { opacity: 1; }
+  .moon { opacity: 0; }
+  
   /* Saat dark mode → sun hilang, moon muncul */
   :root[data-theme="dark"] .knob .sun { opacity: 0; }
   :root[data-theme="dark"] .knob .moon { opacity: 1; }
