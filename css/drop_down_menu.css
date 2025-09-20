@@ -15,14 +15,15 @@
     }
 
     .dropdown-bg {
+      background: var(--button-light);
+      border: var(--border-button-light);
+      transition: background var(--transition), border var(--transition);
       position: absolute;
       top: 50%;
       right: 100%;
       transform: translateY(-50%) scaleX(0);
-      background: rgba(128, 128, 128, 0.3);
       backdrop-filter: blur(3px);
       border-radius: 30px;
-      border: 2px solid #8a8a8a;
       opacity: 0;
       padding: 10px 15px;
       display: flex;
@@ -34,6 +35,10 @@
       0 0 10px cyan;
       object-fit: cover;
       animation: rgbGlow 4s infinite linear;
+    }
+    :root[data-theme="dark"] .dropdown-bg {
+      background: var(--button-dark);
+      border: var(--border-button-dark);
     }
   
     @keyframes rgbGlow {
@@ -56,9 +61,10 @@
     }
 
     .dropdown-menu a {
+      background-color: black;
+      transition: background-color var(--transition), filter var(--transition);
       width: 40px;
       height: 40px;
-      background-color: white;
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -70,11 +76,19 @@
       transform: translateX(30px) rotate(0deg);
       pointer-events: none;
     }
+    :root[data-theme="dark"] .dropdown-menu a {
+      background: white;
+    }
 
     .dropdown-menu a img {
+      filter: invert(1) brightness(2);
+      transition: filter var(--transition);
       width: 30px;
       height: 30px;
       object-fit: contain;
+    }
+    :root[data-theme="dark"] .dropdown-menu a img {
+      filter: none;
     }
 
     .dropdown-menu.show a {
@@ -126,7 +140,12 @@
     }
 
     .dropdown-menu a:hover {
-      background-color: #ccc;
+      box-shadow: 0 2.5px 5px rgba(0,0,0,0.7);
+      transition: box-shadow var(--transition);
+      transform: scale(1.2);
+    }
+    :root[data-theme="dark"] .dropdown-menu a:hover {
+      box-shadow: 0 2.5px 5px rgba(255,255,255,0.7);
     }
 
     .dropdown-btn-kemasan{
@@ -137,11 +156,12 @@
     }
 
     .dropdown-btn {
-      background: rgba(128, 128, 128, 0.3);
+      background: var(--button-light);
+      border: var(--border-button-light);
+      transition: background var(--transition), border var(--transition);
       backdrop-filter: blur(3px);
       padding: 5px;
       border-radius: 50%;
-      border: 2px solid #8a8a8a;
       font-size: 18px;
       width: 60px;
       height: 60px;
@@ -157,6 +177,10 @@
       object-fit: cover;
       animation: rgbGlow 4s infinite linear;
       }
+    :root[data-theme="dark"] .dropdown-btn {
+      background: var(--button-dark);
+      border: var(--border-button-dark);
+    }
   
     @keyframes rgbGlow {
        0%   { box-shadow: 0 0 2px cyan, 0 0 5px green, 0 0 8px blue; }
