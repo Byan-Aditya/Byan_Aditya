@@ -1,8 +1,8 @@
-    /*--- HILANGKAN CURSOR DEFAULT ---*/
-    .switch, 
-    .switch * {
-      cursor: none !important;  /* hilangkan cursor Default */
-    }
+  /*--- HILANGKAN CURSOR DEFAULT ---*/
+  .switch, 
+  .switch * {
+    cursor: none !important;  /* hilangkan cursor Default */
+  }
 
   :root {
     /*--- HEADER ---*/
