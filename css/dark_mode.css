@@ -54,12 +54,12 @@
   /* ==== SLIDER ==== */
   .switch {
     position: fixed;
-    bottom: 113px; /* jarak dari bawah layar */
+    bottom: 111px; /* jarak dari bawah layar */
     left: 50%;    /* center horizontal */
     transform: translateX(-50%);
     z-index: 1;
-    width: 70px;
-    height: 34px;
+    width: 75px;
+    height: 38px;
     border-radius: 50px;
     border: var(--border-button-light);
     background: rgb(224, 224, 224, 0.7);
@@ -80,10 +80,10 @@
   }
 
   .knob {
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    background: transparent;
+    background: black;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     transform: translateX(0);
     transition: transform var(--transition), background var(--transition);
@@ -94,7 +94,7 @@
   /* Knob geser ke kanan saat dark mode */
   :root[data-theme="dark"] .knob {
     transform: translateX(35px);
-    background: transparent;
+    background: white;
     color: #f1f1f1;
   }
 
@@ -138,6 +138,6 @@
   /* Responsive Typography dan Layout */
   @media (max-width: 768px) {
     .switch {
-      bottom: 108px; /* jarak dari bawah layar */
+      bottom: 106px; /* jarak dari bawah layar */
     } 
   }
