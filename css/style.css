@@ -97,19 +97,19 @@
       font-weight: bold;
       background: linear-gradient(
         90deg,
-        #269e9e,
+        red,
         black,
-        #2a7a7a,
-        #269e9e,
+        #b31d1d,
+        red,
         black,
-        #2a7a7a,
-        #269e9e,
+        #b31d1d,
+        red,
         black,
-        #2a7a7a,
-        #269e9e,
+        #b31d1d,
+        red,
         black,
-        #2a7a7a,
-        #269e9e
+        #b31d1d,
+        red
       );
       background-size: 500% 100%;
       background-repeat: repeat;
@@ -271,10 +271,15 @@
     }
 
     .gear-kiri {
+      filter: invert(1) brightness(2);
+      transition: filter var(--transition);
       width: 100%;
       height: 100%;
       animation: spin-kiri 50s linear infinite;
       transform-origin: center center; /* supaya muter di tengah */
+    }
+    :root[data-theme="dark"] .gear-kiri  {
+      filter: none;
     }
 
     @keyframes spin-kiri {
@@ -293,10 +298,15 @@
     }
 
     .gear-kanan {
+      filter: invert(1) brightness(2);
+      transition: filter var(--transition);
       width: 100%;
       height: 100%;
       animation: spin-kanan 50s linear infinite;
       transform-origin: center center; /* supaya muter di tengah */
+    }
+    :root[data-theme="dark"] .gear-kanan  {
+      filter: none;
     }
 
     @keyframes spin-kanan {
@@ -430,4 +440,5 @@
     .swal2-container {
       backdrop-filter: blur(8px);   /* tingkat blur */
       -webkit-backdrop-filter: blur(8px); /* safari */
-    }
+}
+        
