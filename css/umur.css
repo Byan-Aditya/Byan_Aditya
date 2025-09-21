@@ -58,30 +58,35 @@
     }
 
     input {
-      color: var(--text-trigger-dark);
-      transition: color var(--transition);
+      background: var(--trigger-dark);
+      color: var(--text-trigger-light);
+      border: 2px solid black;
+      transition: border-color 0.3s, box-shadow 0.3s, background var(--transition), color var(--transition), border var(--transition);
+      backdrop-filter: blur(2px);
       padding: 10px;
-      border: 2px solid grey;
       border-radius: 5px;
       font-size: 0.9em;
       font-family: "Times New Roman", Times, serif;
       width: 90px;
       text-align: center;
-      background: rgba(255, 255, 255, 0.1);
-      transition: border-color 0.3s, box-shadow 0.3s;
-      backdrop-filter: blur(5px);
     }
     :root[data-theme="dark"] input {
-      color: var(--text-trigger-light);
+      background: var(--trigger-light);
+      color: var(--text-trigger-dark);
+      border: 2px solid white;
     }
 
     input::placeholder {
-      color: grey;
+     color: rgba(255, 255, 255, 0.5);
+      transition: color var(--transition);
+    }
+    :root[data-theme="dark"] input::placeholder {
+      color: rgba(0, 0, 0, 0.5);
     }
 
     input:focus {
-      border-color: #f39c12;
-      box-shadow: 0 0 5px #f39c12;
+      border-color: #f39c12 !important;
+      box-shadow: 0 0 10px 2px rgba(243, 156, 18, 1);
       outline: none;
     }
 
@@ -110,8 +115,8 @@
       color: var(--text-trigger-dark);
       border-color: var(--border-color-hasil-dark);
       box-shadow: var(--box-shadow-hasil-dark);
-      transition: color var(--transition), border-color var(--transition), box-shadow var(--transition);
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.7);
+      transition: color var(--transition), border-color var(--transition), box-shadow var(--transition), background var(--transition);
       border-radius: 10px;
       padding: 15px 20px;
       min-width: 90px;
@@ -125,6 +130,7 @@
       color: var(--text-trigger-light);
       border-color: var(--border-color-hasil-light);
       box-shadow: var(--box-shadow-hasil-light);
+      background: rgba(0, 0, 0, 0.7);
     }
 
     .block span.value {
@@ -148,10 +154,14 @@
     }
 
     .label {
+      color: #4a4a4a;
+      transition: color var(--transition);
       font-size: 0.8em;
-      color: grey;
       margin-top: 4px;
       font-weight: bold;
+    }
+    :root[data-theme="dark"] .label {
+      color: #898989;
     }
 
     .result-row {
