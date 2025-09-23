@@ -922,7 +922,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       root.removeAttribute('data-theme');
       localStorage.setItem('site-theme','light');
-      metaTheme.setAttribute('content', '#ffffff'); // putih pas light
+      metaTheme.setAttribute('content', '#878684'); // putih pas light
     }
   }
 
