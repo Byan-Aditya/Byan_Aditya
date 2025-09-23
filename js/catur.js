@@ -1,4 +1,4 @@
-// Chess by Copilot: full rules, multiplayer & computer + undo + highlight skak + dropdown mode
+// Chess by Copilot: full rules, multiplayer & computer + undo + highlight skak + dropdown mode + minimax AI + promosi + posisi pion
 
 const PIECES = {
   'wk': '<img src="images/catur/king-white.png" class="piece-img">',
@@ -92,6 +92,206 @@ function renderBoard() {
   document.getElementById('status').innerText = statusText;
 }
 
+// --- Fitur AI: Penilaian posisi + promosi pion otomatis ---
+function evaluateBoard(board) {
+  // Penilaian material (pion:1, kuda:3, gajah:3, benteng:5, ratu:9, raja:100)
+  const pieceValue = { 'p': 1, 'n': 3, 'b': 3, 'r': 5, 'q': 9, 'k': 100 };
+  let score = 0;
+  for (let r = 0; r < 8; r++) {
+    for (let c = 0; c < 8; c++) {
+      let p = board[r][c];
+      if (p) {
+        let val = pieceValue[p[1]];
+        score += (p[0] === 'b' ? val : -val);
+        // Bonus posisi pion: makin ke depan makin tinggi
+        if (p[1] === 'p') {
+          score += (p[0] === 'b' ? r : (7 - r)) * 0.1;
+        }
+      }
+    }
+  }
+  return score;
+}
+
+// --- Fitur AI: Minimax dengan depth 2 ---
+function minimax(board, depth, maximizingPlayer) {
+  if (depth === 0) return {eval: evaluateBoard(board)};
+  let color = maximizingPlayer ? 'b' : 'w';
+  let bestEval = maximizingPlayer ? -Infinity : Infinity;
+  let bestMove = null;
+
+  // Ambil semua langkah legal
+  let moves = [];
+  for (let r = 0; r < 8; r++) {
+    for (let c = 0; c < 8; c++) {
+      if (board[r][c] && board[r][c][0] === color) {
+        let validMoves = getValidMovesCustom(board, r, c);
+        for (let [mr, mc] of validMoves) {
+          moves.push({from:[r, c], to:[mr, mc]});
+        }
+      }
+    }
+  }
+  if (moves.length === 0) {
+    // Tidak ada langkah legal, return evaluasi
+    return {eval: evaluateBoard(board)};
+  }
+
+  for (let move of moves) {
+    // Copy papan
+    let newBoard = JSON.parse(JSON.stringify(board));
+    let piece = newBoard[move.from[0]][move.from[1]];
+    // PROMOSI: pion otomatis jadi menteri jika sampai ujung
+    let promote = false;
+    if (piece[1] === 'p' && ((piece[0] === 'w' && move.to[0] === 0) || (piece[0] === 'b' && move.to[0] === 7))) {
+      promote = true;
+    }
+    newBoard[move.to[0]][move.to[1]] = promote ? (piece[0]+'q') : piece;
+    newBoard[move.from[0]][move.from[1]] = '';
+    let result = minimax(newBoard, depth - 1, !maximizingPlayer);
+    let eval = result.eval;
+    if (maximizingPlayer) {
+      if (eval > bestEval) {
+        bestEval = eval;
+        bestMove = move;
+      }
+    } else {
+      if (eval < bestEval) {
+        bestEval = eval;
+        bestMove = move;
+      }
+    }
+  }
+  return {eval: bestEval, move: bestMove};
+}
+
+// getValidMoves versi custom untuk AI (tidak mengubah board asli, ignoreLegal tetap berlaku)
+function getValidMovesCustom(customBoard, row, col, ignoreLegal = false) {
+  let piece = customBoard[row][col];
+  if (!piece) return [];
+  let color = piece[0];
+  let type = piece[1];
+  let moves = [];
+  if (type === 'p') moves = pawnMovesCustom(customBoard, row, col, color);
+  if (type === 'n') moves = knightMovesCustom(customBoard, row, col, color);
+  if (type === 'b') moves = bishopMovesCustom(customBoard, row, col, color);
+  if (type === 'r') moves = rookMovesCustom(customBoard, row, col, color);
+  if (type === 'q') moves = queenMovesCustom(customBoard, row, col, color);
+  if (type === 'k') moves = kingMovesCustom(customBoard, row, col, color);
+  if (ignoreLegal) return moves;
+  let legal = [];
+  for (let [mr, mc] of moves) {
+    let backup = customBoard[mr][mc];
+    let old = customBoard[row][col];
+    customBoard[mr][mc] = old;
+    customBoard[row][col] = '';
+    let kingPos = null;
+    for (let r2 = 0; r2 < 8; r2++)
+      for (let c2 = 0; c2 < 8; c2++)
+        if (customBoard[r2][c2] === color + 'k') kingPos = [r2, c2];
+    if (old[1] === 'k') kingPos = [mr, mc];
+    let attacked = isSquareAttackedCustom(customBoard, kingPos[0], kingPos[1], color);
+    customBoard[row][col] = old;
+    customBoard[mr][mc] = backup;
+    if (!attacked) legal.push([mr, mc]);
+  }
+  return legal;
+}
+
+function pawnMovesCustom(customBoard, row, col, color) {
+  let moves = [];
+  let dir = color === 'w' ? -1 : 1;
+  let startRow = color === 'w' ? 6 : 1;
+  if (customBoard[row+dir] && customBoard[row+dir][col] === '') {
+    moves.push([row+dir, col]);
+    if (row === startRow && customBoard[row+2*dir][col] === '') {
+      moves.push([row+2*dir, col]);
+    }
+  }
+  for (let dc of [-1, 1]) {
+    let nr = row+dir, nc = col+dc;
+    if (customBoard[nr] && customBoard[nr][nc] && customBoard[nr][nc] !== '' && customBoard[nr][nc][0] !== color) {
+      moves.push([nr, nc]);
+    }
+  }
+  return moves;
+}
+function knightMovesCustom(customBoard, row, col, color) {
+  let moves = [];
+  let dirs = [
+    [-2, -1], [-2, 1], [-1, -2], [-1, 2],
+    [1, -2], [1, 2], [2, -1], [2, 1]
+  ];
+  for (let [dr, dc] of dirs) {
+    let nr = row + dr, nc = col + dc;
+    if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8) {
+      if (customBoard[nr][nc] === '' || customBoard[nr][nc][0] !== color) {
+        moves.push([nr, nc]);
+      }
+    }
+  }
+  return moves;
+}
+function slidingMovesCustom(customBoard, row, col, color, directions, maxStep=8) {
+  let moves = [];
+  for (let [dr, dc] of directions) {
+    for (let step = 1; step <= maxStep; step++) {
+      let nr = row + dr*step, nc = col + dc*step;
+      if (nr < 0 || nr > 7 || nc < 0 || nc > 7) break;
+      if (customBoard[nr][nc] === '') {
+        moves.push([nr, nc]);
+      } else if (customBoard[nr][nc][0] !== color) {
+        moves.push([nr, nc]);
+        break;
+      } else {
+        break;
+      }
+    }
+  }
+  return moves;
+}
+function bishopMovesCustom(customBoard, row, col, color) {
+  return slidingMovesCustom(customBoard, row, col, color, [[1,1],[1,-1],[-1,1],[-1,-1]]);
+}
+function rookMovesCustom(customBoard, row, col, color) {
+  return slidingMovesCustom(customBoard, row, col, color, [[1,0],[-1,0],[0,1],[0,-1]]);
+}
+function queenMovesCustom(customBoard, row, col, color) {
+  return slidingMovesCustom(customBoard, row, col, color, [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]]);
+}
+function kingMovesCustom(customBoard, row, col, color) {
+  let moves = slidingMovesCustom(customBoard, row, col, color, [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]], 1);
+  return moves;
+}
+function isSquareAttackedCustom(customBoard, row, col, color) {
+  let enemy = color === 'w' ? 'b' : 'w';
+  for (let r = 0; r < 8; r++) {
+    for (let c = 0; c < 8; c++) {
+      if (customBoard[r][c] && customBoard[r][c][0] === enemy) {
+        if (customBoard[r][c][1] === 'k') {
+          let kingDirs = [
+            [1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]
+          ];
+          for (let [dr, dc] of kingDirs) {
+            let nr = r + dr, nc = c + dc;
+            if (nr === row && nc === col) return true;
+          }
+        } else {
+          let moves = getValidMovesCustom(customBoard, r, c, true);
+          for (let [mr, mc] of moves) {
+            if (mr === row && mc === col) return true;
+          }
+        }
+      }
+    }
+  }
+  return false;
+}
+
+// --- END AI helper ---
+
+
+// --- Bagian catur asli ---
 function getValidMoves(row, col, ignoreLegal = false) {
   let piece = board[row][col];
   if (!piece) return [];
@@ -123,7 +323,6 @@ function getValidMoves(row, col, ignoreLegal = false) {
   }
   return legal;
 }
-
 function pawnMoves(row, col, color) {
   let moves = [];
   let dir = color === 'w' ? -1 : 1;
@@ -209,22 +408,31 @@ function kingMoves(row, col, color) {
   }
   return moves;
 }
-
 function isSquareAttacked(row, col, color) {
   let enemy = color === 'w' ? 'b' : 'w';
   for (let r = 0; r < 8; r++) {
     for (let c = 0; c < 8; c++) {
       if (board[r][c] && board[r][c][0] === enemy) {
-        let moves = getValidMoves(r, c, true);
-        for (let [mr, mc] of moves) {
-          if (mr === row && mc === col) return true;
+        // Jika bidak lawan adalah raja, cek 8 kotak sekitarnya manual
+        if (board[r][c][1] === 'k') {
+          let kingDirs = [
+            [1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]
+          ];
+          for (let [dr, dc] of kingDirs) {
+            let nr = r + dr, nc = c + dc;
+            if (nr === row && nc === col) return true;
+          }
+        } else {
+          let moves = getValidMoves(r, c, true);
+          for (let [mr, mc] of moves) {
+            if (mr === row && mc === col) return true;
+          }
         }
       }
     }
   }
   return false;
 }
-
 function isCheckmate(color) {
   let kingPos = null;
   for (let r = 0; r < 8; r++)
@@ -249,7 +457,6 @@ function isStalemate(color) {
         if (getValidMoves(r, c).length > 0) return false;
   return true;
 }
-
 function isDraw() {
   if (halfmoveClock >= 100) return true;
   let fen = boardToFEN();
@@ -275,7 +482,6 @@ function boardToFEN() {
   }
   return fen;
 }
-
 function handleClick(row, col) {
   if (animating) return;
   if (mode === 'computer' && turn === 'b') return;
@@ -296,7 +502,6 @@ function handleClick(row, col) {
     }
   }
 }
-
 function undoMove() {
   if (moveHistory.length === 0) return;
   let last = moveHistory.pop();
@@ -310,7 +515,6 @@ function undoMove() {
   renderBoard();
   Swal.close();
 }
-
 function movePiece(sr, sc, tr, tc) {
   let before = JSON.stringify(board);
   let beforeHasMoved = JSON.stringify(hasMoved);
@@ -350,6 +554,7 @@ function movePiece(sr, sc, tr, tc) {
         board[sr][0] = '';
       }
     } else {
+      // PROMOSI: pion otomatis jadi menteri jika sampai ujung
       if (pieceCode === 'wp' && tr===0) promote = true;
       if (pieceCode === 'bp' && tr===7) promote = true;
       board[tr][tc] = promote ? (pieceCode[0]+'q') : pieceCode;
@@ -375,32 +580,21 @@ function movePiece(sr, sc, tr, tc) {
     if (mode === 'computer' && turn === 'b') setTimeout(computerMove, 500);
   });
 }
-
 function animateMove(fromRow, fromCol, toRow, toCol, pieceCode, afterAnim) {
   const chessboard = document.getElementById('chessboard');
-
-  // Cari ukuran kotak secara dinamis (responsive)
   const square = chessboard.querySelector('.square');
   const squareSize = square ? square.offsetWidth : 60;
-
   const animDiv = document.createElement('div');
   animDiv.className = 'piece-anim';
   animDiv.innerHTML = PIECES[pieceCode];
-
-  // Posisi awal
   animDiv.style.left = (fromCol * squareSize) + 'px';
   animDiv.style.top = (fromRow * squareSize) + 'px';
   chessboard.appendChild(animDiv);
-
   animating = true;
-
-  // Animasi jalan
   setTimeout(() => {
     animDiv.style.left = (toCol * squareSize) + 'px';
     animDiv.style.top = (toRow * squareSize) + 'px';
   }, 10);
-
-  // Setelah selesai animasi
   setTimeout(() => {
     chessboard.removeChild(animDiv);
     animating = false;
@@ -408,54 +602,14 @@ function animateMove(fromRow, fromCol, toRow, toCol, pieceCode, afterAnim) {
   }, 270);
 }
 
+// --- AI komputer dengan minimax ---
 function computerMove() {
-  let allMoves = [];
-  for (let r = 0; r < 8; r++) {
-    for (let c = 0; c < 8; c++) {
-      if (board[r][c] && board[r][c][0] === 'b') {
-        let moves = getValidMoves(r, c);
-        moves.forEach(m => allMoves.push({from:[r,c], to:m, piece:board[r][c]}));
-      }
-    }
+  const DEPTH = 2; // Bisa diubah ke 3 jika ingin lebih kuat (tapi lebih lambat)
+  let result = minimax(board, DEPTH, true);
+  let move = result.move;
+  if (move) {
+    movePiece(move.from[0], move.from[1], move.to[0], move.to[1]);
   }
-  if (allMoves.length === 0) return;
-  let kingPos = null, whiteKingPos = null;
-  for (let r=0;r<8;r++)for(let c=0;c<8;c++){
-    if(board[r][c]==='bk')kingPos=[r,c];
-    if(board[r][c]==='wk')whiteKingPos=[r,c];
-  }
-  if (kingPos && isSquareAttacked(kingPos[0], kingPos[1], 'b')) {
-    let defendMoves = [];
-    for (let m of allMoves) {
-      let [fr, fc] = m.from, [tr, tc] = m.to;
-      let backup = board[tr][tc], old = board[fr][fc];
-      board[tr][tc]=old; board[fr][fc]='';
-      let newKingPos = (old[1]==='k')?[tr,tc]:kingPos;
-      let attacked = isSquareAttacked(newKingPos[0], newKingPos[1], 'b');
-      board[fr][fc]=old; board[tr][tc]=backup;
-      if (!attacked) defendMoves.push(m);
-    }
-    if (defendMoves.length>0) allMoves=defendMoves;
-    else { checkWinCondition(); return; }
-  }
-  let attackKingMoves = allMoves.filter(m => whiteKingPos && m.to[0]===whiteKingPos[0]&&m.to[1]===whiteKingPos[1]);
-  if (attackKingMoves.length > 0) allMoves=attackKingMoves;
-  let promoteMoves = allMoves.filter(m => m.piece==='bp'&&m.to[0]===7);
-  if (promoteMoves.length > 0) allMoves=promoteMoves;
-  let captureMoves = allMoves.filter(m => board[m.to[0]][m.to[1]]!==''&&board[m.to[0]][m.to[1]][0]==='w');
-  if (captureMoves.length > 0) allMoves=captureMoves;
-  let safeMoves = [];
-  for (let m of allMoves) {
-    let [fr, fc] = m.from, [tr, tc] = m.to, old = board[fr][fc], backup = board[tr][tc];
-    board[tr][tc]=old; board[fr][fc]='';
-    let kingPos2 = null; for(let r=0;r<8;r++)for(let c=0;c<8;c++)if(board[r][c]==='bk')kingPos2=[r,c];
-    let attacked = isSquareAttacked(kingPos2[0], kingPos2[1], 'b');
-    board[fr][fc]=old; board[tr][tc]=backup;
-    if (!attacked) safeMoves.push(m);
-  }
-  if (safeMoves.length > 0) allMoves=safeMoves;
-  let pick = allMoves[Math.floor(Math.random()*allMoves.length)];
-  movePiece(pick.from[0], pick.from[1], pick.to[0], pick.to[1]);
 }
 
 function checkWinCondition() {
@@ -464,7 +618,6 @@ function checkWinCondition() {
   else if (isStalemate('w')||isStalemate('b')) showWinPopup(null);
   else if (isDraw()) showWinPopup(null);
 }
-
 // === POPUP ===
 function showWinPopup(isPlayerWin) {
   let title = "";
@@ -515,42 +668,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectedText = document.getElementById("selectedMode");
   const options = select.querySelectorAll(".options span");
 
-  // buka/tutup dropdown
   trigger.addEventListener("click", () => {
     select.classList.toggle("open");
   });
 
-  // pilih mode
   options.forEach(option => {
     option.addEventListener("click", () => {
       const mode = option.getAttribute("data-mode");
       selectedText.textContent = option.textContent;
       select.classList.remove("open");
-
       resetGame(mode);
     });
   });
 
-  // klik di luar nutup dropdown
   document.addEventListener("click", (e) => {
     if (!select.contains(e.target)) {
       select.classList.remove("open");
     }
   });
 
-  // 🔥 ini penting → aktifkan Undo lagi
   document.getElementById('undoBtn').onclick = function() {
     undoMove();
-
-    // animasi sukses background
     this.classList.add('success');
     setTimeout(() => this.classList.remove('success'), 500);
-
-    // animasi ikon tekan
     this.classList.add('pressed');
-    setTimeout(() => this.classList.remove('pressed'), 150); // durasi animasi ikon
+    setTimeout(() => this.classList.remove('pressed'), 150);
   };
 
-  // default mode pas buka
   resetGame("computer");
 });
