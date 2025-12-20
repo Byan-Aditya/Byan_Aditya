@@ -398,11 +398,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Munculkan konten web
     document.body.classList.add("loaded");
 
+    // Animasi: teks ilang + logo pindah / deteksi mobile / desktop
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const logoSize = isMobile ? 60 : 70;
+
     // Animasi: teks ilang + logo pindah
     setTimeout(() => {
-      splashText.classList.add("hide"); 
-      introLogo.style.width = "50px";
-      introLogo.style.height = "50px";
+      splashText.classList.add("hide");
+
+      introLogo.style.width = logoSize + "px";
+      introLogo.style.height = logoSize + "px";
       introLogo.style.left = `${targetRect.left}px`;
       introLogo.style.top = `${targetRect.top + window.scrollY}px`;
       introLogo.style.transform = "translate(0, 0)";
@@ -412,6 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       intro.classList.add("hide");
     }, 2500);
+
   }
 });
 
