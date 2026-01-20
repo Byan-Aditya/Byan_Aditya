@@ -18,7 +18,7 @@
       background: var(--bg-light);
       box-shadow: var(--shadow-box-chess-light);
       transition: background var(--transition), color var(--transition), box-shadow var(--transition);
-      backdrop-filter: blur(6px);
+      /* backdrop-filter removed */: blur(6px);
       width: 700px;
       padding: 15px;
       border-radius: 30px;
