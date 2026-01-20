@@ -54,7 +54,7 @@
     width: 100%;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
+    /* backdrop-filter removed */: blur(8px);
     color: #fff;
     text-align: center;
     font-size: 1.5em;
@@ -151,7 +151,7 @@
     width: 100%;
     max-height: 5em;
     overflow: hidden;
-    backdrop-filter: blur(8px);
+    /* backdrop-filter removed */: blur(8px);
     padding: 1em;
     border-radius: 0 0 50px 50px;
     transition: max-height 0.5s ease, padding 0.5s ease, border-radius 0.5s ease;
@@ -194,7 +194,7 @@
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(6px);
+    /* backdrop-filter removed */: blur(6px);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
