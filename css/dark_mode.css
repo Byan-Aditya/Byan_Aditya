@@ -36,8 +36,8 @@
     /*--- CATUR ---*/
     --shadow-box-chess-light: 0 0 15px rgba(255,255,255,0.7);
     --shadow-box-chess-dark: 0 0 15px rgba(0,0,0,0.7);
-    --bg-light: rgba(255, 255, 255, 0.5);
-    --bg-dark: rgba(0, 0, 0, 0.5);
+    --bg-light: rgba(255, 255, 255, 0.7);
+    --bg-dark: rgba(0, 0, 0, 0.7);
     --chessboard-light: 0 0 15px white;
     --chessboard-dark: 0 0 15px black;
     
