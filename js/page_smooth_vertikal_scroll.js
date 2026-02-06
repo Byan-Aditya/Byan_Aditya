@@ -4,19 +4,32 @@ document.addEventListener("DOMContentLoaded", () => {
   pages.forEach(page => {
     let current = page.scrollTop;
     let target = page.scrollTop;
-    const ease = 0.10;
+    const ease = 0.1;
 
-    page.addEventListener("wheel", e => {
-      // BIARKAN horizontal tetap hidup
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    // DETEKSI TOUCH DEVICE
+    const isTouch =
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0;
 
-      e.preventDefault();
-      target += e.deltaY;
-      target = Math.max(
-        0,
-        Math.min(target, page.scrollHeight - page.clientHeight)
-      );
-    }, { passive: false });
+    // KALAU TOUCH → BIARKAN NATIVE
+    if (isTouch) return;
+
+    page.addEventListener(
+      "wheel",
+      e => {
+        // biarkan horizontal hidup
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+
+        e.preventDefault();
+
+        target += e.deltaY;
+        target = Math.max(
+          0,
+          Math.min(target, page.scrollHeight - page.clientHeight)
+        );
+      },
+      { passive: false }
+    );
 
     function smooth() {
       current += (target - current) * ease;
