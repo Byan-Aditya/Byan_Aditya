@@ -74,11 +74,12 @@
       position: sticky;
       backdrop-filter: blur(6px);
       box-shadow: 0 6px 9px rgba(0, 0, 0, 0.5);
-      border-radius: 0 0 20px 20px;
+      border-radius: 20px 20px 20px 20px;
       padding-top: 15px;
       padding-bottom: 0px;
       padding-left: 35px;
       padding-right: 35px;
+      margin: 5px 5px;
       z-index: 1000;
     }
     :root[data-theme="dark"] header {
@@ -408,14 +409,17 @@
       color: var(--text-trigger-dark);
       transition: background var(--transition), color var(--transition);
       position: fixed;
-      bottom: 0px;
-      width: 100%;
-      padding: 10px;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 10px); /* ganti margin */
+      max-width: auto;
+      padding: 5px;
       text-align: center;
       font-size: 14px;
       z-index: 1000;
       backdrop-filter: blur(6px);
-      border-radius: 20px 20px 0 0;
+      border-radius: 50px;
       box-shadow: 0 -6px 9px rgba(0, 0, 0, 0.5);
     }
     :root[data-theme="dark"] .sheet-footer {
@@ -538,6 +542,10 @@
         padding-bottom: 0px;
         padding-left: 10px;
         padding-right: 10px;
+      }
+      
+      .sheet-footer {
+        font-size: 12px;
       }
       
       .foto-rgb {
