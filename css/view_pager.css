@@ -59,8 +59,7 @@
       top: 0px; /* header + tab bar */
       bottom: 0px; /* footer */
       height: 100vh;
-      padding-top: 20px;
-      padding-bottom: 20px;
+      padding-bottom: 10px;
       left: 0;
       right: 0;
       display: flex;
@@ -73,8 +72,8 @@
     .page {
       flex: 0 0 100%;
       scroll-snap-align: start;
-      padding-top: 135px;
-      padding-bottom: 70px;
+      padding-top: 155px;
+      padding-bottom: 90px;
       overflow-y: auto;
     }
 
@@ -82,7 +81,8 @@
       .page {
         flex: 0 0 100%;
         scroll-snap-align: start;
-        padding-top: 100px;
+        padding-top: 115px;
+        padding-bottom: 90px;
         overflow-y: auto;
       }
       
